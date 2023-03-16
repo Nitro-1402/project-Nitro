@@ -1,0 +1,29 @@
+.item{
+    min-width:155px;
+    height:290px;
+    margin:20px;
+    overflow: hidden;
+}
+.container{
+    position: relative;
+    display: flex;
+    direction: rtl;
+}
+
+.container::-webkit-scrollbar{
+    display: none;
+}
+.item:hover img{
+    transition: all .3s ease-in;
+    transform: scale(1.2);
+}
+
+@media only  screen and (max-width:1000px) {
+    .container{
+        overflow-x: auto;
+    }
+    .h2{
+        margin-top:0px;
+        margin-bottom: 0;
+    }
+}

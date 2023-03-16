@@ -1,0 +1,60 @@
+.inputgroup {
+    color: #333;
+    float: left;
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 13px;
+    line-height: 20px;
+    margin: 0 20px 10px;
+    width: 300px;
+    direction: rtl;
+  }
+  
+  .label {
+    display: block;
+    margin: 5px;
+    font-size: 14px;
+  }
+  
+  .input{
+    background: #fff;
+    width:300px;
+    height: 40px;
+    border-radius: 4px;
+    border:1px solid #aaaaaa;
+    outline: none;
+    color: black;
+    font-family: RegularPersian;
+    font-size: 14px;
+    padding-right: 10px;
+    direction: rtl;
+    outline: none;
+  }
+  
+  .errormessage {
+    color: #cc0033;
+    display: inline-block;
+    font-size: 12px;
+    line-height: 15px;
+    margin: 5px 0 0;
+  }
+  
+  .inputgroup .errormessage {
+    display: none;
+}
+
+
+/* Error Styling */
+
+.error .label {
+  color: #cc0033;
+}
+
+.error .input{
+  background-color: #fce4e4;
+  border: 1px solid #cc0033;
+  outline: none;
+}
+
+.error .errormessage {
+  display: inline-block;
+}
