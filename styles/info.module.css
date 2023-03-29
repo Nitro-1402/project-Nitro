@@ -1,0 +1,178 @@
+.items {
+	padding-right: 10px;
+}
+.info {
+	background-color: gray;
+	opacity: 80%;
+	padding: 2px 10px;
+	border-radius: 10px;
+	margin-right: 5px;
+}
+.pageTop {
+	width: 100%;
+	background-image: url("../public/info-page-image/poker.jpg");
+	/* props */
+	height: 550px;
+	text-align: center;
+	display: flex;
+	justify-content: center;
+	align-items: first baseline;
+	flex-direction: column;
+}
+.topContent {
+	padding: 0 320px;
+	text-align: left;
+}
+.name {
+	color: orange;
+	font-size: 60px;
+	margin: 0;
+}
+.track {
+	background-color: orange;
+	padding: 5px 0px;
+	text-align: center;
+	border-radius: 10px;
+	font-size: 20px;
+	color: rgb(255, 255, 255);
+	font-weight: 700;
+	width: 180px;
+	margin-top: 60px;
+}
+.track:hover {
+	color: orange;
+	background-color: rgb(255, 255, 255);
+}
+.poster {
+	width: 200px;
+	height: auto;
+	border-radius: 10px;
+}
+.poster:hover {
+	transition: all .3s ease-in;
+	transform: scale(1.12);
+}
+.favorite, .rate, .seen {
+	margin-right: auto;
+	margin-left: auto;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
+.bullet {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+	padding-top: 20px;
+}
+.star, .heart, .tick {
+	width: 35px;
+	;
+}
+.middleView {
+	padding: 0 320px;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	background-color: #141312;
+	color: aliceblue;
+	padding-bottom: 50px;
+}
+.leftPart {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	margin-right: 50px;
+	margin-top: 50px;
+}
+.rightPart {
+	display: inline-block;
+	vertical-align: middle;
+	width: 650px;
+}
+.movieName {
+	font-size: 25px;
+	padding-top: 40px;
+	padding-bottom: 20px;
+	text-align: left;
+	margin: 0;
+}
+.genre {
+	padding: 10px 0;
+}
+.rankBox {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	padding-bottom: 10px;
+}
+.rank {
+	padding-right: 16px;
+	padding-left: 5px;
+	size: 10px;
+	color: gray;
+}
+.BB {
+	width: 15px;
+}
+.IMDB {
+	width: 25px;
+}
+.summery {
+	direction: rtl;
+	text-align: right;
+	font-size: 15px;
+	padding: 30px 0;
+}
+/* .streamPlace{
+      background-color: rgb(88, 87, 87);
+      border-radius: 10px;
+  }
+  .contentStream{
+      padding: 10px 20px;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+  }
+  .filimologo{
+      height: 35px;
+  }
+  .streamContent{
+      display: inline-block;
+      vertical-align: middle;
+      width: 50%;
+      text-align: left;
+  }
+
+  .streamBox{
+      display: inline-block;
+      vertical-align: middle;
+      text-align: right;
+      margin-left: 180px;
+  }
+  .streamBoxText{
+      text-align: center;
+      margin: 0;
+      padding: 10px 30px;
+      background-color: orange;
+      border-radius: 10px;
+  }
+  .logoText{
+      font-size: 10px;
+      vertical-align: text-bottom;
+      text-align: center;
+      font-weight: 200;
+  } */
+
+@media only screen and (max-width:800px) {
+	.middleView {
+		flex-direction: column;
+	}
+	.leftPart {
+		margin-right: 0;
+	}
+}
