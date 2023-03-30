@@ -1,0 +1,53 @@
+.main{
+    width: 100%;
+    background-color: black;
+    color: aliceblue;
+    position: fixed;
+    z-index: 1;
+}
+.navbar{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 10px;
+}
+.navbar a{
+    text-decoration: none;
+    color: aliceblue;
+}
+.navbarLogo{
+    width: 130px;
+    padding-right: 50px;
+}
+.navbarContent{
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+}
+.navTop{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.searchBox{
+    width: 70%;
+    height: 30px;
+    background-color: orange;
+    border: 1px solid orange;
+    border-radius: 10px;
+    color: aliceblue;
+}
+.LandS{
+    width: 29%;
+    padding-left: 10px;
+}
+.signup , .login{
+    padding: 0 10px;
+}
+.navbarItems{
+    padding-top: 20px;
+}
+.items{
+    padding-right: 15px;
+}
