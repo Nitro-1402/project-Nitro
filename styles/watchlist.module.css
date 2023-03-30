@@ -1,5 +1,6 @@
 .item{
     min-width:155px;
+    width: 155px;
     height:290px;
     margin:20px;
     overflow: hidden;
