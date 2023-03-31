@@ -2,7 +2,6 @@
     width: 100%;
     background-color: black;
     color: aliceblue;
-    position: fixed;
     z-index: 1;
 }
 .navbar{

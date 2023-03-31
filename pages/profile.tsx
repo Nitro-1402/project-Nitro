@@ -5,8 +5,8 @@ import { useState } from 'react'
 import styles from '../styles/profile.module.css'
 function Head(){
     return(
-        <div style={{ position: 'relative' }}>
-        <CustomImage src="" style={{ width: "100vw", height: "12vw", minHeight: "100px" }} />
+        <div style={{ position: 'relative'}}>
+        <CustomImage src=''style={{ width: "100vw", height: "12vw", minHeight: "100px"}} />
         <div  className={styles.container}>
             <div style={{ display: 'flex', alignItems: "center" ,marginRight:10,marginBottom:10}}>
                 <CustomImage src="" style={{ width: "12vw", height: "12vw", minHeight: "110px", minWidth: "110px", borderRadius: "50%" }} />
@@ -16,6 +16,7 @@ function Head(){
                 </div>
             </div>
             <CustomBtn text='follow' press={()=>{}} style={{
+                backgroundColor:'orange',
                 border:"2px solid #FFA500",
                 borderRadius:'5px',
                 width:200,
@@ -54,21 +55,22 @@ export default function Profile() {
 
         <Head/>
         <Menu menu={['Watched list','Watching list','Want to Watch']}/>
-        <div style={{display:'flex',flexWrap:'wrap',justifyContent:'center',marginTop:15}}>
-        <Item image={'/image/manifest.jpg'} name={'manifest'}/>
-        <Item image={'/image/good-doctor.jpeg'} name={'good doctor'}/>
-        <Item image={'/image/sweet-home.jpeg'} name={'sweet home'}/>
-        <Item image={'/image/harry-poter.jpg'} name={'harry poter'}/>
-        <Item image={'/image/moon-knight.jpeg'} name={'moon knight'}/>
-        <Item image={'/image/money-heist.jpg'} name={'money heist'}/>
-        <Item image={'/image/legacies.jpg'} name={'legacies'}/>
-        <Item image={'/image/manifest.jpg'} name={'manifest'}/>
-        <Item image={'/image/good-doctor.jpeg'} name={'good doctor'}/>
-        <Item image={'/image/sweet-home.jpeg'} name={'sweet home'}/>
-        <Item image={'/image/harry-poter.jpg'} name={'harry poter'}/>
-        <Item image={'/image/moon-knight.jpeg'} name={'moon knight'}/>
-        <Item image={'/image/money-heist.jpg'} name={'money heist'}/>
-        <Item image={'/image/legacies.jpg'} name={'legacies'}/>
+        <div style={{display:'flex',flexWrap:'wrap',justifyContent:'center',marginTop:15, backgroundColor:"#3d3d3d"}}>
+                    <Item image={'/image/manifest.jpg'} name={'لیست پرواز'}/>
+                    <Item image={'/image/good-doctor.jpeg'} name={'دکتر خوب'}/>
+                    <Item image={'/image/sweet-home.jpeg'} name={'سوییت هوم'}/>
+                    <Item image={'/image/harry-poter.jpg'} name={'هری پاتر'}/>
+                    <Item image={'/image/moon-knight.jpeg'} name={'شوالیه ماه'}/>
+                    <Item image={'/image/money-heist.jpg'} name={'خانه کاغذی'}/>
+                    <Item image={'/image/legacies.jpg'} name={'میراث ها'}/>
+                    <Item image={'/image/shahrBano.webp'} name={'شهربانو'}/>
+                    <Item image={'/image/alice.jpg'} name={'آلیس در سرزمین مرزی'}/>
+                    <Item image={'/image/spider-man.jpg'} name={'مزد عنکبوتی دور از خانه'}/>
+                    <Item image={'/image/swarm.jpg'} name={'ازدحام'}/>
+                    <Item image={'/image/meydanSorkh.jpg'} name={'میدان سرخ'}/>
+                    <Item image={'/image/lastOfUs.webp'} name={'آخرین نفر از ما'}/>
+                    <Item image={'/image/iron-man.jpg'} name={'مرد آهنی'}/>
+
         </div>
         </>
 
