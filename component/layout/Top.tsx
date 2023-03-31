@@ -8,7 +8,9 @@ const Top = () =>  {
     <div className={styles.pageTop}>
       <div className={styles.topContent}>
         <h1 className={styles.name}>Poker Face</h1>{/* props */}
-        <MiniInfo/>
+        <div className={styles.miniInfoF}>
+          <MiniInfo/>
+        </div>
         <div className={styles.trackBox}>
           <button className={styles.track}>Track it</button>
         </div>
