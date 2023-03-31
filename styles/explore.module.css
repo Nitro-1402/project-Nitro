@@ -8,6 +8,7 @@
     height:290px;
     margin:20px;
     overflow: hidden;
+    direction: rtl;
 }
 .container{
     position: relative;
@@ -15,6 +16,7 @@
     flex-direction: row;
     align-items: center;
     direction: rtl;
+
 }
 
 .container::-webkit-scrollbar{

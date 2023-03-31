@@ -10,7 +10,7 @@ export class info extends Component {
   render() {
     return (
       <div>
-        {/* <Navbar/> */}
+        <Navbar/>
         <Top/>
         <div className= {styles.middleView}>
           <div className= {styles.leftPart}>

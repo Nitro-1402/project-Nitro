@@ -2,6 +2,7 @@ import React from 'react'
 import CustomImage from '@/ui/CustomImage'
 // import TextField from "@mui/material/TextField"
 import styles from '/styles/navbar.module.css'
+import Link from 'next/link'
 
 
 const Navbar = () => {
@@ -17,15 +18,15 @@ const Navbar = () => {
               <input className={styles.searchBox}></input>
               {/* <TextField className={styles.searchBox} variant="outlined" fullWidth label="Search"/> */}
               <div className={styles.LandS}>
-                <a href='/' className={styles.login}>Login</a>
+                <Link href='/register' className={styles.login}>Login</Link>
                 <span>|</span>
-                <a href='/' className={styles.signup}>Sign Up</a>
+                <Link href='/' className={styles.signup}>Sign Up</Link>
               </div>
             </div>
             <div className={styles.navbarItems}>
-              <a href='/' className={styles.items}>Tv Shows</a>
-              <a href='/' className={styles.items}>Movies</a>
-              <a href='/' className={styles.items}>Watch List</a>
+              <Link href='/' className={styles.items}>Tv Shows</Link>
+              <Link href='/explore' className={styles.items}>Movies</Link>
+              <Link href='/' className={styles.items}>Watch List</Link>
             </div>
           </div>
         </div>
