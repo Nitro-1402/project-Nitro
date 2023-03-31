@@ -1,3 +1,7 @@
+.mainSection{
+    width: 100%;
+    overflow-x:scroll;
+}
 .item{
     min-width:155px;
     width: 155px;
@@ -8,6 +12,8 @@
 .container{
     position: relative;
     display: flex;
+    flex-direction: row;
+    align-items: center;
     direction: rtl;
 }
 
@@ -21,9 +27,9 @@
 
 @media only  screen and (max-width:1000px) {
     .container{
-        overflow-x: auto;
+        overflow-x:auto;
     }
-    .h2{
+    .title{
         margin-top:0px;
         margin-bottom: 0;
     }

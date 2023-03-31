@@ -16,14 +16,14 @@ function Head(){
                 </div>
             </div>
             <CustomBtn text='follow' press={()=>{}} style={{
-                border:"2px solid #7569FF",
+                border:"2px solid #FFA500",
                 borderRadius:'5px',
                 width:200,
                 height:34,
                 cursor:'pointer'
             }}
             textStyle={{
-                color:'#7569FF'
+                color:'#000000'
             }}/>
         </div>
     </div>
@@ -37,7 +37,7 @@ function Menu({menu}:{menu?:string[]}){
 
             {menu?.map((e:string,index:number)=>{
                 return(
-                    <h2  style={{padding:5,borderBottom:index==select?"2px solid #7569FF":"",cursor:"pointer",margin:"0 20px"}} onClick={()=>{
+                    <h2  style={{padding:5,borderBottom:index==select?"2px solid #FFA500":"",cursor:"pointer",margin:"0 20px"}} onClick={()=>{
                         setselect(index)
                     }} className={styles.menuItem}>{e}</h2>
                 )
