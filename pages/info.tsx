@@ -1,16 +1,16 @@
 import React, { Component } from 'react'
 import styles from '../styles/info.module.css'
-import Card from './components/card/Card'
-import Middle from './components/layout/Middle'
-import Navbar from './components/navbar/Navbar'
-import Top from './components/layout/Top'
+import Card from '@/component/card/Card'
+import Middle from '@/component/layout/Middle'
+import Navbar from '@/component/navbar/Navbar'
+import Top from '@/component/layout/Top'
 
 
 export class info extends Component {
   render() {
     return (
       <div>
-        <Navbar/>
+        {/* <Navbar/> */}
         <Top/>
         <div className= {styles.middleView}>
           <div className= {styles.leftPart}>

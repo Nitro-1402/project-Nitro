@@ -7,20 +7,22 @@
 	padding: 2px 10px;
 	border-radius: 10px;
 	margin-right: 5px;
+	font-size: 15px;
 }
 .pageTop {
 	width: 100%;
 	background-image: url("../public/info-page-image/poker.jpg");
-	/* props */
 	height: 550px;
-	text-align: center;
 	display: flex;
 	justify-content: center;
 	align-items: first baseline;
 	flex-direction: column;
 }
 .topContent {
-	padding: 0 320px;
+	display: flex;
+	flex-direction: column;
+	position: relative;
+	left: 300px;
 	text-align: left;
 }
 .name {
@@ -69,10 +71,8 @@
 }
 .star, .heart, .tick {
 	width: 35px;
-	;
 }
 .middleView {
-	padding: 0 320px;
 	display: flex;
 	flex-direction: row;
 	justify-content: center;
@@ -127,52 +127,41 @@
 	font-size: 15px;
 	padding: 30px 0;
 }
-/* .streamPlace{
-      background-color: rgb(88, 87, 87);
-      border-radius: 10px;
-  }
-  .contentStream{
-      padding: 10px 20px;
-      display: flex;
-      flex-direction: row;
-      justify-content: center;
-      align-items: center;
-  }
-  .filimologo{
-      height: 35px;
-  }
-  .streamContent{
-      display: inline-block;
-      vertical-align: middle;
-      width: 50%;
-      text-align: left;
-  }
 
-  .streamBox{
-      display: inline-block;
-      vertical-align: middle;
-      text-align: right;
-      margin-left: 180px;
-  }
-  .streamBoxText{
-      text-align: center;
-      margin: 0;
-      padding: 10px 30px;
-      background-color: orange;
-      border-radius: 10px;
-  }
-  .logoText{
-      font-size: 10px;
-      vertical-align: text-bottom;
-      text-align: center;
-      font-weight: 200;
-  } */
-
-@media only screen and (max-width:800px) {
+@media only screen and (max-width:600px) {
+	.pageTop{
+		background-image: url("../public/info-page-image/poker2.png");
+		background-repeat: no-repeat;
+		height: 500px;
+		background-position: top right;
+		justify-content: flex-end;
+    	align-items: center;
+	}
+	.topContent{
+		left: 0;
+		align-items: center;
+	}
 	.middleView {
 		flex-direction: column;
 	}
+	.movieName {
+		display: none;	}
+	.miniInfoF{
+		display: none;
+	}
+	.rightPart{
+		width: 500px;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+	}
 	.leftPart {
 		margin-right: 0;
+		padding-bottom: 20px;
+	}
+	.track{
+		margin-top: 10px;
+		margin-bottom: 20px;
 	}
 }
