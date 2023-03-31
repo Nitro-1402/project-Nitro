@@ -19,9 +19,9 @@ function Password({onChange,errorMsg,setError}:{setError?:React.Dispatch<React.S
               errorMsg={errorMsg}
               setError={setError}
             />
-            {see?<BsEyeFill style={{position:'absolute',left:30,top:40,zIndex:1000}} size={18} color={'#7569FF'} onClick={()=>{
+            {see?<BsEyeFill style={{position:'absolute',left:30,top:40,zIndex:1000}} size={18} color={'#FFA500'} onClick={()=>{
               setsee(false)
-            }}/>:<BsFillEyeSlashFill style={{position:'absolute',left:30,top:40,zIndex:1000}} size={18} color={'#7569FF'} onClick={()=>{
+            }}/>:<BsFillEyeSlashFill style={{position:'absolute',left:30,top:40,zIndex:1000}} size={18} color={'#FFA500'} onClick={()=>{
               setsee(true)
             }}/>}
 
@@ -92,7 +92,7 @@ const SignUp=({set}:{set:React.Dispatch<React.SetStateAction<boolean>>})=>{
               width: 300,
               height: 40,
               marginTop: 10,
-              backgroundColor: "#7569FF",
+              backgroundColor: "#FFA500",
               borderRadius: 5,
             }}
             text={"ورود"}
@@ -113,7 +113,7 @@ const SignUp=({set}:{set:React.Dispatch<React.SetStateAction<boolean>>})=>{
           >
             ثبت نام کرده اید؟{" "}
             <span
-              style={{ color: "#7569FF", cursor: "pointer" }}
+              style={{ color: "#FFA500", cursor: "pointer" }}
               onClick={() => {
                 set(false)
               }}
@@ -173,7 +173,7 @@ const Login=({set}:{set:React.Dispatch<React.SetStateAction<boolean>>})=>{
               width: 300,
               height: 40,
               marginTop: 10,
-              backgroundColor: "#7569FF",
+              backgroundColor: "#FFA500",
               borderRadius: 5,
             }}
             text={"ورود"}
@@ -194,7 +194,7 @@ const Login=({set}:{set:React.Dispatch<React.SetStateAction<boolean>>})=>{
           >
             ثبت نام نکرده اید؟{" "}
             <span
-              style={{ color: "#7569FF", cursor: "pointer" }}
+              style={{ color: "#FFA500", cursor: "pointer" }}
               onClick={() => {
                 set(true)
               }}

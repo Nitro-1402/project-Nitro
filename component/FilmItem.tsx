@@ -1,5 +1,5 @@
 import CustomImage from '@/ui/CustomImage'
-import styles from '../styles/watchlist.module.css'
+import styles from '../styles/explore.module.css'
 
 export default function Item ({image='/image/test.jpeg',name='terminator', number=12346788}:{image?:string,name?:string,number?:number}){
     return(
