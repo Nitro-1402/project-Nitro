@@ -1,0 +1,91 @@
+/* actorInfo */
+.main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: black;
+}
+.actorName{
+    font-size: 50px;
+    font-weight: 700;
+    color: aliceblue;
+    margin-top:200px ;
+
+}
+.actorInfo{
+    direction:rtl;
+    display:flex;
+    flex-direction:row;
+    align-items:center;
+    justify-content: center;
+    background-color:black;
+    color:aliceblue;
+    padding: 50px 0 70px;
+
+}
+.frame{
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    width: 214px;
+    height: 317px;
+    border-radius: 10px;
+    background-color: aliceblue;
+}
+.actorPic{
+    position: absolute;
+    top: 0;
+    width: 214px;
+    height: 317px;
+    overflow: hidden;
+
+}
+.infoCard{
+    position: relative;
+    background-color: #3d3d3d;
+    height: 260px;
+    width: 600px;
+    border-radius: 10px;
+    margin-right: -10px;
+    padding: 30px;
+
+}
+.info{
+    padding-bottom: 10px;
+
+}
+.btn{
+    background-color: orange;
+    position: absolute;
+    left: 70px;
+    bottom: 30px;
+    border-radius: 20px;
+    padding: 10px 20px;
+}
+.imdb{
+    text-decoration: none;
+    color: inherit;
+}
+@media only screen and (max-width:600px){
+    .actorInfo{
+        flex-direction: column;
+    }
+    .actorName{
+        font-size: 30px;
+    }
+    .actorPic{
+        width: 155px;
+        height: 217px;
+    }
+    .frame{
+        width: 155px;
+        height: 217px;
+    }
+    .infoCard{
+        height: 260px;
+        width: 300px;
+        margin-right: 0px;
+        margin-top: -10px;
+        /* padding: 30px; */
+    }
+}

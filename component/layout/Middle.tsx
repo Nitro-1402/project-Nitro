@@ -6,7 +6,7 @@ import Summery from '../information/Summery'
 
 const Middle = () => {
   return (
-    <div className={styles.rightPart}>
+    <div className={styles.left}>
         <Information/>
         <MiniInfo/>
         <Summery/>

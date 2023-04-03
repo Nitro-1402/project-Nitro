@@ -16,7 +16,6 @@
     flex-direction: row;
     align-items: center;
     direction: rtl;
-
 }
 
 .container::-webkit-scrollbar{

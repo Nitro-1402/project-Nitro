@@ -4,7 +4,7 @@ import CustomImage from '@/ui/CustomImage'
 
 export class Information extends Component {
     state = {
-        name: 'Poker Face',
+        name: 'پوکر فیس',
         date: '(2023-2023)',
         bbRate: '78/100',
         imdbRate: '8/10',
@@ -20,7 +20,7 @@ export class Information extends Component {
                 <span className={styles.rank}>{bbRate}</span>
                 <CustomImage className={styles.IMDB} src="/info-page-image/imdb_logo.png" style={{}} alt='imdb'/>
                 <span className={styles.rank}>{imdbRate}</span>
-                <span className={styles.rank}>{votes} Votes</span>
+                <span className={styles.rank}>{votes} رأی</span>
             </div>
         </div>
     )
