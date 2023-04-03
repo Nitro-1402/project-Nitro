@@ -1,0 +1,25 @@
+.card{
+    width:620px;
+    min-height: 230px;
+    padding: 15px;
+    margin: 20px;
+    background-color: #24282A;
+    border-radius: 10px;
+    direction: rtl;
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    height: auto;
+}
+.container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+@media only  screen and (max-width:800px) {
+    .card{
+        flex-direction: column;
+        width: 310px;
+        padding-bottom: 50px;
+    }
+}

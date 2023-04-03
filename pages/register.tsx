@@ -109,6 +109,7 @@ const SignUp=({set}:{set:React.Dispatch<React.SetStateAction<boolean>>})=>{
               width: 340,
               textAlign: "center",
               marginTop: 20,
+              color:"white"
             }}
           >
             ثبت نام کرده اید؟{" "}
@@ -190,6 +191,7 @@ const Login=({set}:{set:React.Dispatch<React.SetStateAction<boolean>>})=>{
               width: 340,
               textAlign: "center",
               marginTop: 20,
+              color:'white'
             }}
           >
             ثبت نام نکرده اید؟{" "}
