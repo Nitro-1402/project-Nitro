@@ -8,7 +8,6 @@ export default function Item ({image='/image/test.jpeg',name='terminator', numbe
             <CustomImage src={image?image:''}style={{width:"100%",height:227,overflow:'hidden', borderRadius:'10px'}}/>
             </div>
             <h4 style={{marginLeft:10,padding:0,color:'aliceblue'}}>{name}</h4>
-            <h6 style={{color:'#acacac',marginLeft:10,padding:0}}>{number} seen</h6>
 
         </div>
     )
