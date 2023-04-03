@@ -5,11 +5,11 @@ export class MiniInfo extends Component {
     state = {
         content: [
             {
-                text: 'Drama',
+                text: 'دراما',
                 id:'1'
             },
             {
-                text: 'Crime',
+                text: 'جنایی',
                 id:'2'
             },
             {
@@ -17,7 +17,7 @@ export class MiniInfo extends Component {
                 id:'3'
             },
             {
-                text: 'US',
+                text: 'آمریکا',
                 id:'4'
             },
             {
@@ -25,8 +25,12 @@ export class MiniInfo extends Component {
                 id:'5'
             },
             {
-                text: '1 season',
+                text: ' تک فصل ',
                 id:'6'
+            },
+            {
+                text: ' دوبله ',
+                id:'7'
             } 
         ]
     }

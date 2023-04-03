@@ -6,24 +6,26 @@
 	opacity: 80%;
 	padding: 2px 10px;
 	border-radius: 10px;
-	margin-right: 5px;
+	margin-left: 5px;
 	font-size: 15px;
 }
 .pageTop {
+	direction: rtl;
 	width: 100%;
+	margin-top: 110px;
 	background-image: url("../public/info-page-image/poker.jpg");
 	height: 550px;
 	display: flex;
 	justify-content: center;
-	align-items: first baseline;
+	align-items: baseline;
 	flex-direction: column;
 }
 .topContent {
 	display: flex;
 	flex-direction: column;
 	position: relative;
-	left: 300px;
-	text-align: left;
+	right: 300px;
+	text-align: right;
 }
 .name {
 	color: orange;
@@ -73,6 +75,7 @@
 	width: 35px;
 }
 .middleView {
+	direction: rtl;
 	display: flex;
 	flex-direction: row;
 	justify-content: center;
@@ -81,23 +84,24 @@
 	color: aliceblue;
 	padding-bottom: 50px;
 }
-.leftPart {
+.right {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
-	margin-right: 50px;
+	margin-left: 50px;
 	margin-top: 50px;
 }
-.rightPart {
+.left {
 	display: inline-block;
 	vertical-align: middle;
 	width: 650px;
+	
 }
 .movieName {
 	font-size: 25px;
 	padding-top: 40px;
 	padding-bottom: 20px;
-	text-align: left;
+	text-align: right;
 	margin: 0;
 }
 .genre {
@@ -110,8 +114,8 @@
 	padding-bottom: 10px;
 }
 .rank {
-	padding-right: 16px;
-	padding-left: 5px;
+	padding-left: 16px;
+	padding-right: 5px;
 	size: 10px;
 	color: gray;
 }
@@ -127,6 +131,45 @@
 	font-size: 15px;
 	padding: 30px 0;
 }
+.streamPlace{
+	background-color: rgb(88, 87, 87);
+	border-radius: 10px;
+}
+.contentStream{
+	padding: 10px 20px;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+}
+.filimologo{
+	height: 35px;
+}
+.streamContent{
+	display: inline-block;
+	vertical-align: middle;
+	width: 50%;
+	text-align: left;
+}
+.streamBox{
+	display: inline-block;
+	vertical-align: middle;
+	text-align: right;
+	margin-right: 180px;
+}
+.streamBoxText{
+	text-align: center;
+	margin: 0;
+	padding: 10px 25px;
+	background-color: orange;
+	border-radius: 10px;
+}
+.logoText{
+	font-size: 10px;
+	vertical-align: text-bottom;
+	text-align: center;
+	font-weight: 200;
+}
 
 @media only screen and (max-width:600px) {
 	.pageTop{
@@ -138,30 +181,44 @@
     	align-items: center;
 	}
 	.topContent{
-		left: 0;
+		right: 0;
 		align-items: center;
 	}
 	.middleView {
 		flex-direction: column;
 	}
 	.movieName {
-		display: none;	}
+		display: none;
+	}
 	.miniInfoF{
 		display: none;
 	}
-	.rightPart{
+	.left{
 		width: 500px;
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
 		align-items: center;
 	}
-	.leftPart {
+	.right {
 		margin-right: 0;
-		padding-bottom: 20px;
+		padding-bottom: 50px;
 	}
 	.track{
 		margin-top: 10px;
 		margin-bottom: 20px;
+	}
+	.streamBox{
+		margin-right: 100px;
+	}
+	.streamBoxText{
+		font-size:15px ;
+		padding: 10px 10px;
+	}
+	.streamText{
+		display: none;
+	}
+	.streamLogo{
+		height: 35px;
 	}
 }

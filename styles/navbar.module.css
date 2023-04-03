@@ -2,14 +2,19 @@
     width: 100%;
     background-color: black;
     color: aliceblue;
-    z-index: 1;
+    z-index: 3;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    box-shadow: 2px 2px 3px 0 rgba(166, 166, 166, 0.5);
 }
 .navbar{
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    padding: 20px 10px;
+    padding: 20px 10px 0;
 }
 .navbar a{
     text-decoration: none;
@@ -30,7 +35,7 @@
     align-items: center;
 }
 .searchBox{
-    width: 70%;
+    width: 84%;
     height: 30px;
     background-color: orange;
     border: 1px solid orange;
@@ -38,15 +43,109 @@
     color: aliceblue;
 }
 .LandS{
-    width: 29%;
+    width: 15%;
     padding-left: 10px;
+    text-align: center;
+    text-align: right;
 }
 .signup , .login{
     padding: 0 10px;
 }
 .navbarItems{
+    display: flex;
+    flex-direction: row;
+    height: 70px;
     padding-top: 20px;
 }
 .items{
+    position: relative;
     padding-right: 15px;
+    list-style-type: none;
 }
+@media only screen and (max-width:600px){
+    .signup, .login{
+        padding: 0;
+    }
+    .LandS{
+        display: flex;
+        flex-direction: column;
+        font-size: 15px;
+    }
+    .navbarLogo{
+        width: 100px;
+        padding-right: 10px;
+    }
+    .line{
+        display: none;
+    }
+    .navbarItems{
+        padding-top: 7px;
+        text-align: center;
+        width: 83.5%;
+    }
+}
+/* dropdown */
+.dropdownMenu {
+    background: orange;
+    border-radius: 10px;
+    width: 200px;
+    position: absolute;
+    /* margin-top: 20px; */
+    top: 25px;
+    list-style: none;
+    text-align: start;
+    padding: 10px 20px;
+  }
+  
+  /* .dropdownMenu {
+    background: #1888ff;
+    cursor: pointer;
+  }
+  
+  .dropdownMenu{
+    background: #5cabff;
+  }
+  
+  .dropdownMenu.clicked {
+    display: none;
+  } */
+  
+  .dropdownLink {
+    display: block;
+    height: 100%;
+    width: 100%;
+    text-decoration: none;
+    color: #fff;
+    padding: 16px;
+  }
+  
+  /* @media screen and (max-width: 960px) {
+    .fa-caret-down {
+      display: none;
+    }
+  } */
+  /* .navItem {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 80px;
+  } */
+/* .. */
+/* .nav-item {
+  display: flex;
+  align-items: center;
+  height: 80px;
+}
+
+.nav-links {
+  color: white;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+}
+
+.nav-links:hover {
+  background-color: #1888ff;
+  border-radius: 4px;
+  transition: all 0.2s ease-out;
+}
+   */
