@@ -12,9 +12,11 @@
     /* height: 70%; */
     width: 400px;
     margin: 5% auto;
+
     /* background-image:url('/image/bg.png'); */
-    background-color: white;
-    /* color: white !important; */
+    background-color: black;
+    color: white !important;
+    border-radius: 10px;
     
 }
 
