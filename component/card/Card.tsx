@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
 import CustomImage from '@/ui/CustomImage'
 import styles from '/styles/info.module.css'
+import StarRating from '../rating/StarRating'
+import HeartFavorite from '../favorite/HeartFavorite'
+import Tick from '../seenAll/Tick'
 
 export class Card extends Component {
     state = {
@@ -10,20 +13,15 @@ export class Card extends Component {
     return (
       <div className= {styles.right}>
         <CustomImage className= {styles.poster} src={this.state.poster} style={{}} alt='poster'/>
-            <div className= {styles.bullet}>
-                <span className= {styles.rate}>
-                    <CustomImage className= {styles.star} src="/info-page-image/star.png" style={{}} alt='rate'/>
-                    <span className= {styles.logoText}>امتیاز دادن</span>
-                </span>
-                <span className= {styles.seen}>
-                    <CustomImage className= {styles.tick} src="/info-page-image/tick.png" style={{}} alt='seen'/>
-                    <span className= {styles.logoText}>مشاهده شده</span>
-                </span>
-                <span className= {styles.favorite}>
-                    <CustomImage className={styles.heart} src="/info-page-image/heart.png" style={{}} alt='favorite'/>
-                    <span className= {styles.logoText}>پسندیدن</span>
-                </span>
-            </div>
+        <StarRating/>
+        <div className= {styles.bullet}>
+          <span className= {styles.seen}>
+            <Tick/>
+          </span>
+          <span className= {styles.favorite}>
+            <HeartFavorite/>
+          </span>
+        </div>
       </div>
     )
   }
