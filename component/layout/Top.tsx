@@ -7,7 +7,7 @@ const Top = () =>  {
   return (
     <div className={styles.pageTop}>
       <div className={styles.topContent}>
-        <h1 className={styles.name}>Poker Face</h1>{/* props */}
+        <h1 className={styles.name}>پوکر فیس</h1>{/* props */}
         <div className={styles.miniInfoF}>
           <MiniInfo/>
         </div>

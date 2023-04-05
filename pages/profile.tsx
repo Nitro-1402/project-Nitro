@@ -6,7 +6,7 @@ import styles from '../styles/profile.module.css'
 function Head(){
     return(
         <div style={{ position: 'relative'}}>
-        <CustomImage src=''style={{ width: "100vw", height: "12vw", minHeight: "100px"}} />
+        {/* <CustomImage src=''style={{ width: "100vw", height: "12vw", minHeight: "100px"}} /> */}
         <div  className={styles.container}>
             <div style={{ display: 'flex', alignItems: "center" ,marginRight:10,marginBottom:10}}>
                 <CustomImage src="" style={{ width: "12vw", height: "12vw", minHeight: "110px", minWidth: "110px", borderRadius: "50%" }} />
@@ -24,7 +24,7 @@ function Head(){
                 cursor:'pointer'
             }}
             textStyle={{
-                color:'#000000'
+                color:'white'
             }}/>
         </div>
     </div>
@@ -38,7 +38,7 @@ function Menu({menu}:{menu?:string[]}){
 
             {menu?.map((e:string,index:number)=>{
                 return(
-                    <h2  style={{padding:5,borderBottom:index==select?"2px solid #FFA500":"",cursor:"pointer",margin:"0 20px"}} onClick={()=>{
+                    <h2  style={{padding:5,borderBottom:index==select?"2px solid #FFA500":"",cursor:"pointer",margin:"0 20px",color:'white'}} onClick={()=>{
                         setselect(index)
                     }} className={styles.menuItem}>{e}</h2>
                 )
@@ -54,8 +54,8 @@ export default function Profile() {
         <>
 
         <Head/>
-        <Menu menu={['Watched list','Watching list','Want to Watch']}/>
-        <div style={{display:'flex',flexWrap:'wrap',justifyContent:'center',marginTop:15, backgroundColor:"#3d3d3d"}}>
+        <Menu menu={['دیده شده','درحال دیدن','میخواهم ببینم']}/>
+        <div style={{display:'flex',flexWrap:'wrap',justifyContent:'center',marginTop:15}}>
                     <Item image={'/image/manifest.jpg'} name={'لیست پرواز'}/>
                     <Item image={'/image/good-doctor.jpeg'} name={'دکتر خوب'}/>
                     <Item image={'/image/sweet-home.jpeg'} name={'سوییت هوم'}/>

@@ -6,13 +6,17 @@ import { useRouter } from "next/router"
 import { useRef, useState } from "react"
 import {BsEyeFill,BsFillEyeSlashFill} from 'react-icons/bs'
 import styles from '../styles/register.module.css'
-function Password({onChange,errorMsg,setError}:{setError?:React.Dispatch<React.SetStateAction<any>>,onChange:(e:string,label:string)=>void,errorMsg:string |null| undefined}){
+import { plainToClass } from "class-transformer"
+import { SignUpClass } from "@/validator/SignUp"
+import { Validate, validate } from "class-validator"
+import TransformError from "@/helper/TransformError"
+function Password({onChange,errorMsg,setError,placeholder="رمز عبور"}:{placeholder?:string,setError?:React.Dispatch<React.SetStateAction<any>>,onChange:(e:string,label:string)=>void,errorMsg:string |null| undefined}){
   const[see,setsee]=useState<boolean>(false)
   return(
     <div style={{position:'relative'}}>
             <Input
               type={!see?"password":"text"}
-              placeholder="رمز عبور"
+              placeholder={placeholder}
               required
               onChange={onChange}
               name="password"
@@ -35,16 +39,18 @@ function Password({onChange,errorMsg,setError}:{setError?:React.Dispatch<React.S
 
 
 const SignUp=({set}:{set:React.Dispatch<React.SetStateAction<boolean>>})=>{
-  const[error,setError]=useState<{username:string,password:string,email:string}>({
+  const[error,setError]=useState<{username:string,password:string,email:string,repeated_password:string}>({
     username:"",
     password:"",
-    email:""
+    email:"",
+    repeated_password:""
   })
   const router=useRouter()
-  const ref=useRef<{username:string,password:string,email:string}>({
+  const ref=useRef<{username:string,password:string,email:string,repeated_password:string}>({
     username:'',
     password:'',
-    email:""
+    email:"",
+    repeated_password:""
   })
   const onChange=(e:string,label:string)=>{
     if(label=="username")
@@ -53,34 +59,57 @@ const SignUp=({set}:{set:React.Dispatch<React.SetStateAction<boolean>>})=>{
     ref.current.password=e;
     else if(label=="email")
     ref.current.email=e;
+    else if(label=="repeated_password")
+    ref.current.repeated_password=e;
   }
   const api=async()=>{
+    ref.current=plainToClass(SignUpClass,ref.current)
+    let err:any=await validate(ref.current)
+    err=TransformError(err)
+    if(!err?.password && ref.current.password!=ref.current.repeated_password){
+      err.password=['پسورد ها باید یکسان باشند']
+      err.repeated_password=['پسورد ها باید یکسان باشند']
+    }
+    setError(err)
     console.log(ref.current)
   }
   return(<>
     <Input
+    key={'username-signup'}
       required
       type="text"
       placeholder="نام کاربری"
       onChange={onChange}
       name="username"
-      errorMsg={error?.username}
+      errorMsg={error?.username?.[0]}
     />
 
 
 <Input
+key={'email'}
       required
       type="text"
       placeholder="ایمیل"
       onChange={onChange}
       name="email"
-      errorMsg={error?.email}
+      errorMsg={error?.email?.[0]}
     />
-
-<Password
-    onChange={onChange}
-    errorMsg={""}
-    />
+    <Input
+      required
+      type="password"
+      placeholder="رمز عبور"
+      onChange={onChange}
+      name="password"
+      errorMsg={error?.password?.[0]}
+      />
+      <Input
+      required
+      type="password"
+      placeholder=" تایید رمز عبور"
+      onChange={onChange}
+      name="repeated_password"
+      errorMsg={error?.repeated_password?.[0]}
+      />
 
    
           <CustomBtn
@@ -109,6 +138,7 @@ const SignUp=({set}:{set:React.Dispatch<React.SetStateAction<boolean>>})=>{
               width: 340,
               textAlign: "center",
               marginTop: 20,
+              color:"white"
             }}
           >
             ثبت نام کرده اید؟{" "}
@@ -151,6 +181,7 @@ const Login=({set}:{set:React.Dispatch<React.SetStateAction<boolean>>})=>{
   }
   return(<>
     <Input
+      key={'username'}
       required
       type="text"
       placeholder="نام کاربری"
@@ -160,6 +191,7 @@ const Login=({set}:{set:React.Dispatch<React.SetStateAction<boolean>>})=>{
     />
 
     <Password
+    key={'password'}
     onChange={onChange}
     errorMsg={""}
     />
@@ -190,6 +222,7 @@ const Login=({set}:{set:React.Dispatch<React.SetStateAction<boolean>>})=>{
               width: 340,
               textAlign: "center",
               marginTop: 20,
+              color:'white'
             }}
           >
             ثبت نام نکرده اید؟{" "}
@@ -212,7 +245,7 @@ export default function Register() {
       <div className={styles.bg}></div>
       <div className={MulticlassName([styles.container])}>
         <CustomImage src="/image/logo.png" style={{  }} />
-         {!signup?<Login set={setsignup}/>:<SignUp set={setsignup}/>}
+         {!signup?<Login key={'login'} set={setsignup}/>:<SignUp set={setsignup}/>}
       </div>
       </div>
     )
