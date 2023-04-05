@@ -19,4 +19,23 @@ body {
   overflow-x: hidden;
   background-color:#0c1012
 }
+/* Works on Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: orange transparent;
+}
+
+/* Works on Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 6px;
+}
+
+*::-webkit-scrollbar-track {
+  background:transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: orange;
+  border-radius: 20px;
+}
 
