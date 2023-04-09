@@ -9,6 +9,8 @@ import { BsEyeFill, BsFillEyeSlashFill } from "react-icons/bs";
 import Navbar from "@/component/navbar/Navbar";
 import styles from "../styles/editprofile.module.css";
 // import styled from 'styled-components';
+import IconButton from '@mui/material/IconButton';
+import PhotoCamera from '@mui/icons-material/PhotoCamera';
 
 function Password({
   onChange,
@@ -178,17 +180,7 @@ const EditProfile = () => {
     console.log(ref.current);
     // Call your API here
   };
-  const hiddenFileInput = React.useRef<HTMLInputElement>(null);
-  const handleClick= (event:any) => {
-    if(hiddenFileInput.current?.click)
-    hiddenFileInput.current.click();
-  };
-  const hiddenFileInput2 = React.useRef<HTMLInputElement>(null);
-  const handleClick2 = (event:any) => {
-
-    if(hiddenFileInput2.current?.click)
-    hiddenFileInput2.current.click();
-  };
+  
   // const passwordHandler = (e: string, label: string) => {};
   // const NewPasswordHandler = (e: string, label: string) => {
   //   if (label == "Newpassword") ref.current.password = e;
@@ -261,22 +253,17 @@ const EditProfile = () => {
             }}
           >
             <label
-              style={{ marginLeft: "25px", fontSize: "14px" ,color:"white"}}
+              style={{ marginLeft: "70px", fontSize: "14px" ,color:"white"}}
               htmlFor="Profile_image"
             >
               عکس پروفایل
             </label>
-            <button style={{ marginRight: "90px" }} onClick={handleClick}>
-              برای آپلود کلیک کنید
-            </button>
+            <IconButton style={{color:"white",marginRight:"52px"}} color="primary" aria-label="upload picture" component="label">
+        <input hidden accept="image/*" type="file" />
+        <PhotoCamera />
+      </IconButton>
           </div>
-          <input
-            style={{ display: "none" }}
-            ref={hiddenFileInput}
-            name="Profile_image"
-            type="file"
-            id="Profile_image"
-          />
+          
 
           <div
             className={styles.Up}
@@ -293,17 +280,13 @@ const EditProfile = () => {
               {" "}
               عکس پس زمینه
             </label>
-            <button style={{ marginRight: "35px" }} onClick={handleClick2}>
-              برای آپلود کلیک کنید
-            </button>
+            
+            <IconButton style={{color:"white",marginRight:"40px"}} color="primary" aria-label="upload picture" component="label">
+        <input hidden accept="image/*" type="file" />
+        <PhotoCamera />
+      </IconButton>
           </div>
-          <input
-            style={{ display: "none" }}
-            ref={hiddenFileInput2}
-            name="banner_image"
-            type="file"
-            id="banner_image"
-          />
+          
           {/* <Password onChange={onChange} errorMsg={""} /> */}
 
           <div style={{ marginBottom: "10%" }}>
