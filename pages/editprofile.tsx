@@ -144,53 +144,60 @@ function PasswordConfirmation({
 }
 
 const EditProfile = () => {
-  const [password, setPassword] = useState<string>("");
-  const [newPassword, setNewPassword] = useState<string>("");
-  const [confirmPassword, setConfirmPassword] = useState<string>("");
+  // const [password, setPassword] = useState<string>("");
+  // const [newPassword, setNewPassword] = useState<string>("");
+  // const [confirmPassword, setConfirmPassword] = useState<string>("");
 
-  const onChange = (e: string, label: string, email: string) => {
-    if (label == "username") ref.current.username = e;
-    else if (label == "password") ref.current.password = e;
-    else if (label == "email") ref.current.email = e;
-  };
-
-  const ref = useRef<{ username: string; password: string; email: string }>({
-    username: "",
+  const ref = useRef<{password: string; email: string ,newPassword:string;confirmPassword:string;}>({
+    newPassword:"",
+    confirmPassword:"",
     password: "",
     email: "",
   });
+  const onChange = (e: string, label: string) => {
+    if (label == "newPassword") ref.current.newPassword = e;
+    else if (label == "password") ref.current.password = e;
+    else if (label == "email") ref.current.email = e;
+    else if (label=="confirmPassword") ref.current.confirmPassword=e
+  };
+
 
   const [error, setError] = useState<{
-    username: string;
     password: string;
     email: string;
+    newPassword:string;
+    confirmPassword:string;
   }>({
-    username: "",
     password: "",
     email: "",
+    newPassword:"",
+    confirmPassword:""
   });
 
   const api = async () => {
     console.log(ref.current);
     // Call your API here
   };
-  const hiddenFileInput = React.useRef(null);
-  const handleClick = (event) => {
+  const hiddenFileInput = React.useRef<HTMLInputElement>(null);
+  const handleClick= (event:any) => {
+    if(hiddenFileInput.current?.click)
     hiddenFileInput.current.click();
   };
-  const hiddenFileInput2 = React.useRef(null);
-  const handleClick2 = (event) => {
+  const hiddenFileInput2 = React.useRef<HTMLInputElement>(null);
+  const handleClick2 = (event:any) => {
+
+    if(hiddenFileInput2.current?.click)
     hiddenFileInput2.current.click();
   };
-  const passwordHandler = (e: string, label: string) => {};
-  const NewPasswordHandler = (e: string, label: string) => {
-    if (label == "Newpassword") ref.current.password = e;
-  };
-  const confirmPasswordHandler = (e: string, label: string) => {
-    if (label == "ConfirmPassword") ref.current.password = e;
-  };
+  // const passwordHandler = (e: string, label: string) => {};
+  // const NewPasswordHandler = (e: string, label: string) => {
+  //   if (label == "Newpassword") ref.current.password = e;
+  // };
+  // const confirmPasswordHandler = (e: string, label: string) => {
+  //   if (label == "ConfirmPassword") ref.current.password = e;
+  // };
 
-  const handleChange= (e: React.ChangeEvent<HTMLInputElement>) => {}
+  // const handleChange= (e: React.ChangeEvent<HTMLInputElement>) => {}
     
   
 
@@ -199,11 +206,11 @@ const EditProfile = () => {
       {/* <Navbar /> */}
       <div className={styles.bg}>
         <div className={styles.container}>
-          <h1 id="h1" style={{ marginTop: "10%", fontSize: "30px" }}>
+          <h1 id="h1" style={{ marginTop: "10%", fontSize: "30px" ,color:"white"}}>
             {" "}
             ادیت پروفایل
           </h1>
-          <div style={{ marginTop: "6%" ,color:"white"}}>
+          {/* <div style={{ marginTop: "6%" ,color:"white"}}>
             <Input
               type="text"
               placeholder="نام کاربری جدید"
@@ -211,35 +218,35 @@ const EditProfile = () => {
               name="username"
               errorMsg={error?.username}
             />
-          </div>
+          </div> */}
           <Input
             type="text"
-            placeholder=" ایمیل جدید"
-            onChange={handleChange}
+            placeholder=" ایمیل"
+            onChange={onChange}
             name="email"
-            errorMsg={error?.email}
+            errorMsg={error?.email?.[0]}
           />
 
           <Input
             type="text"
             placeholder="رمز عبور فعلی"
-            onChange={setPassword}
+            onChange={onChange}
             name="password"
-            errorMsg={error?.password}
+            errorMsg={error?.password?.[0]}
           />
           <Input
             type="text"
             placeholder="رمز عبور جدید"
-            onChange={setNewPassword}
-            name="password"
-            errorMsg={error?.password}
+            onChange={onChange}
+            name="newPassword"
+            errorMsg={error?.newPassword?.[0]}
           />
           <Input
             type="text"
             placeholder="تکرار رمز عبور جدید"
-            onChange={setConfirmPassword}
-            name="password"
-            errorMsg={error?.password}
+            onChange={onChange}
+            name="confirmPassword"
+            errorMsg={error?.confirmPassword?.[0]}
           />
 
           {/* <NewPassword onChange={handleChange} errorMsg={""} />
@@ -254,7 +261,7 @@ const EditProfile = () => {
             }}
           >
             <label
-              style={{ marginLeft: "25px", fontSize: "14px" }}
+              style={{ marginLeft: "25px", fontSize: "14px" ,color:"white"}}
               htmlFor="Profile_image"
             >
               عکس پروفایل
@@ -280,7 +287,7 @@ const EditProfile = () => {
             }}
           >
             <label
-              style={{ marginLeft: "70px", fontSize: "14px" }}
+              style={{ marginLeft: "70px", fontSize: "14px" ,color:"white"}}
               htmlFor="banner_image"
             >
               {" "}
