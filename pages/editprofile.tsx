@@ -265,7 +265,7 @@ const EditProfile = () => {
           </div>
           
 
-          <div
+          {/* <div
             className={styles.Up}
             style={{
               display: "flex",
@@ -285,7 +285,7 @@ const EditProfile = () => {
         <input hidden accept="image/*" type="file" />
         <PhotoCamera />
       </IconButton>
-          </div>
+          </div> */}
           
           {/* <Password onChange={onChange} errorMsg={""} /> */}
 
