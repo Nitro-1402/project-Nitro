@@ -8,7 +8,7 @@ function ActorComponent(){
     return(
         <div style={{width:"90%",height:120,backgroundColor:'white',boxShadow:"1px 1px 2px 2px rgba(166, 166, 166, 0.5)",display:'flex',justifyContent:'space-between',alignItems:'center',margin:"20px 0",borderRadius:10,padding:"10px 30px",direction:'ltr'}}>
            <div style={{display:'flex',alignItems:'center'}}>
-            <CustomImage src="" style={{width:100,height:100,borderRadius:50}}/>
+            <CustomImage src="/image/bradpit.jpg" style={{width:100,height:100,borderRadius:50}}/>
             <div style={{marginLeft:20}}>
 
 
@@ -65,7 +65,7 @@ function ActorComponent(){
 function ActorList({settab}:{settab:any}){
     return(
         <div style={{display:'flex',flexDirection:'column',width:'100%',position:'relative'}}>
-        <h1 style={{direction:'rtl',margin:40}}>بازیگران</h1>
+        <h1 style={{direction:'rtl',margin:40,marginRight:550,color:"yellow"}}>بازیگران</h1>
         <CustomBtn
               press={async () => {
                 settab(2)
@@ -155,7 +155,7 @@ function Film(){
     return(<>
     
     <div style={{display:'flex',flexDirection:"column"}}>
-            <h1 style={{margin:30}}>فیلم ها و سریال ها </h1>
+            <h1 style={{margin:30,marginRight:440,color:"yellow"}}>فیلم ها و سریال ها </h1>
             <div style={{display:'flex',flexWrap:'wrap',width:700}}>
                 <Input
                 name="name"
@@ -163,7 +163,6 @@ function Film(){
                 required
                 type="text"
                 placeholder="نام فیلم"
-                black
                 onChange={()=>{
 
                 }}
@@ -179,15 +178,14 @@ function Film(){
                 required
                 type="text"
                 placeholder="تاریخ انتشار"
-                black
                 onChange={()=>{
 
                 }}
                 />
                 
-                <div style={{marginTop:20}}>
+                <div style={{marginTop:20,}}>
 
-                <DropDown change={()=>{}} data={[]} trash={false} name="نام بازیگران" />
+                <DropDown change={()=>{}} data={[]} trash={false} name="نام بازیگران"  />
                 </div>
                 <Input
                 name="date"
@@ -195,15 +193,15 @@ function Film(){
                 required
                 type="text"
                 placeholder="ژانر"
-                black
+                
                 onChange={()=>{
 
                 }}
                 />
                 </div>
-                <textarea style={{width:450,height:260,margin:20,padding:20,fontSize:18}} placeholder="توضیحات ..."></textarea>
+                <textarea style={{width:300,height:150,margin:20,padding:20,fontSize:18}} placeholder="توضیحات ..."></textarea>
 
-                <input type='file' style={{margin:20}}/>
+                <input type='file' style={{margin:20,marginRight:130}}/>
                 <CustomBtn text='اعمال تغییرات' press={()=>{}} style={{
                 backgroundColor:'orange',
                 border:"2px solid #FFA500",
