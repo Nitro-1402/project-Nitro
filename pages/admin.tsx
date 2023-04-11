@@ -1,12 +1,110 @@
 import CustomBtn from "@/ui/CustomBtn"
+import CustomImage from "@/ui/CustomImage"
 import DropDown from "@/ui/DropDown"
 import Input from "@/ui/Input"
 import { useState } from "react"
+function ActorComponent(){
+
+    return(
+        <div style={{width:"90%",height:120,backgroundColor:'white',boxShadow:"1px 1px 2px 2px rgba(166, 166, 166, 0.5)",display:'flex',justifyContent:'space-between',alignItems:'center',margin:"20px 0",borderRadius:10,padding:"10px 30px",direction:'ltr'}}>
+           <div style={{display:'flex',alignItems:'center'}}>
+            <CustomImage src="" style={{width:100,height:100,borderRadius:50}}/>
+            <div style={{marginLeft:20}}>
+
+
+            <h2>ali konteratchi</h2>
+            <h4>بازیگر</h4>
+                
+                
+            </div>
+
+           </div>
+            <div>
+            <CustomBtn
+              press={async () => {
+
+              }}
+              style={{
+                width: 160,
+                height: 40,
+                backgroundColor: "#FFA500",
+                borderRadius: 5,
+
+              }}
+              text={"حذف"}
+              textStyle={{
+                color: "white",
+                fontSize: 16,
+                fontFamily: "RegularPersian",
+              }}
+            />
+            <CustomBtn
+              press={async () => {
+
+              }}
+              style={{
+                width: 160,
+                height: 40,
+                marginTop: 10,
+                backgroundColor: "#FFA500",
+                borderRadius: 5,
+
+              }}
+              text={"ویرایش"}
+              textStyle={{
+                color: "white",
+                fontSize: 16,
+                fontFamily: "RegularPersian",
+              }}
+            />
+            </div>
+        </div>
+    )
+
+}
+function ActorList({settab}:{settab:any}){
+    return(
+        <div style={{display:'flex',flexDirection:'column',width:'100%',position:'relative'}}>
+        <h1 style={{direction:'rtl',margin:40}}>بازیگران</h1>
+        <CustomBtn
+              press={async () => {
+                settab(2)
+              }}
+              style={{
+                width: 160,
+                height: 40,
+                marginTop: 10,
+                position:'absolute',
+                left:30,
+                top:30,
+                backgroundColor: "#FFA500",
+                borderRadius: 5,
+
+              }}
+              text={"افزودن"}
+              textStyle={{
+                color: "white",
+                fontSize: 16,
+                fontFamily: "RegularPersian",
+              }}
+            />
+        <div style={{display:'flex',flexDirection:'column',alignItems:'center',width:"100%"}}>
+
+
+            <ActorComponent/>
+            <ActorComponent/>
+            <ActorComponent/>
+            <ActorComponent/>
+
+        </div>
+        </div>
+    )
+}
 function Actor(){
     return(<>
     
     <div style={{display:'flex',flexDirection:"column"}}>
-            <h1 style={{margin:30}}>بازیگران</h1>
+            <h1 style={{margin:30,color:"orange",marginRight:300}}>بازیگران</h1>
             <div style={{display:'flex',flexWrap:'wrap',width:700}}>
                 <Input
                 name="name"
@@ -14,7 +112,6 @@ function Actor(){
                 required
                 type="text"
                 placeholder="نام"
-                black
                 onChange={()=>{
 
                 }}
@@ -25,15 +122,14 @@ function Actor(){
                 required
                 type="text"
                 placeholder="تاریخ تولد"
-                black
                 onChange={()=>{
 
                 }}
                 />
                 </div>
-                <textarea style={{width:450,height:260,margin:20,padding:20,fontSize:18}} placeholder="bio ..."></textarea>
+                <textarea style={{width:640,height:260,margin:20,padding:20,fontSize:18}} placeholder="bio ..."></textarea>
 
-                <input type='file' style={{margin:20}}/>
+                <input type='file' style={{margin:20,marginRight:300}}/>
                 <CustomBtn text='اعمال تغییرات' press={()=>{}} style={{
                 backgroundColor:'orange',
                 border:"2px solid #FFA500",
@@ -41,7 +137,9 @@ function Actor(){
                 width:300,
                 height:40,
                 margin:20,
-                cursor:'pointer'
+                cursor:'pointer',
+                marginRight:200
+                
             }}
             textStyle={{
                 color:'white'
@@ -126,17 +224,23 @@ function Film(){
     </>)
 }
 export default function Admin(){
-    const[tab,settab]=useState<string>('فیلم ها و سریال ها ')
+    const[tab,settab]=useState<number>(0)
     return(
-        <div style={{minWidth:"100vw",minHeight:"100vh",height:'auto',backgroundColor:"white",display:"flex",paddingRight:300,direction:'rtl'}}>
-            {tab=='بازیگران'?<Actor/>:<Film/>}
+        <div style={{minWidth:"100vw",minHeight:"100vh",height:'auto',backgroundColor:"white",backgroundImage:"url(/image/bg.png)",display:"flex",paddingRight:300,direction:'rtl'}}>
+            {tab==0?
+            <ActorList settab={settab}/>:
+            tab==2?
+            <Actor/>
+            :
+
+            <Film/>}
             <div style={{width:300,backgroundColor:'orange',height:"100vh",position:"fixed",right:0,top:0,direction:'rtl',padding:20}}>
 
                 <h2 style={{color:'white',margin:20,cursor:'pointer'}} onClick={()=>{
-                    settab('فیلم ها و سریال ها ')
+                    settab(1)
                 }}>فیلم ها و سریال ها </h2>
                 <h2 style={{color:'white',margin:20,cursor:'pointer'}} onClick={()=>{
-                    settab('بازیگران')
+                    settab(0)
                 }}>بازیگران</h2>
 
             </div>
