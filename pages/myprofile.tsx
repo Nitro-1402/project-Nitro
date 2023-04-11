@@ -7,7 +7,7 @@ import Navbar from '@/component/navbar/Navbar'
 function Head(){
     return(
         <div style={{ position: 'relative'}}>
-        <CustomImage src='' style={{ width: "100vw", height: "12vw", minHeight: "100px"}} />
+        {/* <CustomImage src='' style={{ width: "100vw", height: "12vw", minHeight: "100px"}} /> */}
         <div  className={styles.container}>
             <div style={{ display: 'flex', alignItems: "center" ,marginRight:10,marginBottom:10}}>
                 <CustomImage src="" style={{ width: "12vw", height: "12vw", minHeight: "110px", minWidth: "110px", borderRadius: "50%" }} />
@@ -34,32 +34,39 @@ function Head(){
     )}
 function Menu({menu}:{menu?:string[]}){
     const[select,setselect]=useState<number>(0)
-    return(
+    const [hideLastDiv, setHideLastDiv] = useState(false)
 
+    const handleCommentClick = () => {
+        setHideLastDiv(true)
+      }
+    
+    return(
+<>
         <div style={{display:'flex',width:"100%",padding:"0 40px"}} className={styles.menu}>
 
             {menu?.map((e:string,index:number)=>{
                 return(
-                    <h2  style={{padding:5,borderBottom:index==select?"2px solid #FFA500":"",cursor:"pointer",margin:"0 20px"}} onClick={()=>{
-                        setselect(index)
-                    }} className={styles.menuItem}>{e}</h2>
+                    <h2
+            key={index}
+            style={{
+              padding: 5,
+              borderBottom: index == select ? '2px solid #FFA500' : '',
+              cursor: 'pointer',
+              margin: '0 20px',
+              color: 'white',
+            }}
+            onClick={() => {
+              setselect(index)
+              if (index === 3) {
+                handleCommentClick()
+              }else setHideLastDiv(false)
+            }}
+                    className={styles.menuItem}>{e}</h2>
                 )
             })}
 
         </div>
-
-    )
-}
-
-export default function Profile() {
-    return (
-
-        <>
-        <Navbar />
-        <Head/>
-        
-        <Menu menu={['فیلم هایی که دیدی','فیلم هایی که داری میبینی',' فیلم هایی که میخوای ببینی ']}/>
-        <div style={{display:'flex',flexWrap:'wrap',justifyContent:'center',marginTop:15, backgroundColor:"#3d3d3d"}}>
+{!hideLastDiv && <div style={{display:'flex',flexWrap:'wrap',justifyContent:'center',marginTop:15, backgroundColor:"#3d3d3d"}}>
                     <Item image={'/image/manifest.jpg'} name={'لیست پرواز'}/>
                     <Item image={'/image/good-doctor.jpeg'} name={'دکتر خوب'}/>
                     <Item image={'/image/sweet-home.jpeg'} name={'سوییت هوم'}/>
@@ -75,7 +82,20 @@ export default function Profile() {
                     <Item image={'/image/lastOfUs.webp'} name={'آخرین نفر از ما'}/>
                     <Item image={'/image/iron-man.jpg'} name={'مرد آهنی'}/>
 
-        </div>
+        </div>}
+</>
+    )
+}
+
+export default function Profile() {
+    return (
+
+        <>
+        {/* <Navbar /> */}
+        <Head/>
+        
+        <Menu menu={['فیلم هایی که دیدی','فیلم هایی که داری میبینی',' فیلم هایی که میخوای ببینی ','کامنت ها']}/>
+        
         </>
 
     )
