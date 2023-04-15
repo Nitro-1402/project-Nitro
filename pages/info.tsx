@@ -5,11 +5,11 @@ import Middle from '@/component/layout/Middle'
 import Navbar from '@/component/navbar/Navbar'
 import Top from '@/component/layout/Top'
 import Stream from '@/component/stream/Stream'
-// import CommentBar from '@/component/commentBar/CommentBar'
 import Item from '@/component/FilmItem'
 import style from '../styles/explore.module.css'
 import Actors from '@/component/factors/Actors'
 import OtherFactors from '@/component/factors/OtherFactors'
+import CommentBox from '@/component/comments/CommentBox'
 
 
 
@@ -49,7 +49,7 @@ export class info extends Component {
             <OtherFactors/>
           </div>
           <div style={{backgroundColor:'black', color:'aliceblue'}}>
-            {/* <CommentBar/> */}
+            <CommentBox/>
           </div>
         </div>
       </div>

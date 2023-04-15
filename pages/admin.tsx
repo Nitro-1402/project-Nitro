@@ -74,7 +74,7 @@ function FilmList({settab}:{settab:any}){
         <h1 style={{direction:'rtl',margin:40,marginRight:550,color:"yellow"}}>فیلم ها و سریال ها</h1>
         <CustomBtn
               press={async () => {
-                settab(3)
+                settab(5)
               }}
               style={{
                 width: 160,
@@ -287,12 +287,13 @@ export default function Admin(){
             <Actor/>:
             tab==2?
             <FilmList settab={settab}/>:
+            tab==5?
+            <Film/>:
             tab==3?
             <AdminNews settab={settab}/>:
             tab==4?
             <NewsEdit/>:
-
-            <Film/>
+            <ActorList/>
             }
             <div style={{width:300,backgroundColor:'orange',height:"100vh",position:"fixed",right:0,top:0,direction:'rtl',padding:20}}>
 
