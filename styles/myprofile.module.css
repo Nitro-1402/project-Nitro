@@ -1,8 +1,21 @@
 /* *{
     background-color: #b3b3b3;
 } */
-
-
+.buttm{
+    border: 1px solid black;
+    border-radius: 8%;
+    padding: 1px;
+    text-align: center;
+    font-size: 20px;
+    
+}
+.dialog{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border: 2px solid yellow ;
+    
+}
 .email{
     margin-top: 2px;
     color: #737373;
@@ -16,6 +29,14 @@
     padding: 60px;
     padding-top: 20px;
 }
+.follow
+{
+    margin-top: 4%;
+    color: #a19f9f;
+    list-style: none;
+    margin-left: 3%;
+}
+
 .menuItem{
     font-size: 20px;
 }

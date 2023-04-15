@@ -11,6 +11,10 @@ import styles from "../styles/editprofile.module.css";
 // import styled from 'styled-components';
 import IconButton from '@mui/material/IconButton';
 import PhotoCamera from '@mui/icons-material/PhotoCamera';
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
+import Item from "@/component/FilmItem";
+import Link from "next/link";
+
 
 function Password({
   onChange,
@@ -198,6 +202,9 @@ const EditProfile = () => {
       {/* <Navbar /> */}
       <div className={styles.bg}>
         <div className={styles.container}>
+        <Link href="/myprofile">
+        <ArrowForwardIosIcon style={{alignItems:"right",color:"white",marginLeft:"320px",marginTop:"30px"}} />
+        </Link>
           <h1 id="h1" style={{ marginTop: "10%", fontSize: "30px" ,color:"white"}}>
             {" "}
             ادیت پروفایل
