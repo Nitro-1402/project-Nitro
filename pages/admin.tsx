@@ -1,10 +1,13 @@
+
 import AdminNews from "@/component/admin/adminNews/AdminNews"
 import NewsEdit from "@/component/admin/adminNews/NewsEdit"
+import Item from "@/component/FilmItem"
 import CustomBtn from "@/ui/CustomBtn"
 import CustomImage from "@/ui/CustomImage"
 import DropDown from "@/ui/DropDown"
 import Input from "@/ui/Input"
 import { useState } from "react"
+import { FaPen } from "react-icons/fa"
 
 function ActorComponent(){
 
@@ -65,13 +68,63 @@ function ActorComponent(){
     )
 
 }
+function FilmList({settab}:{settab:any}){
+  return(
+    <div style={{display:'flex',flexDirection:'column',width:'100%',position:'relative'}}>
+        <h1 style={{direction:'rtl',margin:40,marginRight:550,color:"yellow"}}>فیلم ها و سریال ها</h1>
+        <CustomBtn
+              press={async () => {
+                settab(3)
+              }}
+              style={{
+                width: 160,
+                height: 40,
+                marginTop: 10,
+                position:'absolute',
+                left:30,
+                top:30,
+                backgroundColor: "#FFA500",
+                borderRadius: 5,
+
+              }}
+              text={"افزودن"}
+              textStyle={{
+                color: "white",
+                fontSize: 16,
+                fontFamily: "RegularPersian",
+              }}
+            />
+        <div style={{display:'flex',flexWrap:'wrap',alignItems:'center',width:"100%"}}>
+      <Item image={'/image/swarm.jpg'} name={'ازدحام'} edit/>
+      <Item image={'/image/meydanSorkh.jpg'} name={'میدان سرخ'} edit/>
+      <Item image={'/image/lastOfUs.webp'} name={'آخرین نفر از ما'} description="" edit/>
+      <Item image={'/image/iron-man.jpg'} name={'مرد آهنی'} edit/>
+      <Item image={'/image/moon-knight.jpeg'} name={'شوالیه ماه'} edit/>
+      <Item image={'/image/money-heist.jpg'} name={'خانه کاغذی'} edit/>
+      <Item image={'/image/swarm.jpg'} name={'ازدحام'} edit/>
+      <Item image={'/image/meydanSorkh.jpg'} name={'میدان سرخ'} edit/>
+      <Item image={'/image/lastOfUs.webp'} name={'آخرین نفر از ما'} description="" edit/>
+      <Item image={'/image/iron-man.jpg'} name={'مرد آهنی'} edit/>
+      <Item image={'/image/moon-knight.jpeg'} name={'شوالیه ماه'} edit/>
+      <Item image={'/image/money-heist.jpg'} name={'خانه کاغذی'} edit/>
+      <Item image={'/image/swarm.jpg'} name={'ازدحام'} edit/>
+      <Item image={'/image/meydanSorkh.jpg'} name={'میدان سرخ'} edit/>
+      <Item image={'/image/lastOfUs.webp'} name={'آخرین نفر از ما'} description="" edit/>
+      <Item image={'/image/iron-man.jpg'} name={'مرد آهنی'} edit/>
+      <Item image={'/image/moon-knight.jpeg'} name={'شوالیه ماه'} edit/>
+      <Item image={'/image/money-heist.jpg'} name={'خانه کاغذی'} edit/>
+
+        </div>
+        </div>
+  )
+}
 function ActorList({settab}:{settab:any}){
     return(
         <div style={{display:'flex',flexDirection:'column',width:'100%',position:'relative'}}>
         <h1 style={{direction:'rtl',margin:40,marginRight:550,color:"yellow"}}>بازیگران</h1>
         <CustomBtn
               press={async () => {
-                settab(2)
+                settab(1)
               }}
               style={{
                 width: 160,
@@ -230,8 +283,10 @@ export default function Admin(){
         <div style={{minWidth:"100vw",minHeight:"100vh",height:'auto',backgroundColor:"white",backgroundImage:"url(/image/bg.png)",display:"flex",paddingRight:300,direction:'rtl',justifyContent: 'center'}}>
             {tab==0?
             <ActorList settab={settab}/>:
-            tab==2?
+            tab==1?
             <Actor/>:
+            tab==2?
+            <FilmList settab={settab}/>:
             tab==3?
             <AdminNews settab={settab}/>:
             tab==4?
@@ -239,11 +294,10 @@ export default function Admin(){
 
             <Film/>
             }
-
             <div style={{width:300,backgroundColor:'orange',height:"100vh",position:"fixed",right:0,top:0,direction:'rtl',padding:20}}>
 
                 <h2 style={{color:'white',margin:20,cursor:'pointer'}} onClick={()=>{
-                    settab(1)
+                    settab(2)
                 }}>فیلم ها و سریال ها </h2>
                 <h2 style={{color:'white',margin:20,cursor:'pointer'}} onClick={()=>{
                     settab(0)
