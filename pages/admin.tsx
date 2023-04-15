@@ -1,3 +1,6 @@
+
+import AdminNews from "@/component/admin/adminNews/AdminNews"
+import NewsEdit from "@/component/admin/adminNews/NewsEdit"
 import Item from "@/component/FilmItem"
 import CustomBtn from "@/ui/CustomBtn"
 import CustomImage from "@/ui/CustomImage"
@@ -5,6 +8,7 @@ import DropDown from "@/ui/DropDown"
 import Input from "@/ui/Input"
 import { useState } from "react"
 import { FaPen } from "react-icons/fa"
+
 function ActorComponent(){
 
     return(
@@ -276,15 +280,20 @@ function Film(){
 export default function Admin(){
     const[tab,settab]=useState<number>(0)
     return(
-        <div style={{minWidth:"100vw",minHeight:"100vh",height:'auto',backgroundColor:"white",backgroundImage:"url(/image/bg.png)",display:"flex",paddingRight:300,direction:'rtl'}}>
+        <div style={{minWidth:"100vw",minHeight:"100vh",height:'auto',backgroundColor:"white",backgroundImage:"url(/image/bg.png)",display:"flex",paddingRight:300,direction:'rtl',justifyContent: 'center'}}>
             {tab==0?
             <ActorList settab={settab}/>:
             tab==1?
-            <Actor/>
-            :
+            <Actor/>:
             tab==2?
-            <FilmList settab={settab}/>
-          :<Film/>}
+            <FilmList settab={settab}/>:
+            tab==3?
+            <AdminNews settab={settab}/>:
+            tab==4?
+            <NewsEdit/>:
+
+            <Film/>
+            }
             <div style={{width:300,backgroundColor:'orange',height:"100vh",position:"fixed",right:0,top:0,direction:'rtl',padding:20}}>
 
                 <h2 style={{color:'white',margin:20,cursor:'pointer'}} onClick={()=>{
@@ -293,6 +302,9 @@ export default function Admin(){
                 <h2 style={{color:'white',margin:20,cursor:'pointer'}} onClick={()=>{
                     settab(0)
                 }}>بازیگران</h2>
+                <h2 style={{color:'white',margin:20,cursor:'pointer'}} onClick={()=>{
+                    settab(3)
+                }}>اخبار</h2>
 
             </div>
 
