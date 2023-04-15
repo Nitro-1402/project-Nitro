@@ -64,6 +64,16 @@
 	align-items: center;
 	flex-direction: column;
 }
+.favorite{
+	position: absolute;
+    top: -20px;
+    right: 20px;
+}
+.seen{
+	position: absolute;
+    top: -20px;
+    left: 20px;
+}
 .bullet {
 	display: flex;
 	flex-direction: row;
@@ -73,6 +83,8 @@
 }
 .star, .heart, .tick {
 	width: 35px;
+	cursor: pointer;
+	transition: color 200ms;
 }
 .middleView {
 	direction: rtl;
@@ -85,6 +97,7 @@
 	padding-bottom: 50px;
 }
 .right {
+	position: relative;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -163,6 +176,8 @@
 	padding: 10px 25px;
 	background-color: orange;
 	border-radius: 10px;
+	text-decoration: none;
+    color: black;
 }
 .logoText{
 	font-size: 10px;
@@ -222,3 +237,14 @@
 		height: 35px;
 	}
 }
+
+.rateBox{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	
+}
+.input{
+	display: none;
+}
+
