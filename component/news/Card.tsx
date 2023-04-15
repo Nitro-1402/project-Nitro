@@ -1,8 +1,11 @@
 import CustomImage from '@/ui/CustomImage'
 import styles from '../../styles/news.module.css'
+import Link from 'next/link'
 export default function NewsCard(){
     return(
+        <Link href="/newscontent">
         <div className={styles.card}>
+        
             <CustomImage style={{minHeight:200,minWidth:280,borderRadius:10,marginLeft:30}} src=''/>
             <div>
                 <h2 style={{color:'white',fontSize:20,margin:"15px 0"}}>تریلر جدید Secret Invasion: آخرین نبرد نیک فیوری</h2>
@@ -16,5 +19,6 @@ export default function NewsCard(){
                 <h4 style={{position:'absolute',left:10,bottom:10,fontSize:15,color:"#FFA500"}}>14 فروردین 1402</h4>
             </div>
         </div>
+        </Link>
     )
 }

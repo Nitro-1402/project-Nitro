@@ -1,0 +1,28 @@
+
+.Mn{
+    display: flex;
+    flex-direction: row;
+}
+.Box{
+    width: 30%;
+    display: flex;
+    flex-direction: row;
+    margin: 200px auto;
+    justify-content: center;
+    border:2px solid rgb(255, 165, 0);
+    border-radius: 4%;
+}
+
+
+.menu{
+    justify-content: center;
+    /* margin-top: 200px; */
+    display: flex;
+    flex-direction: column;
+    /* background-color: #b3b3b3; */
+}
+.menuItem{
+    font-size: 20px;
+    display: flex;
+    flex-direction: column;
+}
