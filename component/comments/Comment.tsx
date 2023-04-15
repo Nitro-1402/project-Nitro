@@ -1,6 +1,7 @@
 import CommentForm from "./CommentForm";
 import styles from '@/styles/comment.module.css'
 import CustomImage from '@/ui/CustomImage'
+// import Like from '/Like'
 
 
 
@@ -35,11 +36,20 @@ const Comment = ({
     <div key={comment.id} className={styles.comment}>
       <div className={styles.commentImageContainer}>
         <CustomImage src="/info-page-image/user-icon.png" style={{width:'30px',margin:'10px'}} alt='avatar'/>
+        
       </div>
       <div className={styles.commentRightPart}>
-        <div className={styles.commentContent}>
+        <div className={styles.commentContent} style={{display:'flex',flexDirection:'row',alignItems:'center'}}>
           <div className={styles.commentAuthor}>{comment.username}</div>
           <div>{createdAt}</div>
+          <div style={{display:'flex',flexDirection:'row',alignItems:'center'}}>
+            {/* <Like/> */}
+
+            <CustomImage src="/info-page-image/like.png" style={{width:'30px',margin:'10px'}} alt='avatar'/>
+            <p>1</p>
+            <CustomImage src="/info-page-image/dislike.png" style={{width:'30px',margin:'10px'}} alt='avatar'/>
+            <p>2</p>
+          </div>
         </div>
         {!isEditing && <div className={styles.commentText}>{comment.body}</div>}
         {isEditing && (
