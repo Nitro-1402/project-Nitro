@@ -39,3 +39,12 @@ body {
   border-radius: 20px;
 }
 
+a:hover {
+  color: #ffa500;
+}
+
+a:active {
+  color: white;
+}
+
+
