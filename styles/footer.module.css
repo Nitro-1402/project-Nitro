@@ -1,0 +1,96 @@
+.container{
+    margin-top: 50px;
+    display: flex;
+    flex-wrap: wrap;
+    min-height: 330px;
+    background-color: #000000;
+    padding: 30px;
+    padding-top: 60px;
+    flex-direction: row-reverse;
+    justify-content: space-around;
+    color: #ffffff;
+}
+.namads{
+    width:340px;
+    display: flex;
+    justify-content: space-between;
+}
+.text{
+    width: 500px;
+    direction: rtl;
+}
+.h2{
+    color: orange;
+}
+.h3{
+
+font-size: 16px;
+margin-top: 10px;
+}
+.together{
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-around;
+    flex:1;
+    flex-wrap: wrap;
+}
+
+@media only  screen and (max-width:1020px) {
+    .text{
+        width: 320px;
+    }
+    .container{
+        padding-left: 0;
+        padding-right: 10px;
+        /* flex-direction: column; */
+        align-items: flex-end;
+    }
+    .h2{
+        font-size: 20px;
+        /* text-align: center; */
+    }
+    .h3{
+        font-size: 12px;
+        /* text-align: center; */
+    } 
+    .namads{
+        margin-top: 30px;
+        margin-bottom: 10px;
+    }
+}
+@media only  screen and (max-width:760px) {
+    .container{
+        padding-left: 0;
+        padding-right: 10px;
+        /* flex-direction: column; */
+        justify-content: flex-start;
+    }
+    .text{
+        width:500px
+
+    }
+    .together{
+        margin-top: 10px;
+    }
+
+}
+@media only  screen and (max-width:530px) {
+
+    .text{
+        width:340px
+
+    }
+
+}
+@media only  screen and (max-width:470px) {
+    .text{
+        width:320px
+
+    }
+
+    .together{
+        flex-direction: column;
+        align-items: flex-end;
+    }
+
+}

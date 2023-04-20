@@ -3,7 +3,7 @@ import styles from '../../styles/news.module.css'
 import Link from 'next/link'
 export default function NewsCard(){
     return(
-        <Link href="/newscontent">
+        <Link href="/newscontent" style={{textDecoration:'none'}}>
         <div className={styles.card}>
         
             <CustomImage style={{minHeight:200,minWidth:280,borderRadius:10,marginLeft:30}} src=''/>
