@@ -1,9 +1,12 @@
 import Item from '@/component/FilmItem'
 import styles from '../styles/Home.module.css'
 import NewsCard from '@/component/news/Card'
+import Header from '@/component/header'
+import Footer from '@/component/Footer'
 export default function Home() {
   return (
     <>
+    <Header/>
     <div className={styles.header}>
       <h2>۴۰۰ هزار فیلم و قسمت سریال</h2>
       <ul>
@@ -41,6 +44,7 @@ export default function Home() {
       <NewsCard/>
       </div>
     </div>
+    <Footer/>
     </>
   )
 }
