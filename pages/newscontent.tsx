@@ -5,6 +5,8 @@ import { TfiAlarmClock } from "react-icons/tfi";
 import styless from "/styles/factors.module.css";
 import CustomImage from "@/ui/CustomImage";
 import Link from "next/link";
+import Header from "@/component/header";
+import Footer from "@/component/Footer";
 
 function Actor({
   image = "/info-page-image/natasha.webp",
@@ -49,13 +51,13 @@ function Actor({
 export default function NewsContent() {
   return (
     <>
-      <Navbar />
+      <Header/>
       <div className={styles.main}>
         <div className={styles.article}>
           {/* <div className={styles.img}> */}
           <div className={styles.mmd}>
             <img className={styles.image} src="../image/alice.jpg" alt="" />
-            <div className={styles.actors}>
+            {/* <div className={styles.actors}>
               <Actor
                 image={"/info-page-image/natasha.webp"}
                 name={"ناتاشا لیون"}
@@ -76,8 +78,8 @@ export default function NewsContent() {
                 name={"ناتاشا لیون"}
                 link="/actor"
               />
-            </div>
-          </div>
+  </div>*/}
+          </div> 
           <div className={styles.descrip}>
             <h1 className={styles.title}>تایتل خبر</h1>
             <div className={styles.Clock}>
@@ -145,6 +147,7 @@ export default function NewsContent() {
           </div>
         </div>
       </div>
+      <Footer/>
     </>
   );
 }
