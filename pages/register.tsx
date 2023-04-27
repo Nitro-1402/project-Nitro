@@ -10,6 +10,8 @@ import { plainToClass } from "class-transformer"
 import { SignUpClass } from "@/validator/SignUp"
 import { Validate, validate } from "class-validator"
 import TransformError from "@/helper/TransformError"
+import { RegisterApi } from "@/API/Register"
+import {toast} from 'react-toastify'
 function Password({onChange,errorMsg,setError,placeholder="رمز عبور"}:{placeholder?:string,setError?:React.Dispatch<React.SetStateAction<any>>,onChange:(e:string,label:string)=>void,errorMsg:string |null| undefined}){
   const[see,setsee]=useState<boolean>(false)
   return(
@@ -70,7 +72,17 @@ const SignUp=({set}:{set:React.Dispatch<React.SetStateAction<boolean>>})=>{
       err.password=['پسورد ها باید یکسان باشند']
       err.repeated_password=['پسورد ها باید یکسان باشند']
     }
+    console.log(err)
+    if(Object.keys(err)[0])
     setError(err)
+    else{
+      let a=await RegisterApi.SignUp({username:ref.current.username,password:ref.current.password,email:ref.current.email})
+      console.log("response",a)
+      if(a?.status=="success")
+      router.push('/')
+      else
+      setError(a?.content)
+    }
     console.log(ref.current)
   }
   return(<>
@@ -177,8 +189,18 @@ const Login=({set}:{set:React.Dispatch<React.SetStateAction<boolean>>})=>{
     ref.current.password=e;
   }
   const api=async()=>{
-    console.log(ref.current)
-  }
+    let a=await RegisterApi.Login(ref.current)
+    console.log(a)
+    if(a?.status=="success"){
+
+      localStorage.setItem("token",a.content)
+      router.push('/')
+      // toast.success("به ببینیم خوش امدید")
+    }
+    else{
+      toast.error("مشکلی پیش آمده است")
+    }
+ }
   return(<>
     <Input
       key={'username'}
