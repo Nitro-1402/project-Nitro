@@ -1,13 +1,13 @@
 import Item from "@/component/FilmItem";
 import CustomBtn from "@/ui/CustomBtn";
 import CustomImage from "@/ui/CustomImage";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "../styles/myprofile.module.css";
 import Navbar from "@/component/navbar/Navbar";
 import Followers from "@component/follower/Followers"
 import { Dialog, DialogActions, DialogContentText, DialogTitle } from "@mui/material";
 import {makeStyles} from "@material-ui/styles"
-
+import axios from 'axios'
 const UseStyles=makeStyles((theme)=>({
   dialog:{
       display:"flex",
@@ -20,10 +20,30 @@ const UseStyles=makeStyles((theme)=>({
       backgroundcolor:"#3D3D3D",
   },
 }))
+
+
+
 function Head() {
   const classes=UseStyles();
   const[Open,SetOpen]=useState(false);
   const[Open2,SetOpen2]=useState(false);
+  const [users,setUsers] = useState([]);
+  // useEffect(()=>{
+  //   gwtUserInfo();
+  // },[])
+//   console.log(users);
+//   const gwtUserInfo = async() =>{
+//   const res = await axios.get('https://nitroback.pythonanywhere.com/auth/users')
+//   try{
+//     setUsers(res.data)
+//     console.log(res);
+    
+//   }
+//   catch(err){
+//     console.log(err);
+    
+//   }
+// }
   
   return (
     <div style={{ position: "relative", marginTop: "120px" }}>
