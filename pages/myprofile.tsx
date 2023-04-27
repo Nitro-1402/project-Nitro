@@ -225,7 +225,7 @@ function Menu({ menu }: { menu?: string[] }) {
           <Item image={"/image/swarm.jpg"} name={"ازدحام"} />
           <Item image={"/image/meydanSorkh.jpg"} name={"میدان سرخ"} />
           <Item image={"/image/lastOfUs.webp"} name={"آخرین نفر از ما"} />
-          <Item image={"/image/iron-man.jpg"} name={"مرد آهنی"} />
+          <Item image={"http://localhost:1337/uploads/ant_man_864b7d3fc6.webp"} name={"مرد آهنی"} />
         </div>
       )}
       {showLikeDiv && (
