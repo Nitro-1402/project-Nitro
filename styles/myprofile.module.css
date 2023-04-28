@@ -9,6 +9,14 @@
     font-size: 20px;
     
 }
+.MuiDialog-container {
+    background-color: pink;
+
+}
+.dial{
+    display: flex;
+    flex-direction: row-reverse;
+}
 .dialog{
     display: flex;
     flex-direction: row;

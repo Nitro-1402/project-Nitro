@@ -1,0 +1,23 @@
+.item{
+    background-color: black;
+    display: flex;
+    flex-direction: row-reverse;
+    margin-top: 3%;
+    margin-right: 5%;
+    margin-left: 5%;
+    height: 90px;
+    border-radius: 3%;
+    
+}
+.img{
+    background-color: #ffa500;
+    width: 60px;
+    height: 60px;
+    border-radius: 100%;
+    padding: 3px;
+}
+.name{
+    color: white;
+    margin-right: 5%;
+    margin-top: 10%;
+}
