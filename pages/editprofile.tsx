@@ -14,8 +14,8 @@ import PhotoCamera from "@mui/icons-material/PhotoCamera";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import Item from "@/component/FilmItem";
 import Link from "next/link";
-import { DefaultImg } from "../public/image/user-avatar.png";
-import { FileInput } from "@/component/customimage/CustomImage";
+import axios from "axios";
+import { baseURL } from "../constant/urlapi";
 
 function Password({
   onChange,
@@ -164,25 +164,28 @@ const EditProfile = () => {
   // const [password, setPassword] = useState<string>("");
   // const [newPassword, setNewPassword] = useState<string>("");
   // const [confirmPassword, setConfirmPassword] = useState<string>("");
+  // const [firstName, setFirstName] = useState("");
+  // const { user } = useAuth();
+  const [selectedFile, setSelectedFile] = useState(null);
 
   const ref = useRef<{
-    firstname: string;
-    lastname: string;
     password: string;
     email: string;
+    lastname: string;
+    firstname: string;
     newPassword: string;
     confirmPassword: string;
   }>({
-    firstname: "",
-    lastname: "",
     email: "",
+    lastname: "",
+    firstname: "",
     newPassword: "",
     confirmPassword: "",
     password: "",
   });
-  const onChange = (e: string, label: string) => {
-    console.log('e',e,'ref.current.firstname',ref.current.firstname) 
-    console.log('e',e,'ref.current.lastname',ref.current.email) 
+  const changeHandler = (e: string, label: string) => {
+    console.log("e", e, "ref.current.firstname", ref.current.firstname);
+    console.log("e", e, "ref.current.lastname", ref.current.lastname);
 
     if (label == "email") ref.current.email = e;
     else if (label == "firstname") ref.current.firstname = e;
@@ -210,28 +213,6 @@ const EditProfile = () => {
     confirmPassword: "",
   });
 
-  const api = async () => {
-    console.log(ref.current);
-    // Call your API here
-  };
-  // const handleImageChange = (e) => {
-  //   const file = e.target.files[0];
-  //   const reader = new FileReader();
-  //   reader.onload = () => {
-  //     setImageSrc(reader.result);
-  //   };
-  //   reader.readAsDataURL(file);
-  // };
-
-  // const passwordHandler = (e: string, label: string) => {};
-  // const NewPasswordHandler = (e: string, label: string) => {
-  //   if (label == "Newpassword") ref.current.password = e;
-  // };
-  // const confirmPasswordHandler = (e: string, label: string) => {
-  //   if (label == "ConfirmPassword") ref.current.password = e;
-  // };
-
-  const [selectedFile, setSelectedFile] = useState();
   const ImageUpload = () => {
     const [preview, setPreview] = useState();
 
@@ -281,6 +262,69 @@ const EditProfile = () => {
     );
   };
 
+  const handleSubmit = async (e) => {
+    // e.preventDefault();
+    try {
+      const response = await axios.post("/api/user/edit", {
+        firstname: ref.current.firstname,
+        lastname: ref.current.lastname,
+        password: ref.current.password,
+        email: ref.current.email,
+        newPassword: ref.current.newPassword,
+      });
+      console.log(response.data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+  const api = async () => {
+    console.log(ref.current);
+    // Call your API here
+  };
+
+  const submitHandler = async () => {
+    const temp = {
+      image: selectedFile,
+      firstName: ref.current.firstname,
+      lastName: ref.current.lastname,
+      email: ref.current.email,
+      password: ref.current.password,
+    };
+    console.log("the data when submitted: ", temp);
+    const form_data = new FormData();
+    form_data.append("photo", selectedFile);
+    form_data.append("first_name", ref.current.firstname);
+    form_data.append("last_name", ref.current.lastname);
+    form_data.append("email", ref.current.email);
+    // form_data.append("bio", ref.current.bio);
+    // form_data.append("password", ref.current.password);
+
+    // await axios
+    //   .post(`${baseURL}/members/profile/${user.id}`, form_data)
+    //   .then((res) => {
+    //     // setData(res.data)
+    //   })
+    //   .catch((error) => {
+    //     console.log(error);
+    //   });
+  };
+  // const handleImageChange = (e) => {
+  //   const file = e.target.files[0];
+  //   const reader = new FileReader();
+  //   reader.onload = () => {
+  //     setImageSrc(reader.result);
+  //   };
+  //   reader.readAsDataURL(file);
+  // };
+
+  // const passwordHandler = (e: string, label: string) => {};
+  // const NewPasswordHandler = (e: string, label: string) => {
+  //   if (label == "Newpassword") ref.current.password = e;
+  // };
+  // const confirmPasswordHandler = (e: string, label: string) => {
+  //   if (label == "ConfirmPassword") ref.current.password = e;
+  // };e
+
   return (
     <>
       {/* <Navbar /> */}
@@ -308,56 +352,51 @@ const EditProfile = () => {
           <Input
             type="text"
             placeholder=" نام"
-            onChange={onChange}
-            name="ّfirstname"
+            onChange={changeHandler}
+            name="firstname"
             errorMsg={error?.firstname?.[0]}
           />
           <Input
             type="text"
             placeholder=" نام خانوادگی"
-            onChange={onChange}
-            name="ّlastname"
+            onChange={changeHandler}
+            name="lastname"
             errorMsg={error?.lastname?.[0]}
           />
           <Input
             type="text"
             placeholder=" ایمیل"
-            onChange={onChange}
+            onChange={changeHandler}
             name="email"
             errorMsg={error?.email?.[0]}
           />
 
-          <Input
+          {/* <Input
             type="text"
             placeholder="رمز عبور فعلی"
-            onChange={onChange}
+            onChange={changeHandler}
             name="password"
             errorMsg={error?.password?.[0]}
           />
           <Input
             type="text"
             placeholder="رمز عبور جدید"
-            onChange={onChange}
+            onChange={changeHandler}
             name="newPassword"
             errorMsg={error?.newPassword?.[0]}
           />
           <Input
             type="text"
             placeholder="تکرار رمز عبور جدید"
-            onChange={onChange}
+            onChange={changeHandler}
             name="confirmPassword"
             errorMsg={error?.confirmPassword?.[0]}
-          />
+          /> */}
 
           <div style={{ marginBottom: "10%" }}>
             <CustomBtn
               key={"login"}
-              press={async () => {
-                const form_data = new FormData();
-                form_data.append("photo", selectedFile);
-                console.log(error);
-                await api();
-              }}
+              press={submitHandler}
               style={{
                 width: 300,
                 height: 40,
