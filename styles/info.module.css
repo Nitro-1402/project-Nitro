@@ -74,12 +74,22 @@
     top: -20px;
     left: 20px;
 }
+.bookmark{
+	position: absolute;
+    top: -20px;
+    left: 88px;
+}
 .bullet {
 	display: flex;
 	flex-direction: row;
 	align-items: center;
 	justify-content: center;
 	padding-top: 20px;
+}
+.trackIt{
+	width: 25px;
+	cursor: pointer;
+	transition: color 200ms;
 }
 .star, .heart, .tick {
 	width: 35px;
