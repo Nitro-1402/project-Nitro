@@ -1,9 +1,18 @@
 import React , {useEffect} from "react";
 import ReactDOM from "react-dom";
-import CommentAp from "@/component/comments/CommentApp";
 import styles from '@/styles/comment.module.css'
+import Comments from "./Comments";
 
 
+const CommentAp = () => {
+  return (
+    <div style={{backgroundColor:"black"}}>
+      <Comments
+        currentUserId="1"
+      />
+    </div>
+  );
+};
 
 
 
