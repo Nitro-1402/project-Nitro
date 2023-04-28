@@ -33,16 +33,17 @@ const UseStyles = makeStyles((theme) => ({
   bg: {
     backgroundColor: "#fff100",
   },
-  dl: {
-    display: "flex",
-    flexDirection: "row",
-    border: "1px solid #FFA500",
-    justifyContent: "center",
-    margin: "5px",
-    width: "20vw",
-    borderRadius: "8%",
-    backgroundColor: "#faa500",
-  },
+  // dl: {
+  //   display: "flex",
+  //   flexDirection: "row",
+  //   border: "1px solid #FFA500",
+  //   justifyContent: "center",
+  //   margin: "5px",
+  //   width: "20vw",
+  //   borderRadius: "8%",
+  //   backgroundColor: "#faa500",
+  // },
+  
 }));
 
 const userInfo = {
@@ -59,6 +60,8 @@ function Head() {
   const [Open2, SetOpen2] = useState(false);
   // const [users, setUsers] = useState([]);
   const [user, setUser] = useState({});
+  const[following,setFollowing]=useState([])
+  const[followers,setFollowers]=useState([])
   const [userProfileImg, setUserProfileImg] = useState("");
 
   // useEffect(async () => {
@@ -76,11 +79,19 @@ function Head() {
   //     // });
   // }, []);
   useEffect(() => {
+    axios.get('http://localhost:1337/api/followerss').then((res)=> {
+      setFollowers(res.data.data)
+      console.log("followers",res.data.data)})
+    axios.get('http://localhost:1337/api/followings').then((res)=> {
+      setFollowing(res.data.data)
+      console.log("followers",res.data.data)
+    })
     const getUserInfo = async () => {
       try {
+        
         const response = axios.get("http://localhost:1337/api/profiles");
         const data = (await response).data.data[0].attributes;
-        console.log("the data fetched: ", data);
+        // console.log("the data fetched: ", data);
         setUser(data);
         setUserProfileImg(data.Profilepic);
       } catch (error) {
@@ -130,18 +141,9 @@ function Head() {
               </DialogActions>
             </DialogContentText>
           </div>
-          <Follower />
-          <Follower />
-          <Follower />
-          <Follower />
-          <Follower />
-          <Follower />
-          <Follower />
-          <Follower />
-          <Follower />
-          <Follower />
-          <Follower />
-          <Follower />
+         {followers.map((list1)=> (
+          <Follower image={list1.attributes.Image} name={list1.attributes.Name}/>
+         ))}
         </Dialog>
         <Dialog
           className={classes.main}
@@ -165,13 +167,9 @@ function Head() {
               </DialogActions>
             </DialogContentText>
           </div>
-          <Follower />
-          <Follower />
-          <Follower />
-          <Follower />
-          <Follower />
-          <Follower />
-          <Follower />
+          {following.map((list2)=> (
+          <Follower image={list2.attributes.image} name={list2.attributes.Name}/>
+         ))}
         </Dialog>
       </div>
       <div className={styles.container}>
@@ -216,11 +214,11 @@ function Head() {
             <ul className={styles.follow}>
               <li onClick={() => SetOpen(true)}>
                 دنبال کننده{" "}
-                <span style={{ color: "orange", marginRight: "5%" }}>120</span>{" "}
+                <span style={{ color: "orange", marginRight: "5%" }}>{followers.length}</span>{" "}
               </li>
               <li onClick={() => SetOpen2(true)}>
                 دنبال شونده{" "}
-                <span style={{ color: "orange", marginRight: "5%" }}>120</span>
+                <span style={{ color: "orange", marginRight: "5%" }}>{following.length}</span>
               </li>
             </ul>
           </div>

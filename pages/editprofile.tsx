@@ -283,30 +283,49 @@ const EditProfile = () => {
   };
 
   const submitHandler = async () => {
-    const temp = {
-      image: selectedFile,
-      firstName: ref.current.firstname,
-      lastName: ref.current.lastname,
-      email: ref.current.email,
-      password: ref.current.password,
+    // const sendingData = {
+    //   image: selectedFile,
+    //   firstName: ref.current.firstname,
+    //   lastName: ref.current.lastname,
+    //   email: ref.current.email,
+    //   password: ref.current.password,
+    // };
+    const sendingData = {
+      data: {
+        id: 1,
+        attributes: {
+          FirstName: ref.current.firstname,
+          LastName: ref.current.lastname,
+          Email: ref.current.email,
+          Profilepic: "http://localhost:1337/uploads/Jett_2_f491883b25.jpg",
+          createdAt: "2023-04-28T14:42:31.958Z",
+          updatedAt: "2023-04-28T20:20:51.555Z",
+          publishedAt: "2023-04-28T14:42:48.923Z",
+        },
+      },
+      meta: {},
     };
-    console.log("the data when submitted: ", temp);
-    const form_data = new FormData();
-    form_data.append("photo", selectedFile);
-    form_data.append("first_name", ref.current.firstname);
-    form_data.append("last_name", ref.current.lastname);
-    form_data.append("email", ref.current.email);
+    // console.log("the data when submitted: ", temp);
+    // const form_data = new FormData();
+    // form_data.append("photo", selectedFile);
+    // form_data.append("first_name", ref.current.firstname);
+    // form_data.append("last_name", ref.current.lastname);
+    // form_data.append("email", ref.current.email);
     // form_data.append("bio", ref.current.bio);
     // form_data.append("password", ref.current.password);
 
-    // await axios
-    //   .post(`${baseURL}/members/profile/${user.id}`, form_data)
-    //   .then((res) => {
-    //     // setData(res.data)
-    //   })
-    //   .catch((error) => {
-    //     console.log(error);
-    //   });
+    // .put(`http://localhost:1337/api/profiles/${user.id}`, form_data)
+    console.log("the sending data: ", sendingData);
+    await axios
+      .put(`http://localhost:1337/api/profiles/1`, sendingData, {
+        "Content-Type": "multipart/json",
+      })
+      .then((res) => {
+        console.log("user updated!", res.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
   // const handleImageChange = (e) => {
   //   const file = e.target.files[0];
