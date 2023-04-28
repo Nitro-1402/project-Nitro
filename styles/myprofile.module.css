@@ -2,17 +2,17 @@
     background-color: #b3b3b3;
 } */
 .buttm{
-    border: 1px solid black;
+    border: 0.1px solid black;
+    width: 80px;
     border-radius: 8%;
     padding: 1px;
     text-align: center;
     font-size: 20px;
+    margin-top: 10px;
+    background-color: #faa500;
     
 }
-.MuiDialog-container {
-    background-color: pink;
 
-}
 .dial{
     display: flex;
     flex-direction: row-reverse;
