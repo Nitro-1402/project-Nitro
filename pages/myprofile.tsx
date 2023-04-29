@@ -5,7 +5,9 @@ import React, { useEffect, useState } from "react";
 import styles from "../styles/myprofile.module.css";
 import Navbar from "@/component/navbar/Navbar";
 import Followers from "@/component/follower/Followers";
-// import Comment from "@/component/comments/Comment";
+import Comment from "@/component/showCommentProfile";
+import Footer from "@/component/Footer";
+// import Comment from "@/component/comments/comments";
 import {
   Dialog,
   DialogActions,
@@ -181,6 +183,7 @@ function Head() {
         <div
           style={{
             display: "flex",
+            flexDirection:"row-reverse",
             alignItems: "center",
             marginRight: 10,
             marginBottom: 10,
@@ -211,7 +214,7 @@ function Head() {
             src={user.Profilepic}
             alt="test"
           />
-          <div style={{ marginLeft: 25 }}>
+          <div className={styles.data} >
             <h1 className={styles.name}>
               {user.FirstName} {user.LastName}
             </h1>
@@ -259,6 +262,7 @@ function Menu({ menu }: { menu?: string[] }) {
   const [userWatchList, setUserWatchList] = useState([]);
   const [userWatchedList, setUserWatchedList] = useState([]);
   const [userLikedList, setUserLikedList] = useState([]);
+  const [comment,setCommnet] =useState([])
 
   useEffect(() => {
     axios.get("http://localhost:1337/api/watch-lists").then((res) => {
@@ -272,6 +276,10 @@ function Menu({ menu }: { menu?: string[] }) {
     axios.get("http://localhost:1337/api/Liked-lists").then((res) => {
       // console.log("the like  data is: ", res.data.data);
       setUserLikedList(res.data.data);
+    });
+    axios.get("http://localhost:1337/api/commnets").then((res) => {
+      console.log("the comms  data is: ", res.data.data);
+      setCommnet(res.data.data);
     });
   }, []);
 
@@ -414,7 +422,9 @@ function Menu({ menu }: { menu?: string[] }) {
       )}
       {ShowCommentdiv &&(
         <div style={{color:"white"}}>
-        {/* <Comment/> */}
+         {comment.map((comm) => (
+            <Comment image={comm.attributes.image} name={comm.attributes.name} text={comm.attributes.text} film={comm.attributes.filmname} createdAt={comm.attributes.date} link={comm.attributes.filmlink} />
+          ))}
         </div>
       )}
     </>
@@ -428,6 +438,7 @@ export default function Profile() {
       <Head />
 
       <Menu menu={["دیدم", "میخوام ببینیم ", "لیست علاقمندی ها", "کامنت ها"]} />
+      <Footer/>
     </>
   );
 }
