@@ -18,7 +18,7 @@ const CommentForm = ({
     setText("");
   };
   return (
-    <form style={{display:'flex',flexDirection:'row',alignItems:'center', margin:'0 20px'}} onSubmit={onSubmit}>
+    <form style={{display:'flex',flexDirection:'row',alighnItems:'center', margin:'0 20px'}} onSubmit={onSubmit}>
       <textarea
         className={styles.commentFormTextarea}
         value={text}
