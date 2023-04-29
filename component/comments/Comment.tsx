@@ -2,6 +2,9 @@ import CommentForm from "./CommentForm";
 import styles from '@/styles/comment.module.css'
 import CustomImage from '@/ui/CustomImage'
 import React ,{useState} from "react";
+import { FaThumbsDown, FaThumbsUp } from "react-icons/fa";
+import Like from "../like/like";
+import Dislike from "../like/dislike";
 
 
 const Comment = ({
@@ -31,15 +34,7 @@ const Comment = ({
   const canEdit = currentUserId === comment.userId && !timePassed;
   const replyId = parentId ? parentId : comment.id;
   const createdAt = new Date(comment.createdAt).toLocaleDateString();
-  const count = 0;
-  const [like , setLike] = useState(0);
-  const [dislike , setDislike] = useState(0);
-  const likeCounter = () => {
-    setLike(count => count + 1);
-  };
-  const dislikeCounter = () => {
-    setDislike(count => count + 1);
-  };
+
  
 
   return (
@@ -53,10 +48,12 @@ const Comment = ({
           <div className={styles.commentAuthor}>{comment.username}</div>
           <div>{createdAt}</div>
           <div style={{display:'flex',flexDirection:'row',alignItems:'center'}}>
-            <button style={{backgroundColor:'black', border:'none'}} onClick={likeCounter}><CustomImage src="/info-page-image/like.png" style={{width:'30px',margin:'10px'}} alt='like'/></button>
-            <span>{like}</span>
-            <button style={{backgroundColor:'black', border:'none'}} onClick={dislikeCounter}><CustomImage src="/info-page-image/dislike.png" style={{width:'30px',margin:'10px'}} alt='like'/></button>
-            <span>{dislike}</span>
+          <div>
+          <div style={{display:"flex", flexDirection:"row", justifyContent:"center",}}>
+          <Like/>
+          <Dislike/>
+          </div>
+          </div>
           </div>
         </div>
         {!isEditing && <div className={styles.commentText}>{comment.body}</div>}

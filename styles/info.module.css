@@ -257,4 +257,8 @@
 .input{
 	display: none;
 }
+.like , .dislike{
+	width: 30px;
+	margin: 0 10px;
+}
 
