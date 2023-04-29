@@ -1,11 +1,11 @@
 .main {
   background-image: url("../public/image/alice.jpg");
-  backdrop-filter: blur(5px);
 }
 
 .article {
-  margin-top: 120px;
+  margin-top: 60px;
   display: flex;
+  align-items: center;
   flex-flow: row-reverse;
   backdrop-filter: blur(30px);
   width: 100%;
@@ -42,7 +42,6 @@
 }
 .Clock {
   margin-top: 1%;
-  margin-right: 3%;
   color: #ffa500;
   display: flex;
   flex-direction: row-reverse;
