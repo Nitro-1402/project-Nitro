@@ -7,6 +7,7 @@ import Navbar from "@/component/navbar/Navbar";
 import Followers from "@/component/follower/Followers";
 import Comment from "@/component/showCommentProfile";
 import Footer from "@/component/Footer";
+import Header from "@/component/header";
 // import Comment from "@/component/comments/comments";
 import {
   Dialog,
@@ -434,7 +435,7 @@ function Menu({ menu }: { menu?: string[] }) {
 export default function Profile() {
   return (
     <>
-      <Navbar />
+      <Header />
       <Head />
 
       <Menu menu={["دیدم", "میخوام ببینیم ", "لیست علاقمندی ها", "کامنت ها"]} />
