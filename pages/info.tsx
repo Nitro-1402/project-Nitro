@@ -10,6 +10,8 @@ import style from '../styles/explore.module.css'
 import Actors from '@/component/factors/Actors'
 import OtherFactors from '@/component/factors/OtherFactors'
 import CommentBox from '@/component/comments/CommentBox'
+import Header from '@/component/header'
+import Footer from '@/component/Footer'
 
 
 
@@ -17,7 +19,7 @@ export class info extends Component {
   render() {
     return (
       <div>
-        <Navbar/>
+        <Header/>
         <Top/>
         <div style={{display:'flex',flexDirection:'column',justifyContent:'center'}}>
           <div className= {styles.middleView}>
@@ -52,6 +54,7 @@ export class info extends Component {
             <CommentBox/>
           </div>
         </div>
+        {/* <Footer /> */}
       </div>
     )
   }
