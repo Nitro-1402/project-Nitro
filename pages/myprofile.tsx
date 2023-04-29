@@ -5,11 +5,13 @@ import React, { useEffect, useState } from "react";
 import styles from "../styles/myprofile.module.css";
 import Navbar from "@/component/navbar/Navbar";
 import Followers from "@/component/follower/Followers";
+// import Comment from "@/component/comments/Comment";
 import {
   Dialog,
   DialogActions,
   DialogContentText,
   DialogTitle,
+  dividerClasses,
 } from "@mui/material";
 import { makeStyles } from "@material-ui/styles";
 import axios from "axios";
@@ -28,7 +30,10 @@ const UseStyles = makeStyles((theme) => ({
     backgroundColor: "#faa500",
   },
   main: {
-    // backgroundColor:"#faa500"
+    backdropFilter:"blur(5px)",
+  },
+  dial: {
+    backgroundColor: "#fff100",
   },
   bg: {
     backgroundColor: "#fff100",
@@ -405,6 +410,11 @@ function Menu({ menu }: { menu?: string[] }) {
           {userWatchList.map((movie) => (
             <Item image={movie.attributes.Image} name={movie.attributes.Name} />
           ))}
+        </div>
+      )}
+      {ShowCommentdiv &&(
+        <div style={{color:"white"}}>
+        {/* <Comment/> */}
         </div>
       )}
     </>

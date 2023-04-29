@@ -1,4 +1,6 @@
-
+.css-1t1j96h-MuiPaper-root-MuiDialog-paper {
+  background-color: #faa500 !important;
+}
 @font-face {
   font-family: RegularPersian ;
   src: url(../public/Fonts/Vazir-Regular-FD.ttf);
