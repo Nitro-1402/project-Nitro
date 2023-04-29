@@ -1,8 +1,10 @@
 import CommentForm from "./CommentForm";
 import styles from '@/styles/comment.module.css'
 import CustomImage from '@/ui/CustomImage'
-// import Like from '/Like'
-
+import React ,{useState} from "react";
+import { FaThumbsDown, FaThumbsUp } from "react-icons/fa";
+import Like from "../like/like";
+import Dislike from "../like/dislike";
 
 
 const Comment = ({
@@ -32,6 +34,9 @@ const Comment = ({
   const canEdit = currentUserId === comment.userId && !timePassed;
   const replyId = parentId ? parentId : comment.id;
   const createdAt = new Date(comment.createdAt).toLocaleDateString();
+
+ 
+
   return (
     <div key={comment.id} className={styles.comment}>
       <div className={styles.commentImageContainer}>
@@ -43,12 +48,12 @@ const Comment = ({
           <div className={styles.commentAuthor}>{comment.username}</div>
           <div>{createdAt}</div>
           <div style={{display:'flex',flexDirection:'row',alignItems:'center'}}>
-            {/* <Like/> */}
-
-            <CustomImage src="/info-page-image/like.png" style={{width:'30px',margin:'10px'}} alt='avatar'/>
-            <p>1</p>
-            <CustomImage src="/info-page-image/dislike.png" style={{width:'30px',margin:'10px'}} alt='avatar'/>
-            <p>2</p>
+          <div>
+          <div style={{display:"flex", flexDirection:"row", justifyContent:"center",}}>
+          <Like/>
+          <Dislike/>
+          </div>
+          </div>
           </div>
         </div>
         {!isEditing && <div className={styles.commentText}>{comment.body}</div>}
@@ -95,7 +100,7 @@ const Comment = ({
         </div>
         {isReplying && (
           <CommentForm
-            submitLabel="Reply"
+            submitLabel="پاسخ"
             handleSubmit={(text:any) => addComment(text, replyId)}
           />
         )}
@@ -120,6 +125,7 @@ const Comment = ({
       </div>
     </div>
   );
+
 };
 
 export default Comment;

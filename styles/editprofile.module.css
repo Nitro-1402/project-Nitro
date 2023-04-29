@@ -11,8 +11,8 @@
     justify-content: center;
     flex-direction: column;
     /* height: 70%; */
-    width: 400px;
-    margin: 2% auto;
+    width: 420px;
+    margin: 1% auto;
 
     /* background-image:url('/image/bg.png'); */
     background-color: black;
@@ -22,15 +22,16 @@
 }
 .ImgPreview{
     margin-top: 10px;
+
     display: flex;
     flex-direction: column;
 }
 .Prew{
-    width: 200px;
-    height: 200px;
+    width: 150px;
+    height: 150px;
     border-radius: 100%;
-    padding: 30px;
-    margin-left: 50px;
+    /* padding: 30px; */
+    margin-left: 70px;
 }
 .bg{
     /* overflow: auto; */
@@ -110,6 +111,7 @@
         margin-left: 50px;
     }
     .container{
+        overflow: auto;
         min-height: 100vh;
         height: auto;
         /* width: 100%; */
@@ -127,6 +129,7 @@
     }
     .bg{
         position: fixed;
+        overflow: auto;
         height: 100vh;
         width: 100%;
         top:0;
@@ -187,4 +190,9 @@
         color:#aaaaaa
     }
   
+}
+@media only  screen and (max-height:1000px){
+    .bg{
+        overflow: auto;
+    }
 }
