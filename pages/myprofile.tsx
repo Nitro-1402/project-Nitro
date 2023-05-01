@@ -211,6 +211,7 @@ function Head() {
               minHeight: "110px",
               minWidth: "110px",
               borderRadius: "50%",
+              marginRight:'100px',
             }}
             src={user.Profilepic}
             alt="test"
@@ -233,7 +234,8 @@ function Head() {
           </div>
         </div>
         <CustomBtn
-          text="ادیت پروفایل"
+        
+          text="ویرایش پروفایل"
           press={() => {
             location.href = "/editprofile";
           }}
@@ -244,6 +246,7 @@ function Head() {
             width: 200,
             height: 34,
             cursor: "pointer",
+            marginLeft: "150px",
           }}
           textStyle={{
             color: "#000000",
@@ -309,11 +312,15 @@ function Menu({ menu }: { menu?: string[] }) {
               key={index}
               style={{
                 padding: 5,
+                // display:"flex",
+                // flexDirection:"row-reverse",
+                
                 borderBottom: index == select ? "2px solid #FFA500" : "",
                 cursor: "pointer",
                 margin: "0 20px",
                 color: "white",
               }}
+              
               onClick={() => {
                 setselect(index);
                 if (index == 0) {
@@ -438,7 +445,7 @@ export default function Profile() {
       <Header />
       <Head />
 
-      <Menu menu={["دیدم", "میخوام ببینیم ", "لیست علاقمندی ها", "کامنت ها"]} />
+      <Menu menu={["دیدم", "میخوام ببینیم ", "لیست علاقمندی ها", "نظرات"]} />
       <Footer/>
     </>
   );

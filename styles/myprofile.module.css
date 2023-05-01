@@ -50,6 +50,7 @@
 }
 .menu {
   justify-content: center;
+  flex-direction: row-reverse;
   /* background-color: #b3b3b3; */
 }
 .name {
@@ -66,6 +67,7 @@
         margin-top: 200px;
     }
   .menu {
+    flex-direction: row-reverse;
     justify-content: flex-start;
     overflow: auto;
   }
