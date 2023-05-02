@@ -13,6 +13,13 @@
   background-color: #faa500;
   cursor: pointer;
 }
+.cancelIcon{
+  margin-left: 30px;
+  margin-top: 20px;
+  width: 30px;
+  height: 30px;
+
+}
 
 .dial {
   display: flex;
@@ -23,6 +30,7 @@
   flex-direction: row;
   justify-content: space-between;
   border: 2px solid yellow;
+  /* margin-right: 300px; */
 }
 .email {
   margin-top: 2px;

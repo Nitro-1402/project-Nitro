@@ -8,6 +8,7 @@ import Followers from "@/component/follower/Followers";
 import Comment from "@/component/showCommentProfile";
 import Footer from "@/component/Footer";
 import Header from "@/component/header";
+import {MdCancel} from "react-icons/Md" 
 // import Comment from "@/component/comments/comments";
 import {
   Dialog,
@@ -28,7 +29,7 @@ const UseStyles = makeStyles((theme) => ({
     border: "1px solid #FFA500",
     justifyContent: "center",
     margin: "5px",
-    width: "20vw",
+    width: "300px",
     borderRadius: "8%",
     backgroundColor: "#faa500",
   },
@@ -36,7 +37,8 @@ const UseStyles = makeStyles((theme) => ({
     backdropFilter:"blur(5px)",
   },
   dial: {
-    backgroundColor: "#fff100",
+    // backgroundColor: "#fff100",
+     backgroundColor: "#0c1012",
   },
   bg: {
     backgroundColor: "#fff100",
@@ -165,13 +167,14 @@ function Head() {
             </DialogTitle>
             <DialogContentText className={classes.dl}>
               <DialogActions>
-                <button
+                {/* <button
                   className={styles.buttm}
                   onClick={() => SetOpen2(false)}
                 >
                   {" "}
                   بستن
-                </button>
+                </button> */}
+                  <MdCancel className={styles.cancelIcon} onClick={() => SetOpen2(false)}/>
               </DialogActions>
             </DialogContentText>
           </div>
