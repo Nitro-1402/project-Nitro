@@ -8,6 +8,7 @@ import Followers from "@/component/follower/Followers";
 import Comment from "@/component/showCommentProfile";
 import Footer from "@/component/Footer";
 import Header from "@/component/header";
+import {MdCancel} from "react-icons/Md" 
 // import Comment from "@/component/comments/comments";
 import {
   Dialog,
@@ -28,7 +29,7 @@ const UseStyles = makeStyles((theme) => ({
     border: "1px solid #FFA500",
     justifyContent: "center",
     margin: "5px",
-    width: "20vw",
+    width: "300px",
     borderRadius: "8%",
     backgroundColor: "#faa500",
   },
@@ -36,7 +37,8 @@ const UseStyles = makeStyles((theme) => ({
     backdropFilter:"blur(5px)",
   },
   dial: {
-    backgroundColor: "#fff100",
+    // backgroundColor: "#fff100",
+     backgroundColor: "#0c1012",
   },
   bg: {
     backgroundColor: "#fff100",
@@ -165,13 +167,14 @@ function Head() {
             </DialogTitle>
             <DialogContentText className={classes.dl}>
               <DialogActions>
-                <button
+                {/* <button
                   className={styles.buttm}
                   onClick={() => SetOpen2(false)}
                 >
                   {" "}
                   بستن
-                </button>
+                </button> */}
+                  <MdCancel className={styles.cancelIcon} onClick={() => SetOpen2(false)}/>
               </DialogActions>
             </DialogContentText>
           </div>
@@ -211,6 +214,7 @@ function Head() {
               minHeight: "110px",
               minWidth: "110px",
               borderRadius: "50%",
+              marginRight:'100px',
             }}
             src={user.Profilepic}
             alt="test"
@@ -233,7 +237,8 @@ function Head() {
           </div>
         </div>
         <CustomBtn
-          text="ادیت پروفایل"
+        
+          text="ویرایش پروفایل"
           press={() => {
             location.href = "/editprofile";
           }}
@@ -244,6 +249,7 @@ function Head() {
             width: 200,
             height: 34,
             cursor: "pointer",
+            marginLeft: "150px",
           }}
           textStyle={{
             color: "#000000",
@@ -309,11 +315,15 @@ function Menu({ menu }: { menu?: string[] }) {
               key={index}
               style={{
                 padding: 5,
+                // display:"flex",
+                // flexDirection:"row-reverse",
+                
                 borderBottom: index == select ? "2px solid #FFA500" : "",
                 cursor: "pointer",
                 margin: "0 20px",
                 color: "white",
               }}
+              
               onClick={() => {
                 setselect(index);
                 if (index == 0) {
@@ -438,7 +448,7 @@ export default function Profile() {
       <Header />
       <Head />
 
-      <Menu menu={["دیدم", "میخوام ببینیم ", "لیست علاقمندی ها", "کامنت ها"]} />
+      <Menu menu={["دیدم", "میخوام ببینیم ", "لیست علاقمندی ها", "نظرات"]} />
       <Footer/>
     </>
   );
