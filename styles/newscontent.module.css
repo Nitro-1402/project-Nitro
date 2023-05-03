@@ -1,6 +1,6 @@
-.main {
+/* .main {
   background-image: url("../public/image/alice.jpg");
-}
+} */
 
 .article {
   margin-top: 60px;
@@ -14,6 +14,7 @@
 .descrip {
   display: flex;
   flex-direction: column;
+  justify-content: flex-start;
   text-align: right;
   margin-right: 4%;
   margin-top: 3%;
@@ -56,6 +57,7 @@
 .title {
   display: flex;
   justify-content: end;
+  color: white;
 }
 .description {
   margin: 3%;
