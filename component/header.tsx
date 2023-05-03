@@ -3,16 +3,17 @@ import { useRouter } from "next/router"
 import styles from "../styles/header.module.css"
 import { HiUserCircle } from 'react-icons/hi'
 import Link from "next/link"
+import AuthStore from "@/pages/store/Auth"
 function Header(){
+    const user=AuthStore((state:any)=>state.user)
     const router=useRouter()
-    const user:any = {}
     return (
         <header className={MulticlassName([styles.container])}>
             {!user?.id?<div onClick={()=>{
                 router.push('/register')
             }}>
                 <h4>ورود/ثبت نام</h4>
-            </div>: <HiUserCircle color={'#7569FF'} size={50} style={{cursor:'pointer'}} onClick={()=>{
+            </div>: <HiUserCircle color={'orange'} size={50} style={{cursor:'pointer'}} onClick={()=>{
                 router.push('/profile')
             }}/>}
             <div style={{display:'flex',alignItems:'center'}} >
