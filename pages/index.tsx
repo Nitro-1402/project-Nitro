@@ -3,7 +3,12 @@ import styles from '../styles/Home.module.css'
 import NewsCard from '@/component/news/Card'
 import Header from '@/component/header'
 import Footer from '@/component/Footer'
+import axios from 'axios'
+import { URL_API } from '@/constant/urlapi'
+import AuthStore from './store/Auth'
 export default function Home() {
+  const user=AuthStore((state:any)=>state.user)
+  console.log("user",user)
   return (
     <>
     <Header/>
@@ -14,7 +19,9 @@ export default function Home() {
         <li>بدون سانسور و حذفیات</li>
         <li>اپلیکیشن اختصاصی</li>
       </ul>
-      <div>
+      <div onClick={()=>{
+        axios.get(`${URL_API}movies/movies`)
+      }}>
         <div>
 
         <h3>ثبت نام </h3>

@@ -12,6 +12,7 @@ import { Validate, validate } from "class-validator"
 import TransformError from "@/helper/TransformError"
 import { RegisterApi } from "@/API/Register"
 import {toast} from 'react-toastify'
+import AuthStore from "./store/Auth"
 function Password({onChange,errorMsg,setError,placeholder="رمز عبور"}:{placeholder?:string,setError?:React.Dispatch<React.SetStateAction<any>>,onChange:(e:string,label:string)=>void,errorMsg:string |null| undefined}){
   const[see,setsee]=useState<boolean>(false)
   return(
@@ -47,6 +48,7 @@ const SignUp=({set}:{set:React.Dispatch<React.SetStateAction<boolean>>})=>{
     email:"",
     repeated_password:""
   })
+  const init=AuthStore((state:any) => state.init)
   const router=useRouter()
   const ref=useRef<{username:string,password:string,email:string,repeated_password:string}>({
     username:'',
@@ -76,8 +78,9 @@ const SignUp=({set}:{set:React.Dispatch<React.SetStateAction<boolean>>})=>{
     if(Object.keys(err)[0])
     setError(err)
     else{
-      let a=await RegisterApi.SignUp({username:ref.current.username,password:ref.current.password,email:ref.current.email})
-      console.log("response",a)
+      let a:any=await RegisterApi.SignUp({username:ref.current.username,password:ref.current.password,email:ref.current.email})
+      console.log("response",a.content)
+      init(a.content)
       if(a?.status=="success")
       router.push('/')
       else
@@ -173,6 +176,7 @@ key={'email'}
 
 
 const Login=({set}:{set:React.Dispatch<React.SetStateAction<boolean>>})=>{
+  const init=AuthStore((state:any) => state.init)
   const[error,setError]=useState<{username:string,password:string}>({
     username:"",
     password:""
