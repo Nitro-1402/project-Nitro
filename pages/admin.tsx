@@ -7,23 +7,18 @@ import CustomImage from "@/ui/CustomImage"
 import DropDown from "@/ui/DropDown"
 import Input from "@/ui/Input"
 import { useState } from "react"
-import { FaPen } from "react-icons/fa"
-
+import Button from '@mui/material/Button';
+import DeleteIcon from '@mui/icons-material/Delete';
+import { FaPen,FaFilm,FaNewspaper } from "react-icons/fa"
 function ActorComponent(){
 
     return(
         <div style={{width:"90%",height:120,backgroundColor:'white',boxShadow:"1px 1px 2px 2px rgba(166, 166, 166, 0.5)",display:'flex',justifyContent:'space-between',alignItems:'center',margin:"20px 0",borderRadius:10,padding:"10px 30px",direction:'ltr'}}>
            <div style={{display:'flex',alignItems:'center'}}>
-            <CustomImage src="/image/bradpit.jpg" style={{width:100,height:100,borderRadius:50}}/>
+            <CustomImage src="" style={{width:100,height:100,borderRadius:50}}/>
             <div style={{marginLeft:20}}>
-
-
-            <h2>ali konteratchi</h2>
-            <h4>بازیگر</h4>
-                
-                
+            <h2>بازیگر</h2>
             </div>
-
            </div>
             <div>
             <CustomBtn
@@ -293,19 +288,33 @@ export default function Admin(){
             <AdminNews settab={settab}/>:
             tab==4?
             <NewsEdit/>:
-            <ActorList/>
+            <ActorList settab={1}/>
             }
-            <div style={{width:300,backgroundColor:'orange',height:"100vh",position:"fixed",right:0,top:0,direction:'rtl',padding:20}}>
-
-                <h2 style={{color:'white',margin:20,cursor:'pointer'}} onClick={()=>{
+            <div style={{width:300,backgroundColor:'#0C1012',height:"100vh",position:"fixed",right:0,top:0,direction:'rtl',padding:20}}>
+                
+                <h3 style={{color:'white',margin:20,cursor:'pointer'}} onClick={()=>{
                     settab(2)
-                }}>فیلم ها و سریال ها </h2>
-                <h2 style={{color:'white',margin:20,cursor:'pointer'}} onClick={()=>{
+                }}>
+                  <FaFilm style={{margin:"0 10px"}}/>
+                  
+                  
+                  فیلم ها و سریال ها
+
+
+
+                
+                </h3>
+                <Button variant="outlined" startIcon={<DeleteIcon />}/>
+              
+
+                <h3 style={{color:'white',margin:20,cursor:'pointer'}} onClick={()=>{
                     settab(0)
-                }}>بازیگران</h2>
-                <h2 style={{color:'white',margin:20,cursor:'pointer'}} onClick={()=>{
+                }}>بازیگران</h3>
+                <h3 style={{color:'white',margin:20,cursor:'pointer'}} onClick={()=>{
                     settab(3)
-                }}>اخبار</h2>
+                }}>
+                  <FaNewspaper style={{margin:"0 10px"}}></FaNewspaper>
+                  اخبار</h3>
 
             </div>
 

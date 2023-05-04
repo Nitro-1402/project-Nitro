@@ -3,6 +3,8 @@ import styles from '../styles/Home.module.css'
 import NewsCard from '@/component/news/Card'
 import Header from '@/component/header'
 import Footer from '@/component/Footer'
+import { URL_API } from '@/constant/urlapi'
+import axios from 'axios'
 export default function Home() {
   return (
     <>
@@ -14,7 +16,9 @@ export default function Home() {
         <li>بدون سانسور و حذفیات</li>
         <li>اپلیکیشن اختصاصی</li>
       </ul>
-      <div>
+      <div onClick={()=>{
+        axios.get(`${URL_API}movies/movies`)
+      }}>
         <div>
 
         <h3>ثبت نام </h3>
