@@ -33,6 +33,7 @@ export default function Explore(){
               headers: headers
             });
             var d = await response.json()
+            console.log(d.results);
             setItems(d)
             // window.location.replace(response.data.paymentUrl);
           }
@@ -55,9 +56,9 @@ export default function Explore(){
                 <div className={style.container}>
                     <h4 style={{position:'absolute',left:50,top:120,color:'#FFA500',cursor:'pointer',backgroundColor:'black',padding:10,borderRadius:10}}>see all</h4>
                     {
-                        items.map((i:any)=>(
+                       items.results? items.results.map((i:any)=>(
                             <Item key={i} image={i.poster} name={i.title}/>
-                        ))
+                        )):undefined
                     }
                     {/* <Item image={'/image/manifest.jpg'} name={'لیست پرواز'}/>
                     <Item image={'/image/good-doctor.jpeg'} name={'دکتر خوب'}/>
