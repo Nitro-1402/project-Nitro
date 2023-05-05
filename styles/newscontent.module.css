@@ -1,11 +1,11 @@
-.main {
+/* .main {
   background-image: url("../public/image/alice.jpg");
-  backdrop-filter: blur(5px);
-}
+} */
 
 .article {
-  margin-top: 120px;
+  margin-top: 60px;
   display: flex;
+  align-items: center;
   flex-flow: row-reverse;
   backdrop-filter: blur(30px);
   width: 100%;
@@ -14,6 +14,7 @@
 .descrip {
   display: flex;
   flex-direction: column;
+  justify-content: flex-start;
   text-align: right;
   margin-right: 4%;
   margin-top: 3%;
@@ -42,7 +43,6 @@
 }
 .Clock {
   margin-top: 1%;
-  margin-right: 3%;
   color: #ffa500;
   display: flex;
   flex-direction: row-reverse;
@@ -57,6 +57,7 @@
 .title {
   display: flex;
   justify-content: end;
+  color: white;
 }
 .description {
   margin: 3%;

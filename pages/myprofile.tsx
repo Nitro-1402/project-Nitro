@@ -1,62 +1,203 @@
 import Item from "@/component/FilmItem";
 import CustomBtn from "@/ui/CustomBtn";
 import CustomImage from "@/ui/CustomImage";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "../styles/myprofile.module.css";
 import Navbar from "@/component/navbar/Navbar";
-import Followers from "@component/follower/Followers"
-import { Dialog, DialogActions, DialogContentText, DialogTitle } from "@mui/material";
-import {makeStyles} from "@material-ui/styles"
-
-const UseStyles=makeStyles((theme)=>({
-  dialog:{
-      display:"flex",
-      flexDirection:"row",
-      border:"1px solid #FFA500",
-      justifyContent:"center",
-      margin:"5px",
-      width:"20vw",
-      borderRadius: "8%",
-      backgroundcolor:"#3D3D3D",
+import Followers from "@/component/follower/Followers";
+import Comment from "@/component/showCommentProfile";
+import Footer from "@/component/Footer";
+import Header from "@/component/header";
+import {MdCancel} from "react-icons/Md" 
+// import Comment from "@/component/comments/comments";
+import {
+  Dialog,
+  DialogActions,
+  DialogContentText,
+  DialogTitle,
+  dividerClasses,
+} from "@mui/material";
+import { makeStyles } from "@material-ui/styles";
+import axios from "axios";
+import Follower from "@/component/Follower/Follwers";
+import { pink } from "@mui/material/colors";
+import { get } from "http";
+const UseStyles = makeStyles((theme) => ({
+  dialog: {
+    display: "flex",
+    flexDirection: "row",
+    border: "1px solid #FFA500",
+    justifyContent: "center",
+    margin: "5px",
+    width: "300px",
+    borderRadius: "8%",
+    backgroundColor: "#faa500",
   },
-}))
-function Head() {
-  const classes=UseStyles();
-  const[Open,SetOpen]=useState(false);
-  const[Open2,SetOpen2]=useState(false);
+  main: {
+    backdropFilter:"blur(5px)",
+  },
+  dial: {
+    // backgroundColor: "#fff100",
+     backgroundColor: "#0c1012",
+  },
+  bg: {
+    backgroundColor: "#fff100",
+  },
+  // dl: {
+  //   display: "flex",
+  //   flexDirection: "row",
+  //   border: "1px solid #FFA500",
+  //   justifyContent: "center",
+  //   margin: "5px",
+  //   width: "20vw",
+  //   borderRadius: "8%",
+  //   backgroundColor: "#faa500",
+  // },
   
+}));
+
+const userInfo = {
+  FirstName: "",
+  LasdName: "",
+  Profilepic: "",
+  Email: "",
+};
+
+function Head() {
+  const [isLoading, setIsLoading] = useState(false);
+  const classes = UseStyles();
+  const [Open, SetOpen] = useState(false);
+  const [Open2, SetOpen2] = useState(false);
+  // const [users, setUsers] = useState([]);
+  const [user, setUser] = useState({});
+  const[following,setFollowing]=useState([])
+  const[followers,setFollowers]=useState([])
+  const [userProfileImg, setUserProfileImg] = useState("");
+
+  // useEffect(async () => {
+  //   setIsLoading(true);
+  //   axios
+  //     .get("http://localhost:1337/api/profiles")
+  //     .then((res) => res.data.data[0].attributes)
+  //     .then((data) => {
+  //       console.log("the data: ", data);
+  //       setUser(data);
+  //     });
+  //     // .catch(err => console.log(err))
+  //     // .finally(() => {
+  //     //   setIsLoading(false);
+  //     // });
+  // }, []);
+  useEffect(() => {
+    axios.get('http://localhost:1337/api/followerss').then((res)=> {
+      setFollowers(res.data.data)
+      console.log("followers",res.data.data)})
+    axios.get('http://localhost:1337/api/followings').then((res)=> {
+      setFollowing(res.data.data)
+      console.log("followers",res.data.data)
+    })
+    const getUserInfo = async () => {
+      try {
+        
+        const response = axios.get("http://localhost:1337/api/profiles");
+        const data = (await response).data.data[0].attributes;
+        // console.log("the data fetched: ", data);
+        setUser(data);
+        setUserProfileImg(data.Profilepic);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    getUserInfo();
+  }, []);
+
+  // useEffect(()=>{
+  //   gwtUserInfo();
+  // },[])
+  //   console.log(users);
+  //   const gwtUserInfo = async() =>{
+  //   const res = await axios.get('https://nitroback.pythonanywhere.com/auth/users')
+  //   try{
+  //     setUsers(res.data)
+  //     console.log(res);
+
+  //   }
+  //   catch(err){
+  //     console.log(err);
+
+  //   }
+  // }
+
   return (
     <div style={{ position: "relative", marginTop: "120px" }}>
       {/* <CustomImage src='' style={{ width: "100vw", height: "12vw", minHeight: "100px"}} /> */}
-      <Dialog   open={Open} onClose={() => SetOpen(false)}>
-        <DialogTitle className={classes.dialog}>  لیست دنبال کننده</DialogTitle>
-        <DialogContentText> 
-          <DialogActions>
-            <button className={styles.buttm} onClick={() => SetOpen(false)}> بستن</button>
-          </DialogActions>
-        </DialogContentText>
-        
-      </Dialog>
-      <Dialog  open={Open2} onClose={() => SetOpen2(false)}>
-        <DialogTitle className={classes.dialog}>  لیست دنبال شونده</DialogTitle>
-        <DialogContentText> 
-          <DialogActions>
-            <button className={styles.buttm} onClick={() => SetOpen2(false)}> بستن</button>
-          </DialogActions>
-        </DialogContentText>
-        
-      </Dialog>
+      <div className={classes.bg}>
+        <Dialog
+          className={classes.main}
+          open={Open}
+          onClose={() => SetOpen(false)}
+        >
+          <div className={styles.dial}>
+            <DialogTitle className={classes.dialog}>
+              {" "}
+              لیست دنبال کننده
+            </DialogTitle>
+            <DialogContentText className={classes.dl}>
+              <DialogActions>
+                <button className={styles.buttm} onClick={() => SetOpen(false)}>
+                  {" "}
+                  بستن
+                </button>
+              </DialogActions>
+            </DialogContentText>
+          </div>
+         {followers.map((list1)=> (
+          <Follower image={list1.attributes.Image} name={list1.attributes.Name}/>
+         ))}
+        </Dialog>
+        <Dialog
+          className={classes.main}
+          open={Open2}
+          onClose={() => SetOpen2(false)}
+        >
+          <div className={styles.dial}>
+            <DialogTitle className={classes.dialog}>
+              {" "}
+              لیست دنبال شونده
+            </DialogTitle>
+            <DialogContentText className={classes.dl}>
+              <DialogActions>
+                {/* <button
+                  className={styles.buttm}
+                  onClick={() => SetOpen2(false)}
+                >
+                  {" "}
+                  بستن
+                </button> */}
+                  <MdCancel className={styles.cancelIcon} onClick={() => SetOpen2(false)}/>
+              </DialogActions>
+            </DialogContentText>
+          </div>
+          {following.map((list2)=> (
+          <Follower image={list2.attributes.image} name={list2.attributes.Name}/>
+         ))}
+        </Dialog>
+      </div>
       <div className={styles.container}>
         <div
           style={{
             display: "flex",
+            flexDirection:"row-reverse",
             alignItems: "center",
             marginRight: 10,
             marginBottom: 10,
           }}
         >
+          {/* {console.log("the profile pic", user.Profilepic)}
           <CustomImage
-            src=""
+            // src={"/image/test.jpeg" ? "/image/test.jpeg" : ""}
+            // src={user.Profilepic ? user.Profilepic : ""}
+            src={userProfileImg}
             style={{
               width: "12vw",
               height: "12vw",
@@ -64,24 +205,40 @@ function Head() {
               minWidth: "110px",
               borderRadius: "50%",
             }}
+          /> */}
+          <img
+            // className={styles.profileImg}
+            style={{
+              width: "12vw",
+              height: "12vw",
+              minHeight: "110px",
+              minWidth: "110px",
+              borderRadius: "50%",
+              marginRight:'100px',
+            }}
+            src={user.Profilepic}
+            alt="test"
           />
-          <div style={{ marginLeft: 25 }}>
-            <h1 className={styles.name}>Reza Noori</h1>
-            <h3 className={styles.email}>noorireza200@gmail.com</h3>
-            <ul className={styles.follow} >
-              <li onClick={()=>SetOpen(true)}>
+          <div className={styles.data} >
+            <h1 className={styles.name}>
+              {user.FirstName} {user.LastName}
+            </h1>
+            <h3 className={styles.email}>{user.Email}</h3>
+            <ul className={styles.follow}>
+              <li onClick={() => SetOpen(true)}>
                 دنبال کننده{" "}
-                <span style={{ color: "orange", marginRight: "5%" }}>120</span>{" "}
+                <span style={{ color: "orange", marginRight: "5%" }}>{followers.length}</span>{" "}
               </li>
-              <li onClick={()=>SetOpen2(true)}>
+              <li onClick={() => SetOpen2(true)}>
                 دنبال شونده{" "}
-                <span style={{ color: "orange", marginRight: "5%" }}>120</span>
+                <span style={{ color: "orange", marginRight: "5%" }}>{following.length}</span>
               </li>
             </ul>
           </div>
         </div>
         <CustomBtn
-          text="ادیت پروفایل"
+        
+          text="ویرایش پروفایل"
           press={() => {
             location.href = "/editprofile";
           }}
@@ -92,6 +249,7 @@ function Head() {
             width: 200,
             height: 34,
             cursor: "pointer",
+            marginLeft: "150px",
           }}
           textStyle={{
             color: "#000000",
@@ -102,14 +260,35 @@ function Head() {
   );
 }
 
-
-
 function Menu({ menu }: { menu?: string[] }) {
   const [select, setselect] = useState<number>(0);
   const [ShowCommentdiv, setCommentdiv] = useState(false);
   const [showLikeDiv, setLikedList] = useState(false);
   const [ShowWatchedList, setWatchedlist] = useState(false);
   const [ShowWatchList, setWatchlist] = useState(false);
+  const [userWatchList, setUserWatchList] = useState([]);
+  const [userWatchedList, setUserWatchedList] = useState([]);
+  const [userLikedList, setUserLikedList] = useState([]);
+  const [comment,setCommnet] =useState([])
+
+  useEffect(() => {
+    axios.get("http://localhost:1337/api/watch-lists").then((res) => {
+      // console.log("the res data is: ", res.data.data);
+      setUserWatchList(res.data.data);
+    });
+    axios.get("http://localhost:1337/api/watched-lists").then((res) => {
+      // console.log("the res watched data is: ", res.data.data);
+      setUserWatchedList(res.data.data);
+    });
+    axios.get("http://localhost:1337/api/Liked-lists").then((res) => {
+      // console.log("the like  data is: ", res.data.data);
+      setUserLikedList(res.data.data);
+    });
+    axios.get("http://localhost:1337/api/commnets").then((res) => {
+      console.log("the comms  data is: ", res.data.data);
+      setCommnet(res.data.data);
+    });
+  }, []);
 
   const handleWatchedList = () => {
     setWatchedlist(true);
@@ -136,11 +315,15 @@ function Menu({ menu }: { menu?: string[] }) {
               key={index}
               style={{
                 padding: 5,
+                // display:"flex",
+                // flexDirection:"row-reverse",
+                
                 borderBottom: index == select ? "2px solid #FFA500" : "",
                 cursor: "pointer",
                 margin: "0 20px",
                 color: "white",
               }}
+              
               onClick={() => {
                 setselect(index);
                 if (index == 0) {
@@ -148,7 +331,6 @@ function Menu({ menu }: { menu?: string[] }) {
                   setCommentdiv(false);
                   setLikedList(false);
                   setWatchlist(false);
-
                 } else if (index == 1) {
                   handleWatchList();
                   setCommentdiv(false);
@@ -158,12 +340,10 @@ function Menu({ menu }: { menu?: string[] }) {
                   handleCommentClick();
                   setLikedList(false);
                   setWatchlist(false);
-
                 } else if (index == 2) {
                   handleLikedList();
                   setCommentdiv(false);
                   setWatchlist(false);
-
                 } else {
                   setCommentdiv(false);
                   setLikedList(false);
@@ -179,7 +359,7 @@ function Menu({ menu }: { menu?: string[] }) {
         })}
       </div>
 
-      {!ShowCommentdiv && !showLikeDiv && !ShowWatchList &&(
+      {!ShowCommentdiv && !showLikeDiv && !ShowWatchList && (
         <div
           style={{
             display: "flex",
@@ -189,7 +369,7 @@ function Menu({ menu }: { menu?: string[] }) {
             backgroundColor: "#0c1012",
           }}
         >
-          <Item image={"/image/manifest.jpg"} name={"لیست پرواز"} />
+          {/* <Item image={"/image/manifest.jpg"} name={"لیست پرواز"} />
           <Item image={"/image/good-doctor.jpeg"} name={"دکتر خوب"} />
           <Item image={"/image/sweet-home.jpeg"} name={"سوییت هوم"} />
           <Item image={"/image/harry-poter.jpg"} name={"هری پاتر"} />
@@ -205,7 +385,10 @@ function Menu({ menu }: { menu?: string[] }) {
           <Item image={"/image/swarm.jpg"} name={"ازدحام"} />
           <Item image={"/image/meydanSorkh.jpg"} name={"میدان سرخ"} />
           <Item image={"/image/lastOfUs.webp"} name={"آخرین نفر از ما"} />
-          <Item image={"/image/iron-man.jpg"} name={"مرد آهنی"} />
+          <Item image={"http://localhost:1337/uploads/ant_man_864b7d3fc6.webp"} name={"مرد آهنی"} /> */}
+          {userWatchedList.map((movie) => (
+            <Item image={movie.attributes.Image} name={movie.attributes.Name} />
+          ))}
         </div>
       )}
       {showLikeDiv && (
@@ -218,10 +401,13 @@ function Menu({ menu }: { menu?: string[] }) {
             backgroundColor: "#0c1012",
           }}
         >
-          <Item image={"/image/swarm.jpg"} name={"ازدحام"} />
+          {/* <Item image={"/image/swarm.jpg"} name={"ازدحام"} />
           <Item image={"/image/meydanSorkh.jpg"} name={"میدان سرخ"} />
           <Item image={"/image/lastOfUs.webp"} name={"آخرین نفر از ما"} />
-          <Item image={"/image/iron-man.jpg"} name={"مرد آهنی"} />
+          <Item image={"/image/iron-man.jpg"} name={"مرد آهنی"} /> */}
+          {userLikedList.map((movie) => (
+            <Item image={movie.attributes.Image} name={movie.attributes.Name} />
+          ))}
         </div>
       )}
       {ShowWatchList && (
@@ -234,12 +420,22 @@ function Menu({ menu }: { menu?: string[] }) {
             backgroundColor: "#0c1012",
           }}
         >
-          <Item
+          {/* <Item
             image={"/image/spider-man.jpg"}
             name={"مزد عنکبوتی دور از خانه"}
           />
           <Item image={"/image/meydanSorkh.jpg"} name={"میدان سرخ"} />
-          <Item image={"/image/iron-man.jpg"} name={"مرد آهنی"} />
+          <Item image={"/image/iron-man.jpg"} name={"مرد آهنی"} /> */}
+          {userWatchList.map((movie) => (
+            <Item image={movie.attributes.Image} name={movie.attributes.Name} />
+          ))}
+        </div>
+      )}
+      {ShowCommentdiv &&(
+        <div style={{color:"white"}}>
+         {comment.map((comm) => (
+            <Comment image={comm.attributes.image} name={comm.attributes.name} text={comm.attributes.text} film={comm.attributes.filmname} createdAt={comm.attributes.date} link={comm.attributes.filmlink} />
+          ))}
         </div>
       )}
     </>
@@ -249,10 +445,11 @@ function Menu({ menu }: { menu?: string[] }) {
 export default function Profile() {
   return (
     <>
-      <Navbar />
+      <Header />
       <Head />
 
-      <Menu menu={["دیدم", "میخوام ببینیم ",  "لیست علاقمندی ها","کامنت ها",]} />
+      <Menu menu={["دیدم", "میخوام ببینیم ", "لیست علاقمندی ها", "نظرات"]} />
+      <Footer/>
     </>
   );
 }

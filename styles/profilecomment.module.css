@@ -1,0 +1,51 @@
+.container{
+    display: flex;
+    justify-content: right;
+    flex-direction: column;
+    margin: auto;
+    margin-top: 50px;
+    width: 700px;
+    min-height: 150px;
+    border: 1px solid #faa500;
+    border-radius: 10px;
+    padding: 20px;
+    padding-right: 35px;
+    background-color: black;
+    margin-bottom: 40px;
+}
+.img{
+    width: 30px;
+    height: 30px;
+    border-radius:100%;
+}
+.name{
+    margin-right: 8px;
+    font-size: 20px;
+    color: orange;
+    }
+.head{
+    display: flex;
+    flex-direction: row-reverse;
+}
+.paragh{
+    display: flex;
+    flex-direction: row-reverse;
+    margin-top: 10px;
+    margin-right: 20px;
+}
+.date{
+    margin-top: 5px;
+    margin-right: 10px;
+    color: #faa500;
+}
+.link{
+    text-decoration: none;
+    color: white;
+}
+@media only screen and (max-width: 700px){
+    .container{
+        width: 100%;
+    }
+
+    
+}

@@ -1,1 +1,3 @@
-export  const URL_API='http://nitroback.pythonanywhere.com/'
+
+// export  const URL_API='http://localhost:8000/'
+export const URL_API='https://nitroback.pythonanywhere.com/'

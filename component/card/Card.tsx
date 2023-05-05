@@ -4,6 +4,8 @@ import styles from '/styles/info.module.css'
 import StarRating from '../rating/StarRating'
 import HeartFavorite from '../favorite/HeartFavorite'
 import Tick from '../seenAll/Tick'
+import Bookmark from '../bookmark/Bookmark'
+
 
 export class Card extends Component {
     state = {
@@ -17,6 +19,9 @@ export class Card extends Component {
         <div className= {styles.bullet}>
           <span className= {styles.seen}>
             <Tick/>
+          </span>
+          <span className= {styles.bookmark}>
+            <Bookmark/>
           </span>
           <span className= {styles.favorite}>
             <HeartFavorite/>
