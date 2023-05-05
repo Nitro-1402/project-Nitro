@@ -87,6 +87,23 @@ const SignUp=({set}:{set:React.Dispatch<React.SetStateAction<boolean>>})=>{
       setError(a?.content)
     }
     console.log(ref.current)
+    const signup = async () => {
+          const url = "127.0.0.1:8000/members/profile";
+          const data = {
+            "email": ref.current.email,
+            "password": ref.current.password,
+            "username": ref.current.password,
+            }
+          console.log(data);
+          const headers = {
+            'Content-Type': 'application/json',
+            'Authorization': "Bearer " + localStorage.getItem("accessToken")
+          }
+          const response = await axios.post(url, data, {
+            headers: headers
+          });
+          window.location.replace(response.data.paymentUrl);
+        }
   }
   return(<>
     <Input

@@ -2,6 +2,7 @@ import Item from '@/component/FilmItem'
 import style from '/styles/explore.module.css'
 import Navbar from '@/component/navbar/Navbar'
 import SimpleImageSlider from "react-simple-image-slider";
+import { useEffect, useState } from 'react';
 
 const images = [
     { url: '/slider-image/gotham.jpg'},
@@ -14,6 +15,31 @@ const images = [
     
   ];
 export default function Explore(){
+    const [items,setItems] = useState<any>([])
+
+    useEffect(() => {
+        const payroll = async () => {
+            const url = 'http://nitroback.pythonanywhere.com/movies/movies/';
+            const data = {
+            //   "amount": getamountdetail.amount,
+            //   "description": getamountdetail.description
+            }
+            // console.log(data);
+            const headers = {
+              'Content-Type': 'application/json',
+              'Authorization': "Bearer " + localStorage.getItem("accessToken")
+            }
+            const response = await fetch(url, {
+              headers: headers
+            });
+            var d = await response.json()
+            console.log(d.results);
+            setItems(d)
+            // window.location.replace(response.data.paymentUrl);
+          }
+          payroll()
+    },[])
+    
     return(
         <div className= {style.mainSection}>
             <Navbar/>
@@ -29,13 +55,18 @@ export default function Explore(){
                 <h2 className={style.title} style={{direction:'rtl',marginRight:30,fontSize:30}}>فیلم های جدید</h2>
                 <div className={style.container}>
                     <h4 style={{position:'absolute',left:50,top:120,color:'#FFA500',cursor:'pointer',backgroundColor:'black',padding:10,borderRadius:10}}>see all</h4>
-                    <Item image={'/image/manifest.jpg'} name={'لیست پرواز'}/>
+                    {
+                       items.results? items.results.map((i:any)=>(
+                            <Item key={i} image={i.poster} name={i.title}/>
+                        )):undefined
+                    }
+                    {/* <Item image={'/image/manifest.jpg'} name={'لیست پرواز'}/>
                     <Item image={'/image/good-doctor.jpeg'} name={'دکتر خوب'}/>
                     <Item image={'/image/sweet-home.jpeg'} name={'سوییت هوم'}/>
                     <Item image={'/image/harry-poter.jpg'} name={'هری پاتر'}/>
                     <Item image={'/image/moon-knight.jpeg'} name={'شوالیه ماه'}/>
                     <Item image={'/image/money-heist.jpg'} name={'خانه کاغذی'}/>
-                    <Item image={'/image/legacies.jpg'} name={'میراث ها'}/>
+                    <Item image={'/image/legacies.jpg'} name={'میراث ها'}/> */}
                 </div>
             </div>
 
