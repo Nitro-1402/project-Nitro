@@ -20,11 +20,11 @@ export default function Home() {
     console.log(res)
     if(res?.[0]?.status=='success'){
       console.log(res?.[0].content)
-      setmovies(res?.[0].content)
+      setmovies(res?.[0].content.results)
     }
     if(res?.[1]?.status=='success'){
       console.log(res?.[1].content)
-      setnews(res?.[1].content)
+      setnews(res?.[1].content.results)
     }
   }
   useEffect(()=>{
@@ -42,11 +42,12 @@ export default function Home() {
         <li>اپلیکیشن اختصاصی</li>
       </ul>
       <div onClick={()=>{
+        if(!user)
         axios.get(`${URL_API}movies/movies`)
       }}>
         <div>
 
-        <h3>ثبت نام </h3>
+        <h3>{user?'پروفایل':'ورود'}</h3>
         </div>
       </div>
     </div>
