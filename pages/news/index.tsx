@@ -9,7 +9,7 @@ export default function News(){
       let res=await NewsApi.getList()
       console.log(res)
       if(res?.status=='success'){
-        setnews(res?.content)
+        setnews(res?.content.results)
       }
     }
     useEffect(()=>{
