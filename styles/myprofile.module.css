@@ -1,6 +1,86 @@
 /* *{
     background-color: #b3b3b3;
 } */
+.email_input{
+  background-color: #0C1210;
+  border: none;
+  border-bottom: 1px solid #737373;
+  border-radius: 10px;
+  color: #737373;
+  padding-left: 5px;
+width: 250px;
+}
+.submitdiv{
+  display: flex;
+  flex-direction: row-reverse;
+}
+.submitform{
+  color: #faa500;
+  margin-right: 50px;
+  margin-top: 10px;
+  cursor: pointer;
+  background-color: #737373;
+  border-radius: 100%;
+  /* width: 30px; */
+  /* height: 30px; */
+  scale: 2;
+  padding: 1px;
+}
+.Input_label{
+  color: black;
+  text-align: right;
+}
+.input_div{
+  gap: 30px;
+}
+.Input_text{
+  display: inline-block;
+  font-size: 2em;
+  margin-block-start: 0.67em;
+  margin-block-end: 0.67em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  color: #faa500;
+  /* background-color: #3D3D3D; */
+  background-color: #0C1210;
+  direction: rtl;
+  outline:2px solid transparent;
+  outline-offset: 2px;
+  appearance: none;
+  contain: paint;
+  /* min-width: 80px; */
+  /* width: auto; */
+  /* max-width: fit-content; */
+  width: 200px;
+  border: none;
+  padding-right: 5px;
+  border-radius: 3px;
+  border-bottom: 1px solid white ;
+}
+.Input_text2{
+  display: inline-block;
+  font-size: 2em;
+  margin-block-start: 0.67em;
+  margin-block-end: 0.67em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  color: #faa500;
+  /* background-color: #3D3D3D; */
+  background-color: #0C1210;
+  direction: rtl;
+  outline:2px solid transparent;
+  outline-offset: 2px;
+  appearance: none;
+  contain: paint;
+  /* min-width: 80px; */
+  /* width: auto; */
+  /* max-width: fit-content; */
+  width: 200px;
+  border: none;
+  padding-right: 5px;
+  border-radius: 3px;
+  border-bottom: 1px solid white ;
+}
 
 .buttm {
   border: 0.1px solid black;

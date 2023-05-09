@@ -1,14 +1,16 @@
 import Item from "@/component/FilmItem";
 import CustomBtn from "@/ui/CustomBtn";
 import CustomImage from "@/ui/CustomImage";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import styles from "../styles/myprofile.module.css";
 import Navbar from "@/component/navbar/Navbar";
 import Followers from "@/component/follower/Followers";
 import Comment from "@/component/showCommentProfile";
 import Footer from "@/component/Footer";
 import Header from "@/component/header";
-import {MdCancel} from "react-icons/Md" 
+import { MdCancel } from "react-icons/Md";
+import { BsPersonFillCheck } from "react-icons/bs"
+import { TextField } from "@mui/material";
 // import Comment from "@/component/comments/comments";
 import {
   Dialog,
@@ -22,6 +24,8 @@ import axios from "axios";
 import Follower from "@/component/Follower/Follwers";
 import { pink } from "@mui/material/colors";
 import { get } from "http";
+import Input from "@/ui/Input";
+import AutoExpandingInput from "@/component/AutoExpandingInput";
 const UseStyles = makeStyles((theme) => ({
   dialog: {
     display: "flex",
@@ -34,11 +38,11 @@ const UseStyles = makeStyles((theme) => ({
     backgroundColor: "#faa500",
   },
   main: {
-    backdropFilter:"blur(5px)",
+    backdropFilter: "blur(5px)",
   },
   dial: {
     // backgroundColor: "#fff100",
-     backgroundColor: "#0c1012",
+    backgroundColor: "#0c1012",
   },
   bg: {
     backgroundColor: "#fff100",
@@ -53,7 +57,6 @@ const UseStyles = makeStyles((theme) => ({
   //   borderRadius: "8%",
   //   backgroundColor: "#faa500",
   // },
-  
 }));
 
 const userInfo = {
@@ -70,10 +73,15 @@ function Head() {
   const [Open2, SetOpen2] = useState(false);
   // const [users, setUsers] = useState([]);
   const [user, setUser] = useState({});
-  const[following,setFollowing]=useState([])
-  const[followers,setFollowers]=useState([])
+  const [following, setFollowing] = useState([]);
+  const [followers, setFollowers] = useState([]);
   const [userProfileImg, setUserProfileImg] = useState("");
+  const [editProfilestatus, setEditProfileStatus] = useState(false);
 
+  const submitedit = ()=>{
+    setEditProfileStatus(false)
+
+ }
   // useEffect(async () => {
   //   setIsLoading(true);
   //   axios
@@ -89,16 +97,16 @@ function Head() {
   //     // });
   // }, []);
   useEffect(() => {
-    axios.get('http://localhost:1337/api/followerss').then((res)=> {
-      setFollowers(res.data.data)
-      console.log("followers",res.data.data)})
-    axios.get('http://localhost:1337/api/followings').then((res)=> {
-      setFollowing(res.data.data)
-      console.log("followers",res.data.data)
-    })
+    axios.get("http://localhost:1337/api/followerss").then((res) => {
+      setFollowers(res.data.data);
+      console.log("followers", res.data.data);
+    });
+    axios.get("http://localhost:1337/api/followings").then((res) => {
+      setFollowing(res.data.data);
+      console.log("followers", res.data.data);
+    });
     const getUserInfo = async () => {
       try {
-        
         const response = axios.get("http://localhost:1337/api/profiles");
         const data = (await response).data.data[0].attributes;
         // console.log("the data fetched: ", data);
@@ -110,6 +118,10 @@ function Head() {
     };
     getUserInfo();
   }, []);
+
+  
+
+  
 
   // useEffect(()=>{
   //   gwtUserInfo();
@@ -144,16 +156,23 @@ function Head() {
             </DialogTitle>
             <DialogContentText className={classes.dl}>
               <DialogActions>
-                <button className={styles.buttm} onClick={() => SetOpen(false)}>
+                {/* <button className={styles.buttm} onClick={() => SetOpen(false)}>
                   {" "}
                   بستن
-                </button>
+                </button> */}
+                <MdCancel
+                  className={styles.cancelIcon}
+                  onClick={() => SetOpen2(false)}
+                />
               </DialogActions>
             </DialogContentText>
           </div>
-         {followers.map((list1)=> (
-          <Follower image={list1.attributes.Image} name={list1.attributes.Name}/>
-         ))}
+          {followers.map((list1) => (
+            <Follower
+              image={list1.attributes.Image}
+              name={list1.attributes.Name}
+            />
+          ))}
         </Dialog>
         <Dialog
           className={classes.main}
@@ -174,20 +193,26 @@ function Head() {
                   {" "}
                   بستن
                 </button> */}
-                  <MdCancel className={styles.cancelIcon} onClick={() => SetOpen2(false)}/>
+                <MdCancel
+                  className={styles.cancelIcon}
+                  onClick={() => SetOpen2(false)}
+                />
               </DialogActions>
             </DialogContentText>
           </div>
-          {following.map((list2)=> (
-          <Follower image={list2.attributes.image} name={list2.attributes.Name}/>
-         ))}
+          {following.map((list2) => (
+            <Follower
+              image={list2.attributes.image}
+              name={list2.attributes.Name}
+            />
+          ))}
         </Dialog>
       </div>
       <div className={styles.container}>
         <div
           style={{
             display: "flex",
-            flexDirection:"row-reverse",
+            flexDirection: "row-reverse",
             alignItems: "center",
             marginRight: 10,
             marginBottom: 10,
@@ -206,7 +231,7 @@ function Head() {
               borderRadius: "50%",
             }}
           /> */}
-          <img
+          {!editProfilestatus &&<img
             // className={styles.profileImg}
             style={{
               width: "12vw",
@@ -214,33 +239,77 @@ function Head() {
               minHeight: "110px",
               minWidth: "110px",
               borderRadius: "50%",
-              marginRight:'100px',
+              marginRight: "100px",
             }}
             src={user.Profilepic}
             alt="test"
-          />
-          <div className={styles.data} >
-            <h1 className={styles.name}>
-              {user.FirstName} {user.LastName}
-            </h1>
-            <h3 className={styles.email}>{user.Email}</h3>
+          />}
+          {editProfilestatus &&<img
+            // className={styles.profileImg}
+            style={{
+              width: "12vw",
+              height: "12vw",
+              minHeight: "110px",
+              minWidth: "110px",
+              borderRadius: "50%",
+              marginRight: "100px",
+            }}
+            src={user.Profilepic}
+            alt="test"
+          />}
+          <div className={styles.data}>
+            {!editProfilestatus && (
+              <h1 className={styles.name}>
+                {user.FirstName} {user.LastName}
+              </h1>
+            )}
+            
+            {!editProfilestatus && (
+              <h3 className={styles.email}>{user.Email}</h3>
+            )}
+            {editProfilestatus && (
+              // <h3 className={styles.email}>{user.Email}</h3>
+              <div className={styles.input_div}>
+                {/* <label className={styles.Input_label} >{user.FirstName}</label> */}
+                {/* <input className={styles.Input_text2} defaultValue={user.LastName} type="text" /> */}
+                {/* <label className={styles.Input_label}>{user.LastName}</label> */}
+                {/* <input className={styles.Input_text} defaultValue={user.FirstName} type="text" /> */}
+                {/* <AutoExpandingInput/>*/}
+                <AutoExpandingInput style={{marginRight:'15px'}} input={user.LastName} />
+                <AutoExpandingInput style={{}} input={user.FirstName} />
+              </div>
+            )}
+            
+            {editProfilestatus && (
+              // <h3 className={styles.email}>{user.Email}</h3>
+              <div className={styles.submitdiv}>
+              <input defaultValue={user.Email} className={styles.email_input} type="text" />
+              <BsPersonFillCheck onClick={submitedit} className={styles.submitform}/>
+              </div>
+            )}
+
+            
             <ul className={styles.follow}>
               <li onClick={() => SetOpen(true)}>
                 دنبال کننده{" "}
-                <span style={{ color: "orange", marginRight: "5%" }}>{followers.length}</span>{" "}
+                <span style={{ color: "orange", marginRight: "5%" }}>
+                  {followers.length}
+                </span>{" "}
               </li>
               <li onClick={() => SetOpen2(true)}>
                 دنبال شونده{" "}
-                <span style={{ color: "orange", marginRight: "5%" }}>{following.length}</span>
+                <span style={{ color: "orange", marginRight: "5%" }}>
+                  {following.length}
+                </span>
               </li>
             </ul>
           </div>
         </div>
-        <CustomBtn
-        
+        {!editProfilestatus && <CustomBtn
           text="ویرایش پروفایل"
           press={() => {
-            location.href = "/editprofile";
+            // location.href = "/editprofile";
+            setEditProfileStatus(true);
           }}
           style={{
             backgroundColor: "orange",
@@ -254,7 +323,7 @@ function Head() {
           textStyle={{
             color: "#000000",
           }}
-        />
+        />}
       </div>
     </div>
   );
@@ -269,7 +338,7 @@ function Menu({ menu }: { menu?: string[] }) {
   const [userWatchList, setUserWatchList] = useState([]);
   const [userWatchedList, setUserWatchedList] = useState([]);
   const [userLikedList, setUserLikedList] = useState([]);
-  const [comment,setCommnet] =useState([])
+  const [comment, setCommnet] = useState([]);
 
   useEffect(() => {
     axios.get("http://localhost:1337/api/watch-lists").then((res) => {
@@ -317,13 +386,12 @@ function Menu({ menu }: { menu?: string[] }) {
                 padding: 5,
                 // display:"flex",
                 // flexDirection:"row-reverse",
-                
+
                 borderBottom: index == select ? "2px solid #FFA500" : "",
                 cursor: "pointer",
                 margin: "0 20px",
                 color: "white",
               }}
-              
               onClick={() => {
                 setselect(index);
                 if (index == 0) {
@@ -431,10 +499,17 @@ function Menu({ menu }: { menu?: string[] }) {
           ))}
         </div>
       )}
-      {ShowCommentdiv &&(
-        <div style={{color:"white"}}>
-         {comment.map((comm) => (
-            <Comment image={comm.attributes.image} name={comm.attributes.name} text={comm.attributes.text} film={comm.attributes.filmname} createdAt={comm.attributes.date} link={comm.attributes.filmlink} />
+      {ShowCommentdiv && (
+        <div style={{ color: "white" }}>
+          {comment.map((comm) => (
+            <Comment
+              image={comm.attributes.image}
+              name={comm.attributes.name}
+              text={comm.attributes.text}
+              film={comm.attributes.filmname}
+              createdAt={comm.attributes.date}
+              link={comm.attributes.filmlink}
+            />
           ))}
         </div>
       )}
@@ -449,7 +524,7 @@ export default function Profile() {
       <Head />
 
       <Menu menu={["دیدم", "میخوام ببینیم ", "لیست علاقمندی ها", "نظرات"]} />
-      <Footer/>
+      <Footer />
     </>
   );
 }
