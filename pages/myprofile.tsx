@@ -6,11 +6,13 @@ import styles from "../styles/myprofile.module.css";
 import Navbar from "@/component/navbar/Navbar";
 import Followers from "@/component/follower/Followers";
 import Comment from "@/component/showCommentProfile";
+import PhotoCamera from "@mui/icons-material/PhotoCamera";
+import DeleteIcon from '@mui/icons-material/Delete';
 import Footer from "@/component/Footer";
 import Header from "@/component/header";
 import { MdCancel } from "react-icons/Md";
 import { BsPersonFillCheck } from "react-icons/bs"
-import { TextField } from "@mui/material";
+import { IconButton, TextField } from "@mui/material";
 // import Comment from "@/component/comments/comments";
 import {
   Dialog,
@@ -77,7 +79,79 @@ function Head() {
   const [followers, setFollowers] = useState([]);
   const [userProfileImg, setUserProfileImg] = useState("");
   const [editProfilestatus, setEditProfileStatus] = useState(false);
+  const [selectedFile, setSelectedFile] = useState(null);
 
+  const deleteFunc=()=>{
+    setPreview('../image/user.png')
+  };
+  const ImageUpload = ({image="../image/user.png"}:{image?:string}) => {
+    const [preview, setPreview] = useState();
+
+    // create a preview as a side effect, whenever selected file is changed
+    useEffect(() => {
+      if (!selectedFile) {
+        setPreview(undefined);
+        return;
+      }
+      const objectUrl = URL.createObjectURL(selectedFile);
+      setPreview(objectUrl);
+      
+      // free memory when ever this component is unmounted
+      return () => URL.revokeObjectURL(objectUrl);
+    }, [selectedFile]);
+    
+    
+    const onSelectFile = (e) => {
+      if (!e.target.files || e.target.files.length === 0) {
+        setSelectedFile(e.target.files[0]);
+        return;
+      }
+
+      // I've kept this example simple by using the first image instead of multiple
+      setSelectedFile(e.target.files[0]);
+    };
+    // const deleteFunc=()=>{
+    //   setPreview('../image/user.png')
+    // };
+    return (
+      // <div>
+      //     <input type='file' onChange={onSelectFile} />
+      // </div>
+      <div className={styles.ImgPreview}>
+        {/* <img
+          className={styles.Prew}
+          // src={preview == null ? "../image/user.png" : preview}
+          src={preview == null ? image : preview}
+        /> */}
+        <img
+            // onClick={onSelectFile}
+            // className={styles.profileImg}
+            style={{
+              width: "12vw",
+              height: "12vw",
+              minHeight: "110px",
+              minWidth: "110px",
+              borderRadius: "50%",
+              marginLeft: "30px",
+            }}
+            // src={user.Profilepic}
+            src={preview == null ? image : preview}
+            alt="test"/>
+          <div className={styles.icon}>
+        <IconButton
+          style={{ color: "white", marginRight: "10px" }}
+          color="primary"
+          aria-label="upload picture"
+          component="label"
+        >
+          <input hidden accept="image/*" type="file" onChange={onSelectFile} />
+          <PhotoCamera />
+        </IconButton>
+          <DeleteIcon className={styles.deleteicon} onClick={deleteFunc}/>
+          </div>
+      </div>
+    );
+  };
   const submitedit = ()=>{
     setEditProfileStatus(false)
 
@@ -231,20 +305,22 @@ function Head() {
               borderRadius: "50%",
             }}
           /> */}
+          {editProfilestatus &&
+          // <img
+          //   // className={styles.profileImg}
+          //   style={{
+          //     width: "12vw",
+          //     height: "12vw",
+          //     minHeight: "110px",
+          //     minWidth: "110px",
+          //     borderRadius: "50%",
+          //     marginRight: "100px",
+          //   }}
+          //   src={user.Profilepic}
+          //   alt="test"/>
+          <ImageUpload image={user.Profilepic}/>
+          }
           {!editProfilestatus &&<img
-            // className={styles.profileImg}
-            style={{
-              width: "12vw",
-              height: "12vw",
-              minHeight: "110px",
-              minWidth: "110px",
-              borderRadius: "50%",
-              marginRight: "100px",
-            }}
-            src={user.Profilepic}
-            alt="test"
-          />}
-          {editProfilestatus &&<img
             // className={styles.profileImg}
             style={{
               width: "12vw",

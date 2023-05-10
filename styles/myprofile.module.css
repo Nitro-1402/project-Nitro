@@ -10,6 +10,30 @@
   padding-left: 5px;
 width: 250px;
 }
+.deleteicon{
+  color: #0C1210;
+  margin-top: 8px;
+}
+.icon{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-left: 10px;
+
+}
+.ImgPreview{
+  margin-top: 10px;
+
+  display: flex;
+  flex-direction: column;
+}
+.Prew{
+  width: 150px;
+  height: 150px;
+  border-radius: 100%;
+  /* padding: 30px; */
+  margin-left: 70px;
+}
 .submitdiv{
   display: flex;
   flex-direction: row-reverse;
