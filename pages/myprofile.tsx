@@ -133,6 +133,7 @@ function Head() {
               minWidth: "110px",
               borderRadius: "50%",
               marginLeft: "30px",
+              border:"2px solid #faa500",
             }}
             // src={user.Profilepic}
             src={preview == null ? image : preview}
@@ -145,8 +146,8 @@ function Head() {
           component="label"
         >
           <input hidden accept="image/*" type="file" onChange={onSelectFile} />
-          <PhotoCamera />
-        </IconButton>
+          <PhotoCamera style={{color:"#faa500"}}/>
+        </IconButton >
           <DeleteIcon className={styles.deleteicon} onClick={deleteFunc}/>
           </div>
       </div>
@@ -329,6 +330,7 @@ function Head() {
               minWidth: "110px",
               borderRadius: "50%",
               marginRight: "100px",
+              border:"2px solid #faa500",
             }}
             src={user.Profilepic}
             alt="test"
