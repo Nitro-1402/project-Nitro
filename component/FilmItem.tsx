@@ -19,12 +19,13 @@ const Item: React.FC<ItemProps> = ({
   description = 'این متن تست است برای توضیحات',
   edit = false,
 }) => {
+    const truncatedDescription = description.length > 100 ? description.slice(0, 100) + '...' : description;
   return (
     <div className={styles.item}>
       <div style={{ width: '100%', height: 227, overflow: 'hidden', position: 'relative' }}>
         <CustomImage src={image?image:''} style={{ width: '100%', height: 227, overflow: 'hidden', borderRadius: '10px' }} />
         <div className={styles.effect}>
-          <h5>{description?description:''}</h5>
+          <h5>{truncatedDescription}</h5>
         </div>
       </div>
       <h4 style={{ marginLeft: 10, padding: 0, color: 'aliceblue' }}>{name}</h4>
