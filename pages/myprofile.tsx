@@ -237,7 +237,7 @@ function Head() {
                 </button> */}
                 <MdCancel
                   className={styles.cancelIcon}
-                  onClick={() => SetOpen2(false)}
+                  onClick={() => SetOpen(false)}
                 />
               </DialogActions>
             </DialogContentText>
