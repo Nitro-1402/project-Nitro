@@ -1,8 +1,9 @@
 import Item from '@/component/FilmItem'
 import style from '/styles/explore.module.css'
-import Navbar from '@/component/navbar/Navbar'
 import SimpleImageSlider from "react-simple-image-slider";
 import { useEffect, useState } from 'react';
+import Footer from '@/component/Footer';
+import Header from '@/component/header';
 
 const images = [
     { url: '/slider-image/gotham.jpg'},
@@ -42,7 +43,7 @@ export default function Explore(){
     
     return(
         <div className= {style.mainSection}>
-            <Navbar/>
+            <Header/>
             <div>
             <SimpleImageSlider style={{marginTop: '75px'}}
                 width={'100%'}
@@ -97,6 +98,7 @@ export default function Explore(){
                     <Item image={'/image/poker-face.webp'} name={'پوکر فیس'}/>
                 </div>
             </div>
+            <Footer/>
         </div>
     )
 }
