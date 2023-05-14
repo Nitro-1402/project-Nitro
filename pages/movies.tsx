@@ -44,6 +44,7 @@ export default function Explore(): JSX.Element {
   const [actors,setActors]=useState([])
   const [sortiption,setsortoption]=useState([])
   const[next,setNext]=useState('')
+  const[image2,setImage2] =useState([])
   console.log('allGenre',allGenre);
   
   useEffect(() => {
@@ -65,11 +66,11 @@ export default function Explore(): JSX.Element {
     
   }
  const getAllGanre = async() =>{
-    await axios.get('https://nitroback.pythonanywhere.com/movies/categories/')
+    await axios.get('http://nitroback.pythonanywhere.com/movies/categories/')
     .then((res)=>{
-        console.log('res',res.data.results);
+        console.log('categories',res.data);
         // set value and label for react-select inside title
-        setAllgenre(res.data.results.map((item:any)=>({value:item.title,label:item.title})))
+        setAllgenre(res.data.map((item:any)=>({value:item.title,label:item.title})))
     }
     )
     .catch((err)=>{
@@ -84,7 +85,13 @@ export default function Explore(): JSX.Element {
       const response = axios.get(`https://nitroback.pythonanywhere.com/movies/movies/?page=${currentPage}&limit=${itemsPerPage}`).then((res)=>{
         setNext(res.data.next)
       setMovie(res.data.results)
+
         console.log('res',res.data.results);
+        // res.data.results.map((item) => {
+        //   imgs.push(item.thumbnail)
+        // })
+        // setImage2(imgs)
+        // console.log('img',image2);
       });
     //   const data = await response.json();
     //   setItems(data);
@@ -132,12 +139,36 @@ export default function Explore(): JSX.Element {
        <Select 
 
           className={style.select}
+          styles={{
+            container: (baseStyles) => ({backgroundColor: 'black',...baseStyles,}),
+            control: (baseStyles, state) => ({
+              ...baseStyles,
+              borderColor: state.isFocused ? '#0c1210' : '#faa500',
+              backgroundColor: 'black',
+              color: 'white',
+            }),
+            menuList: (baseStyles) => ({...baseStyles,backgroundColor: 'black',color: '#faa500',
+            }),
+            option: (baseStyles, state) => ({":hover": {backgroundColor: '#faa500',color: 'black',},...baseStyles,backgroundColor: 'black',color: '#faa500',}),
+          }}
           placeholder="ژانر"
           value={gen}
           onChange={(e) => handleGenreChange(e)}
           options={allGenre}
        />
        <Select 
+        styles={{
+          container: (baseStyles) => ({backgroundColor: 'black',...baseStyles,}),
+          control: (baseStyles, state) => ({
+            ...baseStyles,
+            borderColor: state.isFocused ? '#0c1210' : '#faa500',
+            backgroundColor: 'black',
+            color: 'white',
+          }),
+          menuList: (baseStyles) => ({...baseStyles,backgroundColor: 'black',color: '#faa500',
+          }),
+          option: (baseStyles, state) => ({":hover": {backgroundColor: '#faa500',color: 'black',},...baseStyles,backgroundColor: 'black',color: '#faa500',}),
+        }}
 
           className={style.select2}
           placeholder="بازیگر"
@@ -146,7 +177,19 @@ export default function Explore(): JSX.Element {
           options={actors}
        />
        <Select 
-
+       styles={{
+        container: (baseStyles) => ({backgroundColor: 'black',...baseStyles,}),
+        control: (baseStyles, state) => ({
+          ...baseStyles,
+          borderColor: state.isFocused ? '#0c1210' : '#faa500',
+          backgroundColor: 'black',
+          color: 'white',
+          ":hover": {color: '#faa500',borderColor: 'white',},
+        }),
+        menuList: (baseStyles) => ({...baseStyles,backgroundColor: 'black',color: '#faa500',
+        }),
+        option: (baseStyles, state) => ({":hover": {backgroundColor: '#faa500',color: 'black',},...baseStyles,backgroundColor: 'black',color: '#faa500',}),
+      }}
           className={style.select2}
           placeholder="مرتب سازی براساس"
           value={sort}
