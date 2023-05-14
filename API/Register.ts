@@ -24,8 +24,11 @@ export class RegisterApi{
          return AsyncCatch(callback)
      }
      static GetMe(params={}){
+        let access=localStorage.getItem('accessToken')
         const callback=(config:object)=>{
-             return axios.get(`${URL_API}auth/users/me/`,{params:{...params},...config})
+             return axios.get(`${URL_API}auth/users/me/`,{params:{...params},...config,headers:{
+                "Authorization" :"JWT " + access
+            }})
          }
          return AsyncCatch(callback)
      }

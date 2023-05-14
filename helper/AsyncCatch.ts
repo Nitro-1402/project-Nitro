@@ -1,11 +1,9 @@
 export default async function AsyncCatch(callback:(e:object)=>Promise<any>){
     try{
-        let access=localStorage.getItem('accessToken')
-        let refresh=localStorage.getItem('refreshToken')
-        console.log(access,refresh)
-        const data=await callback({withCredentials: false,headers:{
-            "Authorization" :"JWT " + access
-        }})
+        // let access=localStorage.getItem('accessToken')
+        // let refresh=localStorage.getItem('refreshToken')
+        // console.log(access,refresh)
+        const data=await callback({withCredentials: false})
         if(data)
         return{status:"success", content:data.data}
         // return data

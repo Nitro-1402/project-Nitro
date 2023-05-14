@@ -57,7 +57,7 @@ export default function Home() {
         {
           movies.map((e:any)=>{
             return(
-              <Item image={e.poster} name={e.title} description={`${e.description.slice(0,70)} ...`}/>
+              <Item id={e.id} image={e.poster} name={e.title} description={`${e.description.slice(0,70)} ...`}/>
             )
           })
         }

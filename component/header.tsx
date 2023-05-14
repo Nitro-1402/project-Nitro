@@ -22,9 +22,9 @@ function Header(){
                 <Link style={{color:'white',fontSize:18,marginLeft:5,textDecoration:'none'}} href='/'>فیلم ها وسریال ها</Link>
                 <Link style={{color:'white',fontSize:18,marginLeft:5,textDecoration:'none'}} href='/'>بازیگران</Link>
             </div>
-            <div style={{display:'flex',alignItems:'center'}}>
+            <Link style={{display:'flex',alignItems:'center'}} href={'/'}>
                 <img src='/image/logo.png'/>
-            </div>
+            </Link>
             </div>
         </header>
     )

@@ -3,6 +3,7 @@ import CustomImage from '@/ui/CustomImage';
 import styles from '../styles/explore.module.css';
 import { FaPen } from 'react-icons/fa';
 import { IoCloseSharp } from 'react-icons/io5';
+import Link from 'next/link';
 
 interface ItemProps {
   image?: string;
@@ -10,6 +11,7 @@ interface ItemProps {
   number?: number;
   description?: string;
   edit?: boolean;
+  id:number
 }
 
 const Item: React.FC<ItemProps> = ({
@@ -18,24 +20,25 @@ const Item: React.FC<ItemProps> = ({
   number = 12346788,
   description = 'این متن تست است برای توضیحات',
   edit = false,
+  id
 }) => {
     const truncatedDescription = description.length > 100 ? description.slice(0, 100) + '...' : description;
   return (
-    <div className={styles.item}>
+    <Link className={styles.item} href={`/movie/${id}`} style={{textDecoration:'none'}}>
       <div style={{ width: '100%', height: 227, overflow: 'hidden', position: 'relative' }}>
         <CustomImage src={image?image:''} style={{ width: '100%', height: 227, overflow: 'hidden', borderRadius: '10px' }} />
         <div className={styles.effect}>
           <h5>{truncatedDescription}</h5>
         </div>
       </div>
-      <h4 style={{ marginLeft: 10, padding: 0, color: 'aliceblue' }}>{name}</h4>
+      <h4 style={{ marginLeft: 10, padding: 0, color: 'aliceblue' ,textDecoration:'none'}}>{name}</h4>
       {edit && (
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '40px' }}>
           <FaPen size={16} color="orange" title="ویرایش" />
           <IoCloseSharp size={22} color="red" title="حذف" />
         </div>
       )}
-    </div>
+    </Link>
   );
 };
 

@@ -7,7 +7,6 @@
     border-radius: 10px;
     direction: rtl;
     display: flex;
-    justify-content: space-between;
     position: relative;
     height: auto;
 }
