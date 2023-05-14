@@ -80,9 +80,10 @@ const SignUp=({set}:{set:React.Dispatch<React.SetStateAction<boolean>>})=>{
     else{
       let a:any=await RegisterApi.SignUp({username:ref.current.username,password:ref.current.password,email:ref.current.email})
       console.log("response",a.content)
+      if(a?.status=="success"){
       init(a.content)
-      if(a?.status=="success")
       router.push('/')
+      }
       else
       setError(a?.content)
     }

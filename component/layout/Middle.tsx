@@ -4,12 +4,12 @@ import Information from '../information/Information'
 import MiniInfo from '../miniInfo/MiniInfo'
 import Summery from '../information/Summery'
 
-const Middle = () => {
+const Middle = (props:any) => {
   return (
     <div className={styles.left}>
-        <Information/>
+        <Information {...props}/>
         <MiniInfo/>
-        <Summery/>
+        <Summery text={props.text}/>
     </div>
   )
 }

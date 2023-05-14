@@ -36,7 +36,8 @@ export default function App({ Component, pageProps }: AppProps) {
     else{
       // if(router.pathname.indexOf('/company/')>=0 || router.pathname.indexOf('/vendors/')>=0 || router.pathname.indexOf('/product/')>=0|| router.pathname.indexOf('/vendors/')>=0 || router.pathname.indexOf('/panel_makers')>=0 || router.pathname.indexOf('/contractors')>=0)
       // return ref?.current?.hide()
-      router.replace('/')
+      // router.replace('/')
+      ref?.current?.hide()
     } 
   }
   useEffect(()=>{

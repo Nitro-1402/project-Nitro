@@ -1,5 +1,5 @@
 import React, { Component ,useEffect,useState} from 'react'
-import styles from '../styles/info.module.css'
+import styles from '../../styles/info.module.css'
 import Card from '@/component/card/Card'
 import Middle from '@/component/layout/Middle'
 import Navbar from '@/component/navbar/Navbar'
@@ -14,13 +14,16 @@ import Header from '@/component/header'
 import Footer from '@/component/Footer'
 import Comment from '@/component/comments/commentComponent'
 import { MoviesApi } from '@/API/Movies'
+import { useRouter } from 'next/router'
+import CustomBtn from '@/ui/CustomBtn'
 
 
 
 function Info(){
   const[data,setdata]=useState<any>()
+  const router=useRouter()
   const api=async()=>{
-    let res=await MoviesApi.getMovie(1)
+    let res=await MoviesApi.getMovie(router.query?.id)
     console.log(res)
     if(res?.status=='success'){
       console.log(res?.content)
@@ -28,8 +31,9 @@ function Info(){
     }
   }
   useEffect(()=>{
+    if(router.query.id)
     api()
-  },[ ])
+  },[router.query.id])
   if(!data)
   return<></>
     return (
@@ -65,14 +69,21 @@ function Info(){
             <Actors/>
             <OtherFactors/>
           </div> */}
+          
           <div style={{ color:'aliceblue',display:'flex',flexWrap:'wrap',justifyContent:'center',alignItems:'center'}}>
             {/* <CommentBox/> */}
+            <div style={{width:'100%',display:'flex',justifyContent:'space-between',padding:"0 10%"}}>
+        <CustomBtn text='ثبت نظر' style={{width:120,margin:"0 20px",height:40,borderRadius:10,backgroundColor:'orange'}} textStyle={{color:'white'}} press={()=>{}}/>
+        <h3 style={{color:'white',direction:'rtl',fontSize:35}}>نظرات</h3>
+            </div>
             <Comment/>
             <Comment/>
             <Comment/>
             <Comment/>
           </div>
         </div>
+        <div style={{width:'100%',display:'flex',justifyContent:'center'}}>
+        <CustomBtn text='نظرات بیشتر' style={{width:120,margin:"20px 20px",height:40,borderRadius:10,backgroundColor:'orange'}} textStyle={{color:'white'}} press={()=>{}}/></div>
         <Footer />
       </div>
     )

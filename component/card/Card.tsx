@@ -7,16 +7,12 @@ import Tick from '../seenAll/Tick'
 import Bookmark from '../bookmark/Bookmark'
 
 
-export class Card extends Component {
-    state = {
-        poster:"/info-page-image/poker-face-poster.webp"
-    }
-  render() {
+function Card({image}:{image:string}){
     return (
       <div className= {styles.right}>
-        <CustomImage className= {styles.poster} src={this.state.poster} style={{}} alt='poster'/>
-        <StarRating/>
-        <div className= {styles.bullet}>
+        <CustomImage className= {styles.poster} src={image} style={{}} alt='poster'/>
+        {/* <StarRating/> */}
+        {/* <div className= {styles.bullet}>
           <span className= {styles.seen}>
             <Tick/>
           </span>
@@ -26,10 +22,9 @@ export class Card extends Component {
           <span className= {styles.favorite}>
             <HeartFavorite/>
           </span>
-        </div>
+        </div> */}
       </div>
     )
   }
-}
 
 export default Card

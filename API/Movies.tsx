@@ -8,4 +8,10 @@ export class MoviesApi{
         }
         return AsyncCatch(callback)
     }
+    static getMovie(id:any,params={}){
+        const callback=(config:object)=>{
+             return axios.get(`${URL_API}movies/movies/${id}`,{params:{...params},...config})
+         }
+         return AsyncCatch(callback)
+     }
 }
