@@ -73,7 +73,27 @@
     color: #0c1210;
     transition: all .1s ease-in;
 }
+.select{
+    width: 100px;
+    direction: rtl;
+    margin-left: 40px;
+    background-color: #0c1210;
+    border: 1 px solid #faa500;
 
+}
+.select2{
+    
+    width: 200px;
+    direction: rtl;
+    margin-left: 20px;
+    background-color: #0c1210;
+    border: 1 px solid #faa500;
+
+}
+.filter{
+    display: flex;
+    flex-direction: row;
+}
 
 .preview:disabled{
     background-color: #0c1210;
