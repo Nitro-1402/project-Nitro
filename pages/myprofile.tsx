@@ -7,12 +7,13 @@ import Navbar from "@/component/navbar/Navbar";
 import Followers from "@/component/follower/Followers";
 import Comment from "@/component/showCommentProfile";
 import PhotoCamera from "@mui/icons-material/PhotoCamera";
-import DeleteIcon from '@mui/icons-material/Delete';
+import DeleteIcon from "@mui/icons-material/Delete";
 import Footer from "@/component/Footer";
 import Header from "@/component/header";
 import { MdCancel } from "react-icons/Md";
-import { BsPersonFillCheck } from "react-icons/bs"
+import { BsPersonFillCheck } from "react-icons/bs";
 import { IconButton, TextField } from "@mui/material";
+import {MovieList } from "@/component/MovieList";
 // import Comment from "@/component/comments/comments";
 import {
   Dialog,
@@ -62,9 +63,9 @@ const UseStyles = makeStyles((theme) => ({
 }));
 
 const userInfo = {
-  FirstName: "",
+  first_name: "",
   LasdName: "",
-  Profilepic: "",
+  photo: "",
   Email: "",
 };
 
@@ -80,11 +81,12 @@ function Head() {
   const [userProfileImg, setUserProfileImg] = useState("");
   const [editProfilestatus, setEditProfileStatus] = useState(false);
   const [selectedFile, setSelectedFile] = useState(null);
+  const[useremail,setUserEmail]=useState("");
 
-  const deleteFunc=()=>{
-    setPreview('../image/user.png')
+  const deleteFunc = () => {
+    setPreview("../image/user.png");
   };
-  const ImageUpload = ({image="../image/user.png"}:{image?:string}) => {
+  const ImageUpload = ({ image = "../image/user.png" }: { image?: string }) => {
     const [preview, setPreview] = useState();
 
     // create a preview as a side effect, whenever selected file is changed
@@ -95,12 +97,11 @@ function Head() {
       }
       const objectUrl = URL.createObjectURL(selectedFile);
       setPreview(objectUrl);
-      
+
       // free memory when ever this component is unmounted
       return () => URL.revokeObjectURL(objectUrl);
     }, [selectedFile]);
-    
-    
+
     const onSelectFile = (e) => {
       if (!e.target.files || e.target.files.length === 0) {
         setSelectedFile(e.target.files[0]);
@@ -124,39 +125,74 @@ function Head() {
           src={preview == null ? image : preview}
         /> */}
         <img
-            // onClick={onSelectFile}
-            // className={styles.profileImg}
-            style={{
-              width: "12vw",
-              height: "12vw",
-              minHeight: "110px",
-              minWidth: "110px",
-              borderRadius: "50%",
-              marginLeft: "30px",
-              border:"2px solid #faa500",
-            }}
-            // src={user.Profilepic}
-            src={preview == null ? image : preview}
-            alt="test"/>
-          <div className={styles.icon}>
-        <IconButton
-          style={{ color: "white", marginRight: "10px" }}
-          color="primary"
-          aria-label="upload picture"
-          component="label"
-        >
-          <input hidden accept="image/*" type="file" onChange={onSelectFile} />
-          <PhotoCamera style={{color:"#faa500"}}/>
-        </IconButton >
-          <DeleteIcon className={styles.deleteicon} onClick={deleteFunc}/>
-          </div>
+          // onClick={onSelectFile}
+          // className={styles.profileImg}
+          style={{
+            width: "12vw",
+            height: "12vw",
+            minHeight: "110px",
+            minWidth: "110px",
+            borderRadius: "50%",
+            marginLeft: "30px",
+            border: "2px solid #faa500",
+          }}
+          // src={user.photo}
+          src={preview == null ? image : preview}
+          alt="test"
+        />
+        <div className={styles.icon}>
+          <IconButton
+            style={{ color: "white", marginRight: "10px" }}
+            color="primary"
+            aria-label="upload picture"
+            component="label"
+          >
+            <input
+              hidden
+              accept="image/*"
+              type="file"
+              onChange={onSelectFile}
+            />
+            <PhotoCamera style={{ color: "#faa500" }} />
+          </IconButton>
+          <DeleteIcon className={styles.deleteicon} onClick={deleteFunc} />
+        </div>
       </div>
     );
   };
-  const submitedit = ()=>{
-    setEditProfileStatus(false)
-
- }
+  const submitedit = () => {
+    const formData = new FormData();
+    if (selectedFile) {
+      formData.append("photo", selectedFile);
+      formData.append("first_name", user.first_name);
+      formData.append("last_name", user.last_name);
+      formData.append("email", user.email);
+      const config = {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      };
+      axios
+        .patch("http://nitroback.pythonanywhere.com/members/profiles/1/", formData, config)
+        .then((res) => {
+          // console.log("the image data: ", res.data);
+        })
+        .catch((err) => console.log(err));  
+    }
+    // const sendingData = {
+    //   first_name: user.first_name,
+    //   last_name: user.last_name,
+    //   email: user.email,
+    // };
+    // axios
+    //   .patch("http://nitroback.pythonanywhere.com/members/profiles/1/", sendingData)
+    //   .then((res) => {
+    //     console.log("the resulting data: ", res.data);
+    //   })
+    //   .catch((err) => console.log(err));
+      
+    setEditProfileStatus(false);
+  };
   // useEffect(async () => {
   //   setIsLoading(true);
   //   axios
@@ -172,31 +208,39 @@ function Head() {
   //     // });
   // }, []);
   useEffect(() => {
-    axios.get("http://localhost:1337/api/followerss").then((res) => {
-      setFollowers(res.data.data);
-      console.log("followers", res.data.data);
+    axios.get("http://nitroback.pythonanywhere.com/members/followers/1/").then((res) => {
+      setFollowers(res.data.followers);
+      // console.log("followers", res.data.followers);
     });
-    axios.get("http://localhost:1337/api/followings").then((res) => {
-      setFollowing(res.data.data);
-      console.log("followers", res.data.data);
+    axios.get("https://nitroback.pythonanywhere.com/members/followings/1/").then((res) => {
+      setFollowing(res.data.followings);
+      // console.log("followings", res.data.followings);
     });
     const getUserInfo = async () => {
+      // try {
+      //   const response = axios.get("https://nitroback.pythonanywhere.com/members/profiles/1/");
+      //   // const data = (await response).data.data[0].attributes;
+      //   console.log("the data fetched: ", response);
+      //   // setUser(data);
+      //   // setUserProfileImg(data.photo);
+      // } catch (error) {
+      //   console.log(error);
+      // }
       try {
-        const response = axios.get("http://localhost:1337/api/profiles");
-        const data = (await response).data.data[0].attributes;
-        // console.log("the data fetched: ", data);
-        setUser(data);
-        setUserProfileImg(data.Profilepic);
+        await axios.get("https://nitroback.pythonanywhere.com/members/profiles/1/")
+        .then(res => {
+          // console.log("the data is: ", res.data);
+          setUser(res.data)
+          setUserProfileImg(res.data.photo)
+          setUserEmail(res.data.user)
+          // console.log("email",res.data.user);
+        })
       } catch (error) {
         console.log(error);
       }
     };
     getUserInfo();
   }, []);
-
-  
-
-  
 
   // useEffect(()=>{
   //   gwtUserInfo();
@@ -244,10 +288,10 @@ function Head() {
           </div>
           {followers.map((list1) => (
             <Follower
-              image={list1.attributes.Image}
-              name={list1.attributes.Name}
+              image={list1.photo}
+              name={list1.username}
             />
-          ))}
+          ))} 
         </Dialog>
         <Dialog
           className={classes.main}
@@ -277,10 +321,10 @@ function Head() {
           </div>
           {following.map((list2) => (
             <Follower
-              image={list2.attributes.image}
-              name={list2.attributes.Name}
+              image={list2.photo}
+              name={list2.username}
             />
-          ))}
+           ))}
         </Dialog>
       </div>
       <div className={styles.container}>
@@ -293,88 +337,72 @@ function Head() {
             marginBottom: 10,
           }}
         >
-          {/* {console.log("the profile pic", user.Profilepic)}
-          <CustomImage
-            // src={"/image/test.jpeg" ? "/image/test.jpeg" : ""}
-            // src={user.Profilepic ? user.Profilepic : ""}
-            src={userProfileImg}
-            style={{
-              width: "12vw",
-              height: "12vw",
-              minHeight: "110px",
-              minWidth: "110px",
-              borderRadius: "50%",
-            }}
-          /> */}
-          {editProfilestatus &&
-          // <img
-          //   // className={styles.profileImg}
-          //   style={{
-          //     width: "12vw",
-          //     height: "12vw",
-          //     minHeight: "110px",
-          //     minWidth: "110px",
-          //     borderRadius: "50%",
-          //     marginRight: "100px",
-          //   }}
-          //   src={user.Profilepic}
-          //   alt="test"/>
-          <ImageUpload image={user.Profilepic}/>
-          }
-          {!editProfilestatus &&<img
-            // className={styles.profileImg}
-            style={{
-              width: "12vw",
-              height: "12vw",
-              minHeight: "110px",
-              minWidth: "110px",
-              borderRadius: "50%",
-              marginRight: "100px",
-              border:"2px solid #faa500",
-            }}
-            src={user.Profilepic}
-            alt="test"
-          />}
+          {editProfilestatus && <ImageUpload image={user.photo} />}
+          {!editProfilestatus && (
+            <img
+              // className={styles.profileImg}
+              style={{
+                width: "12vw",
+                height: "12vw",
+                minHeight: "110px",
+                minWidth: "110px",
+                borderRadius: "50%",
+                marginRight: "100px",
+                border: "2px solid pink",
+              }}
+              src={user.photo}
+              alt="test"
+            />
+          )}
           <div className={styles.data}>
             {!editProfilestatus && (
               <h1 className={styles.name}>
-                {user.FirstName} {user.LastName}
+                {user.first_name} {user.last_name}
               </h1>
             )}
-            
+
             {!editProfilestatus && (
-              <h3 className={styles.email}>{user.Email}</h3>
+              <h3 className={styles.email}>{useremail.email}</h3>
             )}
             {editProfilestatus && (
               // <h3 className={styles.email}>{user.Email}</h3>
               <div className={styles.input_div}>
-                {/* <label className={styles.Input_label} >{user.FirstName}</label> */}
-                {/* <input className={styles.Input_text2} defaultValue={user.LastName} type="text" /> */}
-                {/* <label className={styles.Input_label}>{user.LastName}</label> */}
-                {/* <input className={styles.Input_text} defaultValue={user.FirstName} type="text" /> */}
+                {/* <label className={styles.Input_label} >{user.first_name}</label> */}
+                {/* <input className={styles.Input_text2} defaultValue={user.last_name} type="text" /> */}
+                {/* <label className={styles.Input_label}>{user.last_name}</label> */}
+                {/* <input className={styles.Input_text} defaultValue={user.first_name} type="text" /> */}
                 {/* <AutoExpandingInput/>*/}
-                <AutoExpandingInput style={{marginRight:'15px'}} input={user.LastName} />
-                <AutoExpandingInput style={{}} input={user.FirstName} />
-              </div>
-            )}
-            
-            {editProfilestatus && (
-              // <h3 className={styles.email}>{user.Email}</h3>
-              <div className={styles.submitdiv}>
-              <input defaultValue={user.Email} className={styles.email_input} type="text" />
-              <BsPersonFillCheck onClick={submitedit} className={styles.submitform}/>
+                <AutoExpandingInput
+                  style={{ marginRight: "15px" }}
+                  input={user.last_name}
+                />
+                <AutoExpandingInput style={{}} input={user.first_name} />
               </div>
             )}
 
-            
+            {editProfilestatus && (
+              // <h3 className={styles.email}>{user.Email}</h3>
+              <div className={styles.submitdiv}>
+                <input
+                  defaultValue={useremail.email}
+                  className={styles.email_input}
+                  type="text"
+                />
+                <BsPersonFillCheck
+                  onClick={submitedit}
+                  className={styles.submitform}
+                />
+              </div>
+            )}
+
             <ul className={styles.follow}>
-              <li onClick={() => SetOpen(true)}>
+              <li style={{width:"120px"}} onClick={() => SetOpen(true)}>
                 دنبال کننده{" "}
                 <span style={{ color: "orange", marginRight: "5%" }}>
                   {followers.length}
                 </span>{" "}
               </li>
-              <li onClick={() => SetOpen2(true)}>
+              <li style={{width:"120px"}} onClick={() => SetOpen2(true)}>
                 دنبال شونده{" "}
                 <span style={{ color: "orange", marginRight: "5%" }}>
                   {following.length}
@@ -383,25 +411,27 @@ function Head() {
             </ul>
           </div>
         </div>
-        {!editProfilestatus && <CustomBtn
-          text="ویرایش پروفایل"
-          press={() => {
-            // location.href = "/editprofile";
-            setEditProfileStatus(true);
-          }}
-          style={{
-            backgroundColor: "orange",
-            border: "2px solid #FFA500",
-            borderRadius: "5px",
-            width: 200,
-            height: 34,
-            cursor: "pointer",
-            marginLeft: "150px",
-          }}
-          textStyle={{
-            color: "#000000",
-          }}
-        />}
+        {!editProfilestatus && (
+          <CustomBtn
+            text="ویرایش پروفایل"
+            press={() => {
+              // location.href = "/editprofile";
+              setEditProfileStatus(true);
+            }}
+            style={{
+              backgroundColor: "orange",
+              border: "2px solid #FFA500",
+              borderRadius: "5px",
+              width: 200,
+              height: 34,
+              cursor: "pointer",
+              marginLeft: "150px",
+            }}
+            textStyle={{
+              color: "#000000",
+            }}
+          />
+        )}
       </div>
     </div>
   );
@@ -417,15 +447,33 @@ function Menu({ menu }: { menu?: string[] }) {
   const [userWatchedList, setUserWatchedList] = useState([]);
   const [userLikedList, setUserLikedList] = useState([]);
   const [comment, setCommnet] = useState([]);
+  const[movies,setMovies]=useState([]);
+  const [filteredwatchedMovies,setFilteredwatchedMovies]=useState([]);
+  const [idWatched,setIdWatched]=useState([]);
+  const [idWatch,setIdWatch]=useState([]);
+  const [idLiked,setidLiked]=useState([]);
 
   useEffect(() => {
-    axios.get("http://localhost:1337/api/watch-lists").then((res) => {
+    axios.get("https://nitroback.pythonanywhere.com/movies/movies/").then((res) => {
+      console.log("movies ", res.data.results);
+      setMovies((res.data.results))
+  });
+    axios.get("https://nitroback.pythonanywhere.com/lists/bookmarks/1/").then((res) => {
       // console.log("the res data is: ", res.data.data);
-      setUserWatchList(res.data.data);
+      setUserWatchList(res.data.bookmarks);
+      console.log("watch",res.data.bookmarks);
+      const Hi=res.data.bookmarks.map((item:any)=>item[0]);
+      setIdWatch(Hi);
     });
-    axios.get("http://localhost:1337/api/watched-lists").then((res) => {
+    axios.get("https://nitroback.pythonanywhere.com/lists/watchedList/1/").then((res) => {
       // console.log("the res watched data is: ", res.data.data);
-      setUserWatchedList(res.data.data);
+      console.log("watched",res.data.watched_list);
+      setUserWatchedList(res.data.watched_list);
+      const Hi=res.data.watched_list.map((item:any)=>item[0]);
+      setIdWatched(Hi);
+      console.log("idWatched",idWatched);
+      console.log("hi",Hi);
+      
     });
     axios.get("http://localhost:1337/api/Liked-lists").then((res) => {
       // console.log("the like  data is: ", res.data.data);
@@ -437,6 +485,8 @@ function Menu({ menu }: { menu?: string[] }) {
     });
   }, []);
 
+  
+  
   const handleWatchedList = () => {
     setWatchedlist(true);
   };
@@ -532,10 +582,25 @@ function Menu({ menu }: { menu?: string[] }) {
           <Item image={"/image/meydanSorkh.jpg"} name={"میدان سرخ"} />
           <Item image={"/image/lastOfUs.webp"} name={"آخرین نفر از ما"} />
           <Item image={"http://localhost:1337/uploads/ant_man_864b7d3fc6.webp"} name={"مرد آهنی"} /> */}
-          {userWatchedList.map((movie) => (
-            <Item image={movie.attributes.Image} name={movie.attributes.Name} />
-          ))}
+
+          
+          {/* {movies.filter((item)=>
+            userWatchListed.includes(item.id)
+            
+            
+          ).map((item) => (
+            <Item image={item.thumbnail} name={item.title} />
+            // console.log("item",item)
+          ))} */}
+          {movies.map((movie)=>{
+            if (idWatched.includes(movie.id)) {
+              // console.log("mmd",movie);
+              return <Item image={movie.thumbnail} name={movie.title} />
+              
+            }
+          })}
         </div>
+        
       )}
       {showLikeDiv && (
         <div
@@ -566,16 +631,24 @@ function Menu({ menu }: { menu?: string[] }) {
             backgroundColor: "#0c1012",
           }}
         >
+          {movies.map((movie)=>{
+            if (idWatch.includes(movie.id)) {
+              // console.log("mmd",movie);
+              return <Item image={movie.thumbnail} name={movie.title} />
+              
+            }
+          })}
           {/* <Item
             image={"/image/spider-man.jpg"}
             name={"مزد عنکبوتی دور از خانه"}
           />
           <Item image={"/image/meydanSorkh.jpg"} name={"میدان سرخ"} />
           <Item image={"/image/iron-man.jpg"} name={"مرد آهنی"} /> */}
-          {userWatchList.map((movie) => (
+          {/* {userWatchList.map((movie) => (
             <Item image={movie.attributes.Image} name={movie.attributes.Name} />
-          ))}
+          ))} */}
         </div>
+        
       )}
       {ShowCommentdiv && (
         <div style={{ color: "white" }}>

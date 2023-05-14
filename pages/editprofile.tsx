@@ -297,7 +297,7 @@ const EditProfile = () => {
           FirstName: ref.current.firstname,
           LastName: ref.current.lastname,
           Email: ref.current.email,
-          Profilepic: "http://localhost:1337/uploads/Jett_2_f491883b25.jpg",
+          photo: "http://localhost:1337/uploads/Jett_2_f491883b25.jpg",
           createdAt: "2023-04-28T14:42:31.958Z",
           updatedAt: "2023-04-28T20:20:51.555Z",
           publishedAt: "2023-04-28T14:42:48.923Z",
