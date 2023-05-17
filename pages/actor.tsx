@@ -3,6 +3,8 @@ import ActorInfo from '@/component/actorInfoPage/ActorInfo'
 import ActorMovie from '@/component/actorInfoPage/ActorMovie'
 import style from '../styles/explore.module.css'
 import Navbar from '@/component/navbar/Navbar'
+import Footer from '@/component/Footer';
+
 
 const actor = () => {
   return (
@@ -24,6 +26,7 @@ const actor = () => {
             <ActorMovie image={'/image/legacies.jpg'} name={'میراث ها'}/>
           </div>
         </div>
+        <Footer/>
       </div>
     </div>
   )
