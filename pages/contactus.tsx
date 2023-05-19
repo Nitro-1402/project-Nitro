@@ -17,7 +17,7 @@ export default function contactUs(){
 
 
         <div className={styles.dokme}>
-            <button  className={styles.btnrahnoma} type='submit'>راهنمای آنلاین ببینیم</button>
+            <button  className={styles.btnrahnoma} type='submit'><a className={styles.aabout} href='about'>راهنمای آنلاین ببینیم</a></button>
         </div>
         <br></br>
         <div className={styles.callus}>
