@@ -19,8 +19,8 @@ function Header(){
             <div style={{display:'flex',alignItems:'center'}} >
             <div style={{width:400,justifyContent:'space-between',marginRight:80}} className={styles.navbar}>
                 <Link style={{color:'white',fontSize:18,marginLeft:5,textDecoration:'none'}} href="/news">اخبار فیلم و سریال ها</Link>
-                <Link style={{color:'white',fontSize:18,marginLeft:5,textDecoration:'none'}} href='/'>فیلم ها وسریال ها</Link>
-                <Link style={{color:'white',fontSize:18,marginLeft:5,textDecoration:'none'}} href='/'>بازیگران</Link>
+                <Link style={{color:'white',fontSize:18,marginLeft:5,textDecoration:'none'}} href='/movies'>فیلم ها وسریال ها</Link>
+                <Link style={{color:'white',fontSize:18,marginLeft:5,textDecoration:'none'}} href='/actor'>بازیگران</Link>
             </div>
             <Link style={{display:'flex',alignItems:'center'}} href={'/'}>
                 <img src='/image/logo.png'/>

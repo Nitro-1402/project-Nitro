@@ -1,3 +1,4 @@
+
 .card{
     width:620px;
     min-height: 230px;
@@ -9,6 +10,8 @@
     display: flex;
     position: relative;
     height: auto;
+    border-style: solid;
+    border-color: #faa500;
 }
 .container{
     display: flex;
@@ -21,4 +24,52 @@
         width: 310px;
         padding-bottom: 50px;
     }
+}
+
+
+.preview{
+    padding: 3px 10px;
+    border-radius: 5px;
+    background-color: #0c1210;
+    color: #faa500;
+    cursor: pointer;
+    border: 1px solid #faa500;
+    margin-right: 10px ;
+    /* width: 120px; */
+    /* height: 30px; */
+}
+.preview:hover{
+    background-color: #faa500;
+    color: #0c1210;
+    transition: all .1s ease-in;
+}
+.preview:disabled{
+    background-color: #0c1210;
+    color: #faa500;
+    border: 1px solid #faa500;
+    cursor: not-allowed;
+}
+
+
+.next{
+    padding: 3px 10px;
+    border-radius: 5px;
+    background-color: #0c1210;
+    color: #faa500;
+    cursor: pointer;
+    border: 1px solid #faa500;
+    /* width: 120px; */
+    /* height: 30px; */
+}
+.next:hover{
+    background-color: #faa500;
+    color: #0c1210;
+    transition: all .1s ease-in;
+}
+
+.next:disabled{
+    background-color: #0c1210;
+    color: #faa500;
+    border: 1px solid #faa500;
+    cursor: not-allowed;
 }
