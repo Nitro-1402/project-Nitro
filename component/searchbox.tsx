@@ -53,3 +53,6 @@ const SearchBox: React.FC<SearchBoxProps> = ({ placeholder, onSearch,setmovies }
 };
 
 export default SearchBox;
+
+
+

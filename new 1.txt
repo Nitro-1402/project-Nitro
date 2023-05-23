@@ -1,8 +1,10 @@
 Nitro team : 
-Mahshad shakori
+Mahshad shakori 
 Ali kontratchi
 Ali attarian
 Reza nori
 Mohammad Rezapour
 Aref Alijannezad
+
+mentors: hamed and erfan
 
