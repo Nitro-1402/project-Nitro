@@ -103,7 +103,7 @@ export default function NewsContent() {
               <p>
                 زمان تقریبی مطالعه : دو دقیقه <TfiAlarmClock />{" "}
               </p>
-              <p> Date / time</p>
+              <p className={styles.datetime}>{news.publish_date}</p>
             </div>
             <p className={styles.description}>
                 {news.description}

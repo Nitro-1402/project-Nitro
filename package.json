@@ -11,6 +11,7 @@
   "dependencies": {
     "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",
+    "@fortawesome/fontawesome-free": "^6.4.0",
     "@material-ui/styles": "^4.11.5",
     "@mui/icons-material": "^5.11.16",
     "@mui/material": "^5.11.16",
@@ -23,6 +24,7 @@
     "class-validator": "^0.14.0",
     "eslint": "8.36.0",
     "eslint-config-next": "13.2.4",
+    "jalali-moment": "^3.3.11",
     "next": "13.2.4",
     "react": "18.2.0",
     "react-dom": "18.2.0",

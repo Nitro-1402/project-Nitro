@@ -1,0 +1,22 @@
+.inpsrch{
+    width: 350px;
+    border: 1px solid orange;
+    border-radius: 5px;
+    height: 35px;
+    background-color: black;
+    color: white;
+    position: relative;
+    top: 5px;
+}
+.searchbtn{
+    width: 80px;
+    border: 1px solid orange;
+    border-radius: 5px;
+    height: 35px;
+    position: relative;
+    top: 5px;
+    left: 5px;
+    background-color: black;
+    color: rgb(233, 224, 224);
+    
+}

@@ -41,6 +41,8 @@
     border: 1px solid orange;
     border-radius: 10px;
     color: aliceblue;
+    direction: rtl;
+    text-align: center;
 }
 .LandS{
     width: 15%;
