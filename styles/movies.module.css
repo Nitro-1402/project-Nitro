@@ -123,6 +123,14 @@
     cursor: not-allowed;
 }
 
+.searchbox{
+    float: right;
+    text-align: right;
+    position: relative;
+    left: 630px;
+    
+
+}
 @media only  screen and (max-width:1000px) {
     .container{
         overflow-x:auto;

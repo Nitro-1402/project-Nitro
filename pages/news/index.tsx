@@ -83,7 +83,7 @@ export default function News(){
         {
           news.map((e:any)=>{
             return(
-              <NewsCard key={e?.id} id={e?.id}  title={e.title} description={e.description} image={e.photo}/>
+              <NewsCard key={e?.id} id={e?.id}  title={e.title} description={e.description} image={e.photo} publish_date={e.publish_date} />
             )
           })
         }
@@ -96,8 +96,10 @@ export default function News(){
           </button>
           <button className={style.next} onClick={() => handlePageChange(currentPage + 1)} disabled={next==null}>
             بعدی
-          </button>
+          </button><br />
         </div>
+        <p>s</p>
+
         </>
     )
 }
