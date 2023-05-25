@@ -3,10 +3,10 @@ import style from '/styles/searchbox.module.css';
 import '@fortawesome/fontawesome-free/css/all.css';
 interface SearchBoxProps {
   placeholder: string;
-  onSearch: (searchTerm: string, searchResults: any[]) => void;
+  onSearch: (searchTerm: string) => void;
 }
 
-const SearchBox: React.FC<SearchBoxProps> = ({ placeholder, onSearch,setmovies }) => {
+const SearchBox: React.FC<SearchBoxProps> = ({ placeholder, onSearch }) => {
   const [searchTerm, setSearchTerm] = useState('');
   const [searchResults, setSearchResults] = useState([]);
 
@@ -14,22 +14,22 @@ const SearchBox: React.FC<SearchBoxProps> = ({ placeholder, onSearch,setmovies }
     setSearchTerm(event.target.value);
   };  
 
-  const handleSearchClick = () => {
-    fetch(`https://nitroback.pythonanywhere.com/movies/movies/?search=${searchTerm}`)
-      .then(response => response.json())
-      .then(data => {
-        console.log(data.results)
-        setmovies(data.results)
+  // const handleSearchClick = () => {
+  //   fetch(`https://nitroback.pythonanywhere.com/movies/movies/?search=${searchTerm}`)
+  //     .then(response => response.json())
+  //     .then(data => {
+  //       console.log(data.results)
+  //       setmovies(data.results)
         
-        setSearchResults(data.results);
-        onSearch(searchTerm, data.results);
-      })
-      .catch(error => console.error(error));
-  };
+  //       setSearchResults(data.results);
+  //       onSearch(searchTerm, data.results);
+  //     })
+  //     .catch(error => console.error(error));
+  // };
 
   const handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
     if (event.key === 'Enter') {
-      handleSearchClick();
+      onSearch(searchTerm);
     }
   };
 
@@ -42,7 +42,7 @@ const SearchBox: React.FC<SearchBoxProps> = ({ placeholder, onSearch,setmovies }
         value={searchTerm}
         onChange={handleInputChange}
         onKeyPress={handleKeyPress} />
-      <button className={style.searchbtn} onClick={handleSearchClick}  dir='rtl'>جست و جو</button>
+      <button className={style.searchbtn} onClick={()=>onSearch(searchTerm)}  dir='rtl'>جست و جو</button>
       {/* <ul>
         {searchResults.map((result: any) => (
           <li className={style.lires} key={result.id}>{result.name}</li>

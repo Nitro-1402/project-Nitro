@@ -10,17 +10,16 @@ import Select from "react-select";
 import SearchBox from "@/component/searchbox";
 import MyComponent from "@/component/MyComponent";
 
-
 interface ItemData {
   image: string;
   name: string;
 }
 
 const options = [
-  { id: 1, value: "جدید ترین", label: "جدید ترین" },
-  { id: 2, value: "قدیمی ترین", label: "قدیمی ترین" },
-  { id: 3, value: "پرامتیازترین", label: "پرامتیازترین" },
-  { id: 4, value: "کمترین امتیاز", label: "کمترین امتیاز" },
+  {  value: "publish_date", label: "جدید ترین" },
+  { value: "-publish_date", label: "قدیمی ترین" },
+  {  value: "rating", label: "پرامتیازترین" },
+  { value: "-rating", label: "کمترین امتیاز" },
 ];
 
 const images = [
@@ -34,10 +33,6 @@ const images = [
 ];
 
 const itemsPerPage = 5;
-
-
-
-
 
 export default function Explore(): JSX.Element {
   // const [sort,SetSort] = useState(['جدید ترین','قدیمی ترین','پرامتیازترین','کمترین امتیاز'])
@@ -84,7 +79,7 @@ export default function Explore(): JSX.Element {
         // set value and label for react-select inside title
         setAllgenre(
           res.data.map((item: any) => ({
-            value: item.title,
+            value: item.id,
             label: item.title,
           }))
         );
@@ -104,7 +99,6 @@ export default function Explore(): JSX.Element {
           setNext(res.data.next);
           setMovie(res.data.results);
 
-          console.log("res", res.data.results);
           // res.data.results.map((item) => {
           //   imgs.push(item.thumbnail)
           // })
@@ -123,12 +117,14 @@ export default function Explore(): JSX.Element {
   };
   const handleGenreChange = (e) => {
     setGen(e);
+    handleSearchClick(searchTerm,e)
   };
   const handleActorChange = (e) => {
     setAct(e);
   };
   const handlesort = (e) => {
-    setSort(e);
+    setSort(e);    
+    handleSearchClick(searchTerm,gen,e)
   };
 
   const renderItems = (): JSX.Element[] => {
@@ -137,11 +133,27 @@ export default function Explore(): JSX.Element {
         key={index}
         image={item.thumbnail}
         name={item.title}
-        
         description={item.description}
       />
     ));
   };
+  const [searchTerm, setSearchTerm] = useState('');
+
+
+
+  const handleSearchClick = (text:string=searchTerm,_gen:any = gen,_sort :any = sort) => {
+    fetch(`https://nitroback.pythonanywhere.com/movies/movies/?search=${text}${_sort?`&ordering=${_sort.value}`:""}${_gen?`&category_set=${_gen.value}`:""}`)
+      .then(response => response.json())
+      .then(data => {
+        setMovie(data.results)
+      })
+      .catch(error => console.error(error));
+  };
+  const onSearch = (text:string)=>{
+    setSearchTerm(text)
+    handleSearchClick(text,gen)
+  }
+
 
   return (
     <div className={style.mainSection}>
@@ -220,8 +232,8 @@ export default function Explore(): JSX.Element {
             onChange={(e) => handlesort(e)}
             options={options}
           />
-          <div className ={style.searchbox}>
-          <SearchBox setmovies={setMovie} />
+          <div className={style.searchbox}>
+            <SearchBox onSearch={onSearch} />
           </div>
         </div>
         <div className={style.container}>{renderItems()}</div>
