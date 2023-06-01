@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "@/styles/PostCard.module.css";
 import { MdOutlineFavoriteBorder } from "react-icons/md";
-import {Link} from '@mui/material'
+import { Link } from '@mui/material';
 
 interface User {
   first_name: string;
@@ -9,13 +9,13 @@ interface User {
   username: string;
   photo: string;
 }
+
 interface ItemProps {
   user?: User;
   postImg?: string;
   isPremium?: boolean;
   postContent?: string;
   postLikes?: number;
-  
 }
 
 const PostCard: React.FC<ItemProps> = ({
@@ -61,8 +61,10 @@ const PostCard: React.FC<ItemProps> = ({
         <img src={postImg} alt="" />
       </div>
       <div className={styles.postDetails}>
-        <button style={{border:"2px solid #faa500",backgroundColor:"#24282A",color:"#fff"}}>
-          <MdOutlineFavoriteBorder style={{color:"#faa500",marginLeft:"20px",marginTop:"2px"}} />
+        <button >
+          <MdOutlineFavoriteBorder
+          //  style={{color:"#faa500",marginLeft:"20px",marginTop:"2px"}}
+           />
           {postLikes}
         </button>
       </div>

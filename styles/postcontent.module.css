@@ -43,6 +43,14 @@
     display: flex;
     align-items: center;
 }
+.postedUserUsername a {
+    text-decoration: none;
+    color: #faa500;
+}
+.postedUserUsername a:hover {
+    text-decoration: none;
+    color: white;
+}
 .postedUserUsername span {
     font-size: 18px;
     font-weight: 700px;
@@ -83,7 +91,21 @@
 .postDetails button {
     width: 80px;
     height: 30px;
-    border:2px solid #faa500;
+    border:1px solid #faa500;
     background-color: #24282A;
     color: #faa500;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-evenly;
+    padding-top: 5px;    
+}
+.postDetails button:hover {
+    background-color: #faa500;
+    color: #24282A;
+    transition: 0.5s;
+    cursor: pointer;
+
+}
+.postDetails button:focus {
+    outline: none;
 }

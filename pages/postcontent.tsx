@@ -16,7 +16,7 @@ interface User {
 const postcontent = () => {
   const user: User = {first_name: "عارف",last_name: "علیجان نژاد",username: "aref_alj",photo: "/image/user.png",};
   const [postImg, setPostImg] = useState("");
-  const [postLikes, setPostLiks] = useState("");
+  const [postLikes, setPostLiks] = useState(0 );
   const [postContent, setPostContent] = useState(0);
   const [isPremium, setIsPremium] = useState(false);
   const [isEdit, setIsEdit] = useState(true);
@@ -39,12 +39,104 @@ const postcontent = () => {
             <Link href="/myprofile">@{user.username}</Link>
           </div>
           {isEdit && <div className={styles.Edit}>
-            <BsPencilSquare />
+            <BsPencilSquare style={{marginTop:"12px",marginRight:"380px"}} />
             </div>}
         </div>
         <div className={styles.postContents}>
           {/* <h5>{postContent}</h5> */}
           <p>
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Qui quis
+            quos earum libero veritatis maiores officiis sapiente nam, ut omnis
+            repellat eveniet labore ullam. Accusantium recusandae atque libero
+            quos aspernatur.
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Qui quis
+            quos earum libero veritatis maiores officiis sapiente nam, ut omnis
+            repellat eveniet labore ullam. Accusantium recusandae atque libero
+            quos aspernatur.
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Qui quis
+            quos earum libero veritatis maiores officiis sapiente nam, ut omnis
+            repellat eveniet labore ullam. Accusantium recusandae atque libero
+            quos aspernatur.
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Qui quis
+            quos earum libero veritatis maiores officiis sapiente nam, ut omnis
+            repellat eveniet labore ullam. Accusantium recusandae atque libero
+            quos aspernatur.
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Qui quis
+            quos earum libero veritatis maiores officiis sapiente nam, ut omnis
+            repellat eveniet labore ullam. Accusantium recusandae atque libero
+            quos aspernatur.
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Qui quis
+            quos earum libero veritatis maiores officiis sapiente nam, ut omnis
+            repellat eveniet labore ullam. Accusantium recusandae atque libero
+            quos aspernatur.
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Qui quis
+            quos earum libero veritatis maiores officiis sapiente nam, ut omnis
+            repellat eveniet labore ullam. Accusantium recusandae atque libero
+            quos aspernatur.
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Qui quis
+            quos earum libero veritatis maiores officiis sapiente nam, ut omnis
+            repellat eveniet labore ullam. Accusantium recusandae atque libero
+            quos aspernatur.
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Qui quis
+            quos earum libero veritatis maiores officiis sapiente nam, ut omnis
+            repellat eveniet labore ullam. Accusantium recusandae atque libero
+            quos aspernatur.
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Qui quis
+            quos earum libero veritatis maiores officiis sapiente nam, ut omnis
+            repellat eveniet labore ullam. Accusantium recusandae atque libero
+            quos aspernatur.
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Qui quis
+            quos earum libero veritatis maiores officiis sapiente nam, ut omnis
+            repellat eveniet labore ullam. Accusantium recusandae atque libero
+            quos aspernatur.
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Qui quis
+            quos earum libero veritatis maiores officiis sapiente nam, ut omnis
+            repellat eveniet labore ullam. Accusantium recusandae atque libero
+            quos aspernatur.
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Qui quis
+            quos earum libero veritatis maiores officiis sapiente nam, ut omnis
+            repellat eveniet labore ullam. Accusantium recusandae atque libero
+            quos aspernatur.
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Qui quis
+            quos earum libero veritatis maiores officiis sapiente nam, ut omnis
+            repellat eveniet labore ullam. Accusantium recusandae atque libero
+            quos aspernatur.
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Qui quis
+            quos earum libero veritatis maiores officiis sapiente nam, ut omnis
+            repellat eveniet labore ullam. Accusantium recusandae atque libero
+            quos aspernatur.
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Qui quis
+            quos earum libero veritatis maiores officiis sapiente nam, ut omnis
+            repellat eveniet labore ullam. Accusantium recusandae atque libero
+            quos aspernatur.
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Qui quis
+            quos earum libero veritatis maiores officiis sapiente nam, ut omnis
+            repellat eveniet labore ullam. Accusantium recusandae atque libero
+            quos aspernatur.
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Qui quis
+            quos earum libero veritatis maiores officiis sapiente nam, ut omnis
+            repellat eveniet labore ullam. Accusantium recusandae atque libero
+            quos aspernatur.
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Qui quis
+            quos earum libero veritatis maiores officiis sapiente nam, ut omnis
+            repellat eveniet labore ullam. Accusantium recusandae atque libero
+            quos aspernatur.
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Qui quis
+            quos earum libero veritatis maiores officiis sapiente nam, ut omnis
+            repellat eveniet labore ullam. Accusantium recusandae atque libero
+            quos aspernatur.
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Qui quis
+            quos earum libero veritatis maiores officiis sapiente nam, ut omnis
+            repellat eveniet labore ullam. Accusantium recusandae atque libero
+            quos aspernatur.
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Qui quis
+            quos earum libero veritatis maiores officiis sapiente nam, ut omnis
+            repellat eveniet labore ullam. Accusantium recusandae atque libero
+            quos aspernatur.
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Qui quis
+            quos earum libero veritatis maiores officiis sapiente nam, ut omnis
+            repellat eveniet labore ullam. Accusantium recusandae atque libero
+            quos aspernatur.
             Lorem, ipsum dolor sit amet consectetur adipisicing elit. Qui quis
             quos earum libero veritatis maiores officiis sapiente nam, ut omnis
             repellat eveniet labore ullam. Accusantium recusandae atque libero
@@ -57,14 +149,11 @@ const postcontent = () => {
         </div>
         <div className={styles.postDetails}>
           <button
-            style={{
-              border: "2px solid #faa500",
-              backgroundColor: "#24282A",
-              color: "#fff",
-            }}
+            
           >
             <MdOutlineFavoriteBorder
-              style={{ color: "#faa500", marginLeft: "20px", marginTop: "2px" }}
+              className={styles.postLikeIcon}
+              // style={{ color: "#faa500", marginLeft: "20px", marginTop: "2px"}}
             />
             {postLikes}
           </button>
