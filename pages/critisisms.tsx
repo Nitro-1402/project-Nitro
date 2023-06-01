@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useEffect } from "react";
 import PostCard from "@/component/Critisism/PostCard";
+import AddPostModal from "@/component/AddPostModal/AddPostModal";
 import { styled } from "@mui/material/styles";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
@@ -8,6 +9,7 @@ import Typography from "@mui/material/Typography";
 import Footer from "@/component/Footer";
 import Header from "@/component/header";
 import styles from "../styles/Critisism.module.css";
+import axios from "axios";
 
 const StyledTabs = styled((props) => (
   <Tabs
@@ -52,7 +54,7 @@ const StyledTab = styled((props) => <Tab disableRipple {...props} />)(
   })
 );
 
-const TabPanel = (props:any) => {
+const TabPanel = (props: any) => {
   const { children, value, index, ...other } = props;
 
   return (
@@ -62,22 +64,19 @@ const TabPanel = (props:any) => {
       id={`tabpanel-${index}`}
       aria-labelledby={`tab-${index}`}
       {...other}
-      style={{display:"flex",justifyContent:"center"}}
+      style={{ display: "flex", justifyContent: "center" }}
     >
       {value === index && (
-        <Box sx={{
-
-        }}>
-          <Typography
-            sx={{
+        <Box sx={{}}>
+          <div
+            style={{
               paddingTop: "20px",
               paddingLeft: "30px",
               paddingRight: "30px",
-              
             }}
           >
             {children}
-          </Typography>
+          </div>
         </Box>
       )}
     </div>
@@ -86,20 +85,43 @@ const TabPanel = (props:any) => {
 
 const Critisism = () => {
   const [value, setValue] = React.useState(0);
-
-  const handleChange = (event:any,newValue:any) => {
+  const [addPostModalOpener, setAddPostModalOpener] = React.useState(false);
+  const [postList, setPostList] = React.useState([]);
+  const handleChange = (event: any, newValue: any) => {
     setValue(newValue);
   };
 
+
+  const AddPostModalHandler = () => {
+    setAddPostModalOpener(true);
+  };
+  useEffect(() => {
+    axios.get("http://nitroback.pythonanywhere.com/members/posts")
+    .then((res) => {
+      console.log(res.data.results);
+      setPostList(res.data.results);  
+
+    })
+  }, []);
   return (
+    
     <div className={styles.critisismWrapper}>
       <Header />
+      
+      <div className={styles.addPostSection}>
+        <button
+          onClick={AddPostModalHandler}
+          className={styles.addPostSectionBtn}
+        >
+          اضافه کردن پست
+        </button>
+      </div>
       <Box
         sx={{
           bgcolor: "#0c1012",
           borderRadius: "8px",
           paddingBottom: "30px",
-          marginTop: "75px",
+          // marginTop: "75px",
         }}
       >
         <StyledTabs
@@ -111,13 +133,24 @@ const Critisism = () => {
           <StyledTab label="برای شما" />
         </StyledTabs>
         <TabPanel value={value} index={0}>
-            <PostCard postContent="d d sal dl lsd sandsadba sfjbal knfl;kl nlkf lksanl fladand sdb ;j ;kf;af; kaf;ad;hflkas flkasjh; jas;j f;asj ;fja; js;j ;saj;f js;aj f;lsaj; sjaf; jf;asj ;jas; js;aj ;jfsa j;sj ;ajfs; sj;j ;lajf ;lasj; afsj;j as;lj ;ljl;as j;lf asj sjs;l ja;j fl;sj l;fsjal; fjsa;lj fl;sajlfjsl;aj ;laj ;ls;lj ;lsj;l jas;ljsaj; jsajf;sj;jf;a j;j ;ja;sjf; j;ajf;sj; fjs;ajf;jsa;ljf ;sa; js;afa j; fjs;j f;aj; fjsa; jfs;aj ;fsaj;l ja ja; fjsl jfa;jf;sj;j a;jf;asj; jas;j;fjs ja;fj jfas js j ja;jfasj ajf;ajs;lf ;aj;fj;ajf;js;a f;lsaj; fj;laj l;sjjas;jf a;j s;fj a;j f;sj ;lj saj jfl;aj fj " />
-            <PostCard />
-            <PostCard />
+          {/* <PostCard />
+          <PostCard />
+          <PostCard /> */}
+          {
+            postList.map((item: any) => {
+              return (
+                <PostCard 
+                isPremium={item.isPremium}
+                postContent={item.body}
+                />
+              )
+            })
+          }
         </TabPanel>
         <TabPanel value={value} index={1}></TabPanel>
       </Box>
       <Footer />
+      <AddPostModal open={addPostModalOpener} setOpen={setAddPostModalOpener} />
     </div>
   );
 };
