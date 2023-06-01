@@ -48,13 +48,13 @@ const PostCard: React.FC<ItemProps> = ({
         </div>
       </div>
       <div className={styles.postContents}>
-        {/* <h5>{postContent}</h5> */}
-        <p>
+        <p>{postContent}</p>
+        {/* <p>
           Lorem, ipsum dolor sit amet consectetur adipisicing elit. Qui quis
           quos earum libero veritatis maiores officiis sapiente nam, ut omnis
           repellat eveniet labore ullam. Accusantium recusandae atque libero
           quos aspernatur.
-        </p>
+        </p> */}
       </div>
       <div className={styles.postImage}>
         {/* <p>{postImg}</p> */}

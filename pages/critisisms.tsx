@@ -111,7 +111,7 @@ const Critisism = () => {
           <StyledTab label="برای شما" />
         </StyledTabs>
         <TabPanel value={value} index={0}>
-            <PostCard />
+            <PostCard postContent="d d sal dl lsd sandsadba sfjbal knfl;kl nlkf lksanl fladand sdb ;j ;kf;af; kaf;ad;hflkas flkasjh; jas;j f;asj ;fja; js;j ;saj;f js;aj f;lsaj; sjaf; jf;asj ;jas; js;aj ;jfsa j;sj ;ajfs; sj;j ;lajf ;lasj; afsj;j as;lj ;ljl;as j;lf asj sjs;l ja;j fl;sj l;fsjal; fjsa;lj fl;sajlfjsl;aj ;laj ;ls;lj ;lsj;l jas;ljsaj; jsajf;sj;jf;a j;j ;ja;sjf; j;ajf;sj; fjs;ajf;jsa;ljf ;sa; js;afa j; fjs;j f;aj; fjsa; jfs;aj ;fsaj;l ja ja; fjsl jfa;jf;sj;j a;jf;asj; jas;j;fjs ja;fj jfas js j ja;jfasj ajf;ajs;lf ;aj;fj;ajf;js;a f;lsaj; fj;laj l;sjjas;jf a;j s;fj a;j f;sj ;lj saj jfl;aj fj " />
             <PostCard />
             <PostCard />
         </TabPanel>
