@@ -7,22 +7,22 @@ import Tick from '../seenAll/Tick'
 import Bookmark from '../bookmark/Bookmark'
 
 
-function Card({image}:{image:string}){
+function Card({image,id}:{image:string,id:number}){
     return (
       <div className= {styles.right}>
         <CustomImage className= {styles.poster} src={image} style={{}} alt='poster'/>
-        {/* <StarRating/> */}
-        {/* <div className= {styles.bullet}>
+        <StarRating/>
+        <div className= {styles.bullet}>
           <span className= {styles.seen}>
-            <Tick/>
+            <Tick id={id}/>
           </span>
           <span className= {styles.bookmark}>
-            <Bookmark/>
+            <Bookmark id={id}/>
           </span>
           <span className= {styles.favorite}>
-            <HeartFavorite/>
+            <HeartFavorite id={id}/>
           </span>
-        </div> */}
+        </div>
       </div>
     )
   }

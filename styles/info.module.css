@@ -147,6 +147,9 @@
 .IMDB {
 	width: 25px;
 }
+.meta{
+	width: 25px;
+}
 .summery {
 	direction: rtl;
 	text-align: right;
@@ -195,6 +198,61 @@
 	font-weight: 200;
 }
 
+.seriesBox{
+	background-color: rgb(88, 87, 87);
+	border-radius: 10px;
+	width: 800px;
+	padding: 20px 30px;
+	margin: 50px 100px;
+	direction: rtl;
+	text-align: right;
+	display: flex;
+	flex-direction: column;
+	/* align-items: center; */
+	/* justify-content: center; */
+}
+.numberBox{
+	margin-bottom: 30px;
+	display: flex;
+	flex-direction: row;
+}
+.seasonNum{
+	padding: 10px;
+	width: 70px;
+	height: 30px;
+	border-radius: 10px;
+	background-color: gray;
+	color: orange;
+	margin-left: 10px;
+
+}
+.episodeBox{
+	position: relative;
+	display: flex;
+	flex-direction: row;
+	background-color: black;
+	padding: 20px 10px;
+	margin-bottom: 30px;
+}
+.episodeContent{
+	color: white;
+	text-align: right;
+}
+.episodeImage{
+	text-align: right;
+	width: 200px;
+	height: 100px;
+	margin: 0 20px;
+}
+.add{
+	position: absolute;
+	top: 50px;
+	left: 50px;
+	background-color: orange;
+	color: white;
+	padding: 10px 30px;
+	border-radius: 10px;
+}
 @media only screen and (max-width:600px) {
 	.pageTop{
 		background-repeat: no-repeat;
@@ -250,6 +308,7 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	margin-top: 20px;
 	
 }
 .input{

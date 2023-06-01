@@ -8,7 +8,7 @@ const Middle = (props:any) => {
   return (
     <div className={styles.left}>
         <Information {...props}/>
-        <MiniInfo/>
+        <MiniInfo {...props}/>
         <Summery text={props.text}/>
     </div>
   )

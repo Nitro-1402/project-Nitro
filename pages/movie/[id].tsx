@@ -2,7 +2,6 @@ import React, { Component ,useEffect,useState} from 'react'
 import styles from '../../styles/info.module.css'
 import Card from '@/component/card/Card'
 import Middle from '@/component/layout/Middle'
-import Navbar from '@/component/navbar/Navbar'
 import Top from '@/component/layout/Top'
 import Stream from '@/component/stream/Stream'
 import Item from '@/component/FilmItem'
@@ -16,12 +15,27 @@ import Comment from '@/component/comments/commentComponent'
 import { MoviesApi } from '@/API/Movies'
 import { useRouter } from 'next/router'
 import CustomBtn from '@/ui/CustomBtn'
+import Series from '@/component/seriesSection/Series'
+import { SeriesApi } from '@/API/Series'
 
 
 
 function Info(){
   const[data,setdata]=useState<any>()
+  const[season,setseason]=useState<any>()
   const router=useRouter()
+  const api2=async()=>{
+    let res=await SeriesApi.getSeries(data?.id)
+    console.log(res)
+    if(res?.status=='success'){
+      console.log(res?.content)
+      setseason(res?.content)
+    }
+  }
+  useEffect(()=>{
+    if(data?.id){
+      api2()
+}  },[data])
   const api=async()=>{
     let res=await MoviesApi.getMovie(router.query?.id)
     console.log(res)
@@ -39,16 +53,22 @@ function Info(){
     return (
       <div>
         <Header/>
-        <Top title={data.title} tumbnail={data.thumbnail}/>
+        <Top title={data.title} tumbnail={data.thumbnail} country={data.country} date={data.publish_date} category_set={data.category_set}/>
         <div style={{display:'flex',flexDirection:'column',justifyContent:'center'}}>
           <div className= {styles.middleView}>
             <div className= {styles.leftPart}>
-              <Card image={data?.poster}/>
+              <Card image={data?.poster} id={data?.id}/>
             </div>
             <div className= {styles.rightPart}>
-              <Middle text={data.description} name={data.title} date={data.publish_date} bbRate={data.meta_rating} imdbRate={data.imdb_rating}/>
-              <Stream/>
+              <Middle text={data.description} name={data.title} date={data.publish_date} bbRate={data.meta_rating} imdbRate={data.imdb_rating} metaRate={data.meta_rating} country={data.country} category_set={data.category_set}/>
+              {/* <Stream/> */}
             </div>
+          </div>
+          <div style={{display:"flex", justifyContent:'center'}}>
+            <Series 
+            seasonNum={season.title} id={season?.id}
+            // title={season.title} episode_number={season.episode_number} photo={season.photo}
+            />
           </div>
           {/* <div>
             <div className='ganreItem'style={{backgroundColor:'#3d3d3d', paddingTop:'20px', paddingRight:30}}>
@@ -65,25 +85,26 @@ function Info(){
                 </div>
             </div>
           </div> */}
-          {/* <div style={{backgroundColor:'black', color:'aliceblue',paddingTop:'30px'}}>
-            <Actors/>
-            <OtherFactors/>
-          </div> */}
+          <div style={{backgroundColor:'black', color:'aliceblue',paddingTop:'30px' , paddingBottom:'30px'}}>
+            <Actors actors={data.actors} director={data.director}/>
+          </div>
           
           <div style={{ color:'aliceblue',display:'flex',flexWrap:'wrap',justifyContent:'center',alignItems:'center'}}>
-            {/* <CommentBox/> */}
-            <div style={{width:'100%',display:'flex',justifyContent:'space-between',padding:"0 10%"}}>
-        <CustomBtn text='ثبت نظر' style={{width:120,margin:"0 20px",height:40,borderRadius:10,backgroundColor:'orange'}} textStyle={{color:'white'}} press={()=>{}}/>
-        <h3 style={{color:'white',direction:'rtl',fontSize:35}}>نظرات</h3>
-            </div>
+            <CommentBox/>
+            {/* <div style={{width:'100%',display:'flex',justifyContent:'space-between',padding:"0 10%"}}>
+              <CustomBtn text='ثبت نظر' style={{width:120,margin:"0 20px",height:40,borderRadius:10,backgroundColor:'orange'}} textStyle={{color:'white'}} press={()=>{}}/>
+              <h3 style={{color:'white',direction:'rtl',fontSize:35}}>نظرات</h3>
+            </div> */}
+            
+            {/* <Comment/>
             <Comment/>
             <Comment/>
-            <Comment/>
-            <Comment/>
+            <Comment/> */}
           </div>
         </div>
-        <div style={{width:'100%',display:'flex',justifyContent:'center'}}>
-        <CustomBtn text='نظرات بیشتر' style={{width:120,margin:"20px 20px",height:40,borderRadius:10,backgroundColor:'orange'}} textStyle={{color:'white'}} press={()=>{}}/></div>
+        {/* <div style={{width:'100%',display:'flex',justifyContent:'center'}}>
+          <CustomBtn text='نظرات بیشتر' style={{width:120,margin:"20px 20px",height:40,borderRadius:10,backgroundColor:'orange'}} textStyle={{color:'white'}} press={()=>{}}/>
+        </div> */}
         <Footer />
       </div>
     )

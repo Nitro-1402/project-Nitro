@@ -4,7 +4,8 @@ import axios from "axios"
 export class MoviesApi{
     static getMovies(params={}){
        const callback=(config:object)=>{
-            return axios.get(`${URL_API}movies/movies/`,{params:{...params},...config})
+            // return axios.get(`${URL_API}movies/movies/`,{params:{...params},...config})
+            return axios.get(`${URL_API}movies/movies/`)
         }
         return AsyncCatch(callback)
     }
