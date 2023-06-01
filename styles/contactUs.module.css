@@ -11,11 +11,92 @@
 }
 .call{
   font-size: 40px;
-  color: orange;
+  color: rgb(255, 255, 255);
+  margin-top: 20px;
 }
-.sagest{
+.btnrahnoma{
+  width: 250px;
+  height: 38px;
+  border: 1px solid orange;
+  border-radius: 20px;
+  background-color: rgb(253, 193, 60);
+  margin-top: 20px;
+  font-family: IRANSans;
+  color: black;
+  font-weight: 500px;
+  font-size: 15px;
 
 }
+.callus{
+  font-size: 30px;
+}
+.undertamasbama{
+  font-size: 20px;
+  
+}
+.callboxs{
+  width: 714px;
+  height: 260px;
+  text-align: center;
+  margin-bottom: 0px;
+  margin-top: 24px;
+}
+
+.callboxright{
+  width:425px ;
+  height:228px ;
+  width: 64%;
+  background-color: #282828;
+  border-radius: 4px;
+  float: right;
+  padding: 16px;
+  box-sizing: border-box;
+  text-align: center;
+  font-weight: 400px;
+  direction: rtl;
+}
+
+.phone{
+  margin-top: 35px;
+}
+ .pfinal{
+  margin-top: 5px;
+ }
+.aabout{
+  text-decoration: none;
+  color: black;
+}
+.aabout:hover{
+  color: red;
+}
+
+.callboxleft{
+width: 230px;
+height: 228px;
+background-color: #282828;
+border-radius: 4px;
+float: left;
+position: relative;
+}
+.pfinal{
+  margin-right: 20px;
+  margin-top: 10px;
+  color: rgb(245, 239, 239);
+}
+ .h3final{
+  margin-right: 20px;
+  margin-top: 8px;
+ }
+.pegiri{
+  margin-top: 30px;
+}
+.final{
+  width: 714px;
+  height: 80px;
+  background-color: #282828;
+
+}
+
 .name{
   padding-top: 30px;
 }
@@ -47,6 +128,27 @@
   padding: 30px 0;
   color: white;
 }
+
+
+
+.btnfinal{
+  width: 120px;
+  height: 38px;
+  border: 1px solid rgb(148, 147, 147);
+  border-radius: 20px;
+  background-color: white;
+  margin-top: 20px;
+  font-family: IRANSans;
+  color: black;
+  font-weight: 500px;
+  font-size: 15px;
+  position: relative;
+  right: 550px;
+  bottom: 72px;
+}
+
+
+
 .text{
   width: 400px;
   padding: 30px 0;

@@ -4,7 +4,6 @@ import CustomImage from "@/ui/CustomImage";
 import React, { useEffect, useState, useRef } from "react";
 import styles from "../styles/myprofile.module.css";
 import Navbar from "@/component/navbar/Navbar";
-import Followers from "@/component/follower/Followers";
 import Comment from "@/component/showCommentProfile";
 import PhotoCamera from "@mui/icons-material/PhotoCamera";
 import DeleteIcon from "@mui/icons-material/Delete";
@@ -13,22 +12,20 @@ import Header from "@/component/header";
 import { MdCancel } from "react-icons/Md";
 import { BsPersonFillCheck } from "react-icons/bs";
 import { IconButton, TextField } from "@mui/material";
-import {MovieList } from "@/component/MovieList";
+import Time from "react-time";
+// console.log("user",AuthStore);
 // import Comment from "@/component/comments/comments";
-import {
-  Dialog,
-  DialogActions,
-  DialogContentText,
-  DialogTitle,
-  dividerClasses,
-} from "@mui/material";
+import {Dialog,DialogActions,DialogContentText,DialogTitle,dividerClasses} from "@mui/material";
 import { makeStyles } from "@material-ui/styles";
 import axios from "axios";
 import Follower from "@/component/Follower/Follwers";
-import { pink } from "@mui/material/colors";
-import { get } from "http";
 import Input from "@/ui/Input";
+import AuthStore from "./store/Auth"
+
 import AutoExpandingInput from "@/component/AutoExpandingInput";
+
+
+
 const UseStyles = makeStyles((theme) => ({
   dialog: {
     display: "flex",
@@ -62,6 +59,7 @@ const UseStyles = makeStyles((theme) => ({
   // },
 }));
 
+
 const userInfo = {
   first_name: "",
   LasdName: "",
@@ -82,7 +80,9 @@ function Head() {
   const [editProfilestatus, setEditProfileStatus] = useState(false);
   const [selectedFile, setSelectedFile] = useState(null);
   const[useremail,setUserEmail]=useState("");
-
+  let id;
+  const user2=AuthStore((state:any)=>state.user)
+  console.log("user",user2);
   const deleteFunc = () => {
     setPreview("../image/user.png");
   };
@@ -208,11 +208,15 @@ function Head() {
   //     // });
   // }, []);
   useEffect(() => {
-    axios.get("http://nitroback.pythonanywhere.com/members/followers/1/").then((res) => {
+    // console.log("id", localStorage.getItem("id"));
+    id=localStorage.getItem("id");
+    // console.log("id1", id);
+
+    axios.get("http://nitroback.pythonanywhere.com/members/followers/"+id+'/').then((res) => {
       setFollowers(res.data.followers);
       // console.log("followers", res.data.followers);
     });
-    axios.get("https://nitroback.pythonanywhere.com/members/followings/1/").then((res) => {
+    axios.get("https://nitroback.pythonanywhere.com/members/followings/"+id+'/').then((res) => {
       setFollowing(res.data.followings);
       // console.log("followings", res.data.followings);
     });
@@ -227,9 +231,9 @@ function Head() {
       //   console.log(error);
       // }
       try {
-        await axios.get("https://nitroback.pythonanywhere.com/members/profiles/1/")
+        await axios.get("https://nitroback.pythonanywhere.com/members/profiles/"+id+ '/')
         .then(res => {
-          // console.log("the data is: ", res.data);
+          // console.log("data is: ", res.data);
           setUser(res.data)
           setUserProfileImg(res.data.photo)
           setUserEmail(res.data.user)
@@ -242,22 +246,7 @@ function Head() {
     getUserInfo();
   }, []);
 
-  // useEffect(()=>{
-  //   gwtUserInfo();
-  // },[])
-  //   console.log(users);
-  //   const gwtUserInfo = async() =>{
-  //   const res = await axios.get('https://nitroback.pythonanywhere.com/auth/users')
-  //   try{
-  //     setUsers(res.data)
-  //     console.log(res);
-
-  //   }
-  //   catch(err){
-  //     console.log(err);
-
-  //   }
-  // }
+  
 
   return (
     <div style={{ position: "relative", marginTop: "120px" }}>
@@ -362,6 +351,7 @@ function Head() {
             )}
 
             {!editProfilestatus && (
+              
               <h3 className={styles.email}>{useremail.email}</h3>
             )}
             {editProfilestatus && (
@@ -451,9 +441,12 @@ function Menu({ menu }: { menu?: string[] }) {
   const [filteredwatchedMovies,setFilteredwatchedMovies]=useState([]);
   const [idWatched,setIdWatched]=useState([]);
   const [idWatch,setIdWatch]=useState([]);
-  const [idLiked,setidLiked]=useState([]);
+  const [idLiked,setIdLiked]=useState([]);
+  let id;
 
   useEffect(() => {
+    id=localStorage.getItem("id");
+    // console.log("id2",id);
     axios.get("https://nitroback.pythonanywhere.com/movies/movies/").then((res) => {
       console.log("movies ", res.data.results);
       setMovies((res.data.results))
@@ -461,27 +454,36 @@ function Menu({ menu }: { menu?: string[] }) {
     axios.get("https://nitroback.pythonanywhere.com/lists/bookmarks/1/").then((res) => {
       // console.log("the res data is: ", res.data.data);
       setUserWatchList(res.data.bookmarks);
-      console.log("watch",res.data.bookmarks);
+      // console.log("watch",res.data.bookmarks);
       const Hi=res.data.bookmarks.map((item:any)=>item[0]);
       setIdWatch(Hi);
     });
     axios.get("https://nitroback.pythonanywhere.com/lists/watchedList/1/").then((res) => {
       // console.log("the res watched data is: ", res.data.data);
-      console.log("watched",res.data.watched_list);
+      // console.log("watched",res.data.watched_list);
       setUserWatchedList(res.data.watched_list);
       const Hi=res.data.watched_list.map((item:any)=>item[0]);
       setIdWatched(Hi);
-      console.log("idWatched",idWatched);
-      console.log("hi",Hi);
+      // console.log("idWatched",idWatched);
+      // console.log("hi",Hi);
       
     });
-    axios.get("http://localhost:1337/api/Liked-lists").then((res) => {
+    // axios.get("http://localhost:1337/api/Liked-lists").then((res) => {
+    //   // console.log("the like  data is: ", res.data.data);
+    //   setUserLikedList(res.data.data);
+    // });
+    axios.get("http://nitroback.pythonanywhere.com/lists/favourites/"+id+'/').then((res) => {
       // console.log("the like  data is: ", res.data.data);
-      setUserLikedList(res.data.data);
+      // console.log("Liked",res.data.favourites);
+      setUserWatchedList(res.data.favourites);
+      const Hi=res.data.favourites.map((item:any)=>item[0]);
+      setIdLiked(Hi);
+      // console.log("Liked",idLiked);
+      // console.log("hi",Hi);
     });
-    axios.get("http://localhost:1337/api/commnets").then((res) => {
-      console.log("the comms  data is: ", res.data.data);
-      setCommnet(res.data.data);
+    axios.get("http://nitroback.pythonanywhere.com/comments/comments/?profile="+id).then((res) => {
+      console.log("the comms  data is: ", res.data.results);
+      setCommnet(res.data.results);
     });
   }, []);
 
@@ -595,7 +597,7 @@ function Menu({ menu }: { menu?: string[] }) {
           {movies.map((movie)=>{
             if (idWatched.includes(movie.id)) {
               // console.log("mmd",movie);
-              return <Item image={movie.thumbnail} name={movie.title} />
+              return <Item image={movie.thumbnail} name={movie.title} description={movie.description} />
               
             }
           })}
@@ -616,9 +618,13 @@ function Menu({ menu }: { menu?: string[] }) {
           <Item image={"/image/meydanSorkh.jpg"} name={"میدان سرخ"} />
           <Item image={"/image/lastOfUs.webp"} name={"آخرین نفر از ما"} />
           <Item image={"/image/iron-man.jpg"} name={"مرد آهنی"} /> */}
-          {userLikedList.map((movie) => (
-            <Item image={movie.attributes.Image} name={movie.attributes.Name} />
-          ))}
+          {movies.map((movie)=>{
+            if (idLiked.includes(movie.id)) {
+              // console.log("mmd",movie);
+              return <Item image={movie.thumbnail} name={movie.title} description={movie.description} />
+              
+            }
+          })}
         </div>
       )}
       {ShowWatchList && (
@@ -634,7 +640,7 @@ function Menu({ menu }: { menu?: string[] }) {
           {movies.map((movie)=>{
             if (idWatch.includes(movie.id)) {
               // console.log("mmd",movie);
-              return <Item image={movie.thumbnail} name={movie.title} />
+              return <Item image={movie.thumbnail} name={movie.title} description={movie.description} />
               
             }
           })}
@@ -654,12 +660,11 @@ function Menu({ menu }: { menu?: string[] }) {
         <div style={{ color: "white" }}>
           {comment.map((comm) => (
             <Comment
-              image={comm.attributes.image}
-              name={comm.attributes.name}
-              text={comm.attributes.text}
-              film={comm.attributes.filmname}
-              createdAt={comm.attributes.date}
-              link={comm.attributes.filmlink}
+              image={movies[comm.object_id].thumbnail}
+              name={id}
+              text={comm.message}
+              film={comm.content_object}
+              createdAt={comm.created_at}
             />
           ))}
         </div>

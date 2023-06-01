@@ -3,6 +3,8 @@ import styles from '../styles/Home.module.css'
 import NewsCard from '@/component/news/Card'
 import Header from '@/component/header'
 import Footer from '@/component/Footer'
+import moment from 'jalali-moment';
+
 
 import axios from 'axios'
 import { URL_API } from '@/constant/urlapi'
@@ -78,7 +80,7 @@ export default function Home() {
       {
           news.map((e:any)=>{
             return(
-              <NewsCard key={e?.id} id={e?.id} title={e.title} description={e.description} image={e.photo}/>
+              <NewsCard key={e?.id} id={e?.id} title={e.title} description={e.description} image={e.photo} publish_date={e.publish_date} />
             )
           })
         }

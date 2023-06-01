@@ -157,6 +157,10 @@ width: 250px;
   color: #a19f9f;
   list-style: none;
   margin-left: 3%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+
 }
 
 .menuItem {

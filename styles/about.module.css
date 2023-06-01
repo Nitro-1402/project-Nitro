@@ -1,0 +1,85 @@
+
+.photo{
+    width: 50%;
+    height: 750px;
+    border: 1px solid black ;
+    background-image: url("../public/image/backgorund.jpg");
+    background-size: cover;
+    float: left;
+}
+.rightside{
+    background-color: #0A0A08;
+    width: 50%;
+    height: 751px;
+    display: inline-block;
+    color: white;
+}
+
+.title{
+    position: relative;
+    top: 20px;
+    color: orange;
+}
+.title2{
+    position: relative;
+    top: 20px;
+    color: orange;
+}
+.first{
+    margin-top: 100px;
+    text-align: center;
+    margin-right: 60px;
+    margin-left: 60px;
+    border: 2px solid orange;
+    height: 300px;
+    background-color: rgb(15, 15, 15);
+    border-radius: 8px;
+
+}
+.secound{
+    margin-top: 20px;
+    text-align: center;
+    margin-right: 60px;
+    margin-left: 60px;
+    border: 2px solid orange;
+    height: 300px;
+    background-color: rgb(15, 15, 15);
+    border-radius: 8px;
+}
+
+.firstboxtitile{
+    text-align: center;
+    margin-top: 30px;
+    margin-right: 20px;
+    margin-left: 20px;
+
+}
+.secoundboxtitile{
+    text-align: center;
+    margin-top: 30px;
+    margin-right: 20px;
+    margin-left: 20px;
+
+}
+
+.lastp{
+    direction: rtl;
+    position: relative;
+    left: 80px;
+}
+
+
+.btn{
+    border-radius: 15px;
+    width: 100px;
+    height: 40px;
+    position: relative;
+    right: 220px;
+    bottom: 30px;
+}
+
+.link{
+    text-decoration: none;
+    color:black;
+}
+  

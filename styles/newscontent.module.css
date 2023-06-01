@@ -49,6 +49,11 @@
   justify-content: space-between;
   margin-left: 40px;
 }
+.datetime{
+
+  position: relative;
+  right: 30px;
+}
 
 .pictureClass {
   width: 1000px;
@@ -136,6 +141,7 @@
     /* backdrop-filter: blur(30px); */
     
 }
+
 
 
  } 

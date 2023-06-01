@@ -21,8 +21,11 @@ function Footer(){
         <div className={styles.together}>
         <div className={styles.text} style={{width:100}}>
         <h3 className={MulticlassName([styles.h3,"hoverBtn"])} onClick={()=>{
-            router.push('/aboutus')
+            router.push('/about')
         }}>درباره ما</h3>
+        <h3 className={MulticlassName([styles.h3,"hoverBtn"])} onClick={()=>{
+            router.push('/contactus')
+        }}>تماس با ما</h3>
         <h3 className={MulticlassName([styles.h3,"hoverBtn"])} onClick={()=>{
             router.push('/FAQ')
         }}>سوالات پرتکرار</h3>

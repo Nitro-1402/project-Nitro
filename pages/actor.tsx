@@ -2,6 +2,8 @@ import React from 'react'
 import ActorInfo from '@/component/actorInfoPage/ActorInfo'
 import ActorMovie from '@/component/actorInfoPage/ActorMovie'
 import style from '../styles/explore.module.css'
+import Header from '@/component/header'
+import Footer from '@/component/Footer'
 
 const actor = () => {
   return (
@@ -22,6 +24,7 @@ const actor = () => {
             <ActorMovie image={'/image/legacies.jpg'} name={'میراث ها'}/>
           </div>
         </div>
+        <Footer/>
       </div>
     </div>
   )
