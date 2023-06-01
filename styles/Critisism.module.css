@@ -1,0 +1,41 @@
+.critisismWrapper {
+    background-color: #000;
+}
+.critisismHeader {
+    display: flex;
+    background-color: #0C1012;
+    margin-right: 20px;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    align-items: center;
+    height: 50px;
+    width: 100%;
+    background-color: #000;
+    color: #fff;
+    font-size: 20px;
+}
+
+.addPostSection {
+    direction: rtl;
+    margin-top: 120px;
+    background-color: #0C1012;
+    margin-right: 20px;
+}
+.addPostSectionBtn{
+    direction: rtl;
+    width: 120px;
+    height: 30px;
+    border:1px solid #faa500;
+    background-color: #24282A;
+    color: #faa500;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;    
+}
+.addPostSectionBtn:hover {
+    background-color: #faa500;
+    color: #24282A;
+    cursor: pointer;
+}

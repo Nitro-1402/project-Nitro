@@ -1,0 +1,111 @@
+.postContainer {
+    border: 1px solid #faa500;
+    border-radius: 10px;
+    background-color: #24282A;
+    display: flex;
+    flex-direction: column;
+    width: 800px;
+    
+    margin: 150px auto;
+    /* height: 250px; */
+    min-height: 180px;
+    max-height: 6000px;
+    height: fit-content;
+
+}
+
+.postHeader {
+    display: flex;
+    flex-direction: row-reverse;
+    flex-wrap: nowrap;
+    
+    gap: 20px;
+    padding: 10px;
+}
+
+.posterUserImg {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.postedUserName {
+    display: flex;
+    align-items: center;
+}
+.postedUserName span {
+    font-size: 18px;
+    font-weight: 700px;
+    color: #fff;
+}
+
+.postedUserUsername {
+    display: flex;
+    align-items: center;
+}
+.postedUserUsername a {
+    text-decoration: none;
+    color: #faa500;
+}
+.postedUserUsername a:hover {
+    text-decoration: none;
+    color: white;
+}
+.postedUserUsername span {
+    font-size: 18px;
+    font-weight: 700px;
+    color: grey;
+}
+.Edit{
+    margin-left: 10px;
+    color: #faa500;
+    font-size: 20px;
+    cursor: pointer;
+    
+    /* display: flex;
+    justify-content: flex-end; */
+    
+
+}
+.postContents {
+    direction: rtl;
+    margin: 38px;
+}
+.postContents p {
+    font-size: 15px;
+    font-weight: 500px;
+    color: #fff;
+}
+
+.postImage {
+    margin: auto;
+}
+
+.postDetails {
+    direction: rtl;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    background-color: #24282A;
+    color: #faa500;
+}
+.postDetails button {
+    width: 80px;
+    height: 30px;
+    border:1px solid #faa500;
+    background-color: #24282A;
+    color: #faa500;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-evenly;
+    padding-top: 5px;    
+}
+.postDetails button:hover {
+    background-color: #faa500;
+    color: #24282A;
+    transition: 0.5s;
+    cursor: pointer;
+
+}
+.postDetails button:focus {
+    outline: none;
+}
