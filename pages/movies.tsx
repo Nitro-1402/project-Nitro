@@ -15,7 +15,7 @@ interface ItemData {
   name: string;
 }
 
-const options = [
+const options:any = [
   {  value: "publish_date", label: "جدید ترین" },
   { value: "-publish_date", label: "قدیمی ترین" },
   {  value: "rating", label: "پرامتیازترین" },
@@ -98,6 +98,7 @@ export default function Explore(): JSX.Element {
         .then((res) => {
           setNext(res.data.next);
           setMovie(res.data.results);
+          console.log("res",res.data.results)
 
           // res.data.results.map((item) => {
           //   imgs.push(item.thumbnail)
@@ -115,21 +116,24 @@ export default function Explore(): JSX.Element {
   const handlePageChange = (pageNumber: number) => {
     setCurrentPage(pageNumber);
   };
-  const handleGenreChange = (e) => {
+  const handleGenreChange = (e:any) => {
     setGen(e);
     handleSearchClick(searchTerm,e)
   };
-  const handleActorChange = (e) => {
+  const handleActorChange = (e:any) => {
     setAct(e);
   };
-  const handlesort = (e) => {
+  const handlesort = (e:any) => {
     setSort(e);    
     handleSearchClick(searchTerm,gen,e)
   };
 
   const renderItems = (): JSX.Element[] => {
-    return movie.map((item, index) => (
+    return movie.map((item:any, index) => (
+
       <Item
+
+        id={item.id}
         key={index}
         image={item.thumbnail}
         name={item.title}
