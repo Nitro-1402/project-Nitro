@@ -2,13 +2,11 @@ import React from 'react'
 import ActorInfo from '@/component/actorInfoPage/ActorInfo'
 import ActorMovie from '@/component/actorInfoPage/ActorMovie'
 import style from '../styles/explore.module.css'
-import Navbar from '@/component/navbar/Navbar'
 
 const actor = () => {
   return (
     <div>
       <div>
-        <Navbar/>
         <ActorInfo/>
         
         <div className='ganreItem'style={{backgroundColor:'#3d3d3d', paddingTop:'20px', paddingRight:30}}>

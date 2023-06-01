@@ -1,18 +1,20 @@
 import React from 'react'
 import styles from '/styles/info.module.css'
 import MiniInfo from '../miniInfo/MiniInfo'
+// import Bookmark from '../bookmark/Bookmark'
 
-const Top = ({title,tumbnail}:{title:string,tumbnail:string}) =>  {
+const Top = (props:any) =>  {
 
   return (
-    <div className={styles.pageTop} style={{backgroundImage:` url(${tumbnail})`}}>
+    <div className={styles.pageTop} style={{backgroundImage:` url(${props.tumbnail})`}}>
       <div className={styles.topContent}>
-        <h1 className={styles.name}>{title}</h1>{/* props */}
+        <h1 className={styles.name}>{props.title}</h1>
         <div className={styles.miniInfoF}>
-          <MiniInfo/>
+          <MiniInfo {...props}/>
         </div>
         <div className={styles.trackBox}>
-          <button className={styles.track}>افزودن</button>
+          {/* <Bookmark {...props}/> */}
+          {/* <button className={styles.track}>افزودن</button> */}
         </div>
       </div>
     </div>

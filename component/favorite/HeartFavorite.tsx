@@ -1,10 +1,20 @@
 import React , {useState} from 'react'
-import {FaHeart, FaStar} from 'react-icons/fa'
+import {FaHeart} from 'react-icons/fa'
 import styles from '@/styles/info.module.css'
+import { InfoApi } from '@/API/InfoApi';
+import AuthStore from '@/pages/store/Auth';
 
-const HeartFavorite = () => {
-    const [rating , setRating] = useState(false);
-    const [hover , setHover] = useState(false);
+const HeartFavorite = ({id}:{id:number}) => {
+  const user=AuthStore((state:any)=>state.user)
+    const [favorite , setFavorite] = useState(false);
+    const addFavorite=async()=>{
+        let res=await InfoApi.favorite({movie:id,profile:user.id})
+        console.log(res)
+      }
+      const deleteFavorite=async()=>{
+        let res=await InfoApi.unfavourite()
+        console.log(res)
+      }
     return (
         <div>
         <label>
@@ -12,14 +22,20 @@ const HeartFavorite = () => {
             className={styles.input}
             type="radio"
             name="rating"
-            onClick={() => rating ? setRating(false): setRating(true)}
+            onClick={() =>{
+                if(favorite){
+                    deleteFavorite()
+                    setFavorite(false)
+                  }else{
+                    addFavorite()
+                    setFavorite(true)
+                  }
+            }}
         />
         <FaHeart
             className={styles.heart} 
-            color={(hover || rating) ? "red" : "gray"} 
+            color={(favorite) ? "red" : "gray"} 
             size={100}
-            onMouseEnter={()=> setHover(true)}
-            onMouseLeave={()=> setHover(false)}
             />
         </label>
         

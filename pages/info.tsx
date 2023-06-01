@@ -2,7 +2,6 @@ import React, { Component ,useEffect,useState} from 'react'
 import styles from '../styles/info.module.css'
 import Card from '@/component/card/Card'
 import Middle from '@/component/layout/Middle'
-import Navbar from '@/component/navbar/Navbar'
 import Top from '@/component/layout/Top'
 import Stream from '@/component/stream/Stream'
 import Item from '@/component/FilmItem'
@@ -14,11 +13,14 @@ import Header from '@/component/header'
 import Footer from '@/component/Footer'
 import Comment from '@/component/comments/commentComponent'
 import { MoviesApi } from '@/API/Movies'
+import Series from '@/component/seriesSection/Series'
+import { SeriesApi } from '@/API/Series'
 
 
 
 function Info(){
   const[data,setdata]=useState<any>()
+  console.log("data:",data)
   const api=async()=>{
     let res=await MoviesApi.getMovie(1)
     console.log(res)
@@ -31,20 +33,26 @@ function Info(){
     api()
   },[ ])
   if(!data)
+  
   return<></>
     return (
       <div>
         <Header/>
-        <Top title={data.title} tumbnail={data.thumbnail}/>
+        <Top title={data.title} tumbnail={data.thumbnail} country={data.country} date={data.publish_date}/>
         <div style={{display:'flex',flexDirection:'column',justifyContent:'center'}}>
           <div className= {styles.middleView}>
             <div className= {styles.leftPart}>
-              <Card image={data?.poster}/>
+              <Card image={data?.poster} id={data.id}/>
             </div>
             <div className= {styles.rightPart}>
-              <Middle text={data.description} name={data.title} date={data.publish_date} bbRate={data.meta_rating} imdbRate={data.imdb_rating}/>
+              <Middle text={data.description} name={data.title} date={data.publish_date} bbRate={data.meta_rating} imdbRate={data.imdb_rating} metaRate={data.meta_rating} country={data.country}/>
               <Stream/>
             </div>
+          </div>
+          <div style={{display:"flex", justifyContent:'center'}}>
+            <Series 
+            // title={epi.title} episode_number={epi.episode_number} photo={epi.photo}
+            />
           </div>
           {/* <div>
             <div className='ganreItem'style={{backgroundColor:'#3d3d3d', paddingTop:'20px', paddingRight:30}}>
@@ -66,11 +74,11 @@ function Info(){
             <OtherFactors/>
           </div> */}
           <div style={{ color:'aliceblue',display:'flex',flexWrap:'wrap',justifyContent:'center',alignItems:'center'}}>
-            {/* <CommentBox/> */}
+            <CommentBox/>
+            {/* <Comment/>
             <Comment/>
             <Comment/>
-            <Comment/>
-            <Comment/>
+            <Comment/> */}
           </div>
         </div>
         <Footer />

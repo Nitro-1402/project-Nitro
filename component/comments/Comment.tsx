@@ -27,18 +27,18 @@ const Comment = ({
     activeComment.id === comment.id &&
     activeComment.type === "replying";
   const fiveMinutes = 300000;
-  const timePassed = new Date() - new Date(comment.createdAt) > fiveMinutes;
+  const timePassed = new Date() - new Date(comment.created_at) > fiveMinutes;
   const canDelete =
-    currentUserId === comment.userId && replies.length === 0 && !timePassed;
+    currentUserId === comment.profile && replies.length === 0 && !timePassed;
   const canReply = Boolean(currentUserId);
-  const canEdit = currentUserId === comment.userId && !timePassed;
+  const canEdit = currentUserId === comment.profile && !timePassed;
   const replyId = parentId ? parentId : comment.id;
-  const createdAt = new Date(comment.createdAt).toLocaleDateString();
+  const createdAt = new Date(comment.created_at).toLocaleDateString();
 
- 
 
   return (
     <div key={comment.id} className={styles.comment}>
+  
       <div className={styles.commentImageContainer}>
         <CustomImage src="/info-page-image/user-icon.png" style={{width:'30px',margin:'10px'}} alt='avatar'/>
         
@@ -50,25 +50,25 @@ const Comment = ({
           <div style={{display:'flex',flexDirection:'row',alignItems:'center'}}>
           <div>
           <div style={{display:"flex", flexDirection:"row", justifyContent:"center",}}>
-          <Like/>
-          <Dislike/>
+          {/* <Like/>
+          <Dislike/> */}
           </div>
           </div>
           </div>
         </div>
-        {!isEditing && <div className={styles.commentText}>{comment.body}</div>}
+        {!isEditing && <div className={styles.commentText} style={{direction:'rtl' , textAlign:'right'}}>{comment.message}</div>}
         {isEditing && (
           <CommentForm
             submitLabel="بروزرسانی"
             hasCancelButton
-            initialText={comment.body}
-            handleSubmit={(text:any) => updateComment(text, comment.id)}
+            initialText={comment.message}
+            handleSubmit={(text:any) => updateComment(text, comment)}
             handleCancel={() => {
               setActiveComment(null);
             }}
           />
         )}
-        <div className={styles.commentActions}>
+        <div className={styles.commentActions} style={{direction:'rtl' , textAlign:'right'}}>
           {canReply && (
             <div
               className={styles.commentAction}

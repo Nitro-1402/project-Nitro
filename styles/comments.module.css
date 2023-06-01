@@ -7,6 +7,7 @@
     border-radius: 10px;
     background-color: #24282A;
     direction: rtl;
+    text-align: right;
 }
 .container>div{
     display: flex;
@@ -20,6 +21,7 @@
     padding: 5px;
     word-wrap: break-word;
 }
+
 @media   only screen and (max-width:800px) {
     .container{
         width: 100%;
