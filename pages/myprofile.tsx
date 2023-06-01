@@ -3,7 +3,6 @@ import CustomBtn from "@/ui/CustomBtn";
 import CustomImage from "@/ui/CustomImage";
 import React, { useEffect, useState, useRef } from "react";
 import styles from "../styles/myprofile.module.css";
-import Navbar from "@/component/navbar/Navbar";
 import Comment from "@/component/showCommentProfile";
 import PhotoCamera from "@mui/icons-material/PhotoCamera";
 import DeleteIcon from "@mui/icons-material/Delete";
@@ -12,7 +11,6 @@ import Header from "@/component/header";
 import { MdCancel } from "react-icons/Md";
 import { BsPersonFillCheck } from "react-icons/bs";
 import { IconButton, TextField } from "@mui/material";
-import Time from "react-time";
 // console.log("user",AuthStore);
 // import Comment from "@/component/comments/comments";
 import {Dialog,DialogActions,DialogContentText,DialogTitle,dividerClasses} from "@mui/material";
@@ -23,6 +21,7 @@ import Input from "@/ui/Input";
 import AuthStore from "./store/Auth"
 
 import AutoExpandingInput from "@/component/AutoExpandingInput";
+import { moveEmitHelpers } from "typescript";
 
 
 
@@ -80,12 +79,12 @@ function Head() {
   const [editProfilestatus, setEditProfileStatus] = useState(false);
   const [selectedFile, setSelectedFile] = useState(null);
   const[useremail,setUserEmail]=useState("");
-  let id;
+  let id:any;
   const user2=AuthStore((state:any)=>state.user)
   console.log("user",user2);
-  const deleteFunc = () => {
-    setPreview("../image/user.png");
-  };
+  // const deleteFunc = () => {
+  //   setPreview("../image/user.png");
+  // };
   const ImageUpload = ({ image = "../image/user.png" }: { image?: string }) => {
     const [preview, setPreview] = useState();
 
@@ -95,14 +94,14 @@ function Head() {
         setPreview(undefined);
         return;
       }
-      const objectUrl = URL.createObjectURL(selectedFile);
+      const objectUrl:any = URL.createObjectURL(selectedFile);
       setPreview(objectUrl);
 
       // free memory when ever this component is unmounted
       return () => URL.revokeObjectURL(objectUrl);
     }, [selectedFile]);
 
-    const onSelectFile = (e) => {
+    const onSelectFile = (e:any) => {
       if (!e.target.files || e.target.files.length === 0) {
         setSelectedFile(e.target.files[0]);
         return;
@@ -275,7 +274,7 @@ function Head() {
               </DialogActions>
             </DialogContentText>
           </div>
-          {followers.map((list1) => (
+          {followers.map((list1:any) => (
             <Follower
               image={list1.photo}
               name={list1.username}
@@ -308,7 +307,7 @@ function Head() {
               </DialogActions>
             </DialogContentText>
           </div>
-          {following.map((list2) => (
+          {following.map((list2:any) => (
             <Follower
               image={list2.photo}
               name={list2.username}
@@ -448,19 +447,19 @@ function Menu({ menu }: { menu?: string[] }) {
     id=localStorage.getItem("id");
     // console.log("id2",id);
     axios.get("https://nitroback.pythonanywhere.com/movies/movies/").then((res) => {
-      console.log("movies ", res.data.results);
+      // console.log("movies ", res.data.results);
       setMovies((res.data.results))
   });
     axios.get("https://nitroback.pythonanywhere.com/lists/bookmarks/1/").then((res) => {
       // console.log("the res data is: ", res.data.data);
       setUserWatchList(res.data.bookmarks);
-      // console.log("watch",res.data.bookmarks);
+      console.log("bookmark",res.data.bookmarks);
       const Hi=res.data.bookmarks.map((item:any)=>item[0]);
       setIdWatch(Hi);
     });
     axios.get("https://nitroback.pythonanywhere.com/lists/watchedList/1/").then((res) => {
       // console.log("the res watched data is: ", res.data.data);
-      // console.log("watched",res.data.watched_list);
+      console.log("watched",res.data.watched_list);
       setUserWatchedList(res.data.watched_list);
       const Hi=res.data.watched_list.map((item:any)=>item[0]);
       setIdWatched(Hi);
@@ -474,8 +473,8 @@ function Menu({ menu }: { menu?: string[] }) {
     // });
     axios.get("http://nitroback.pythonanywhere.com/lists/favourites/"+id+'/').then((res) => {
       // console.log("the like  data is: ", res.data.data);
-      // console.log("Liked",res.data.favourites);
-      setUserWatchedList(res.data.favourites);
+      console.log("Liked",res.data.favourites);
+      setUserLikedList(res.data.favourites);
       const Hi=res.data.favourites.map((item:any)=>item[0]);
       setIdLiked(Hi);
       // console.log("Liked",idLiked);
@@ -567,39 +566,14 @@ function Menu({ menu }: { menu?: string[] }) {
             backgroundColor: "#0c1012",
           }}
         >
-          {/* <Item image={"/image/manifest.jpg"} name={"لیست پرواز"} />
-          <Item image={"/image/good-doctor.jpeg"} name={"دکتر خوب"} />
-          <Item image={"/image/sweet-home.jpeg"} name={"سوییت هوم"} />
-          <Item image={"/image/harry-poter.jpg"} name={"هری پاتر"} />
-          <Item image={"/image/moon-knight.jpeg"} name={"شوالیه ماه"} />
-          <Item image={"/image/money-heist.jpg"} name={"خانه کاغذی"} />
-          <Item image={"/image/legacies.jpg"} name={"میراث ها"} />
-          <Item image={"/image/shahrBano.webp"} name={"شهربانو"} />
-          <Item image={"/image/alice.jpg"} name={"آلیس در سرزمین مرزی"} />
-          <Item
-            image={"/image/spider-man.jpg"}
-            name={"مزد عنکبوتی دور از خانه"}
-          />
-          <Item image={"/image/swarm.jpg"} name={"ازدحام"} />
-          <Item image={"/image/meydanSorkh.jpg"} name={"میدان سرخ"} />
-          <Item image={"/image/lastOfUs.webp"} name={"آخرین نفر از ما"} />
-          <Item image={"http://localhost:1337/uploads/ant_man_864b7d3fc6.webp"} name={"مرد آهنی"} /> */}
 
           
-          {/* {movies.filter((item)=>
-            userWatchListed.includes(item.id)
-            
-            
-          ).map((item) => (
-            <Item image={item.thumbnail} name={item.title} />
-            // console.log("item",item)
-          ))} */}
-          {movies.map((movie)=>{
-            if (idWatched.includes(movie.id)) {
-              // console.log("mmd",movie);
-              return <Item image={movie.thumbnail} name={movie.title} description={movie.description} />
+          
+          {userWatchedList.map((movie:any)=>{
+           
+              return <Item id={movie.id} image={movie.thumbnail} name={movie.title} description={movie.description} />
               
-            }
+            
           })}
         </div>
         
@@ -618,12 +592,11 @@ function Menu({ menu }: { menu?: string[] }) {
           <Item image={"/image/meydanSorkh.jpg"} name={"میدان سرخ"} />
           <Item image={"/image/lastOfUs.webp"} name={"آخرین نفر از ما"} />
           <Item image={"/image/iron-man.jpg"} name={"مرد آهنی"} /> */}
-          {movies.map((movie)=>{
-            if (idLiked.includes(movie.id)) {
-              // console.log("mmd",movie);
-              return <Item image={movie.thumbnail} name={movie.title} description={movie.description} />
+          {userLikedList.map((movie:any)=>{
+            
+              return <Item id={movie.id} image={movie.thumbnail} name={movie.title} description={movie.description} />
               
-            }
+            
           })}
         </div>
       )}
@@ -637,12 +610,13 @@ function Menu({ menu }: { menu?: string[] }) {
             backgroundColor: "#0c1012",
           }}
         >
-          {movies.map((movie)=>{
-            if (idWatch.includes(movie.id)) {
-              // console.log("mmd",movie);
-              return <Item image={movie.thumbnail} name={movie.title} description={movie.description} />
+          {userWatchList.map((movie:any)=>{
+            // if (idWatch.includes(movie.id)) {
+            //   // console.log("mmd",movie);
+            //   return <Item image={movie.thumbnail} name={movie.title} description={movie.description} />
               
-            }
+            // }
+            return <Item id={movie.id} image={movie.thumbnail} name={movie.title} description={movie.description}/>
           })}
           {/* <Item
             image={"/image/spider-man.jpg"}
@@ -658,7 +632,7 @@ function Menu({ menu }: { menu?: string[] }) {
       )}
       {ShowCommentdiv && (
         <div style={{ color: "white" }}>
-          {comment.map((comm) => (
+          {comment.map((comm:any) => (
             <Comment
               image={movies[comm.object_id].thumbnail}
               name={id}
