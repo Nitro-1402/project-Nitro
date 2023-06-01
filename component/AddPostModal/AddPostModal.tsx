@@ -16,7 +16,7 @@ const AddPostModal = ({ open, setOpen }:{open:any,setOpen:any}) => {
     };
     console.log("sending",sendingData)
     console.log("token", localStorage.getItem("accessToken"))
-    axios.post("http://nitroback.pythonanywhere.com/members/posts", sendingData,{headers: {Authorization: `${localStorage.getItem("token")}`}})
+    axios.post("http://nitroback.pythonanywhere.com/members/posts/", sendingData,{headers: {Authorization: `JWT ${localStorage.getItem("accessToken")}`}})
     .then((res) => {console.log(res.data)})
     // axios
     //   .post("asdf;lkj", body, {

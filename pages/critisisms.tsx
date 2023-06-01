@@ -87,6 +87,8 @@ const Critisism = () => {
   const [value, setValue] = React.useState(0);
   const [addPostModalOpener, setAddPostModalOpener] = React.useState(false);
   const [postList, setPostList] = React.useState([]);
+  const [permuimpostList, setPermiumPostList] = React.useState([]);
+  
   const handleChange = (event: any, newValue: any) => {
     setValue(newValue);
   };
@@ -100,6 +102,12 @@ const Critisism = () => {
     .then((res) => {
       console.log(res.data.results);
       setPostList(res.data.results);  
+
+    })
+    axios.get("http://nitroback.pythonanywhere.com/members/forMe",{headers: {Authorization: `JWT ${localStorage.getItem("accessToken")}`}})
+    .then((res) => {
+      console.log(res.data.results);
+      setPermiumPostList(res.data.results);  
 
     })
   }, []);
@@ -140,6 +148,7 @@ const Critisism = () => {
             postList.map((item: any) => {
               return (
                 <PostCard 
+                user={item.profile}
                 isPremium={item.isPremium}
                 postContent={item.body}
                 />
@@ -147,7 +156,19 @@ const Critisism = () => {
             })
           }
         </TabPanel>
-        <TabPanel value={value} index={1}></TabPanel>
+        <TabPanel value={value} index={1}>
+        {
+            permuimpostList.map((item: any) => {
+              return (
+                <PostCard 
+                user={item.profile}
+                isPremium={item.isPremium}
+                postContent={item.body}
+                />
+              )
+            })
+          }
+        </TabPanel>
       </Box>
       <Footer />
       <AddPostModal open={addPostModalOpener} setOpen={setAddPostModalOpener} />
