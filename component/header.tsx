@@ -14,13 +14,13 @@ function Header(){
             }}>
                 <h4>ورود/ثبت نام</h4>
             </div>: <HiUserCircle color={'orange'} size={50} style={{cursor:'pointer'}} onClick={()=>{
-                router.push('/profile')
+                router.push('/myprofile')
             }}/>}
             <div style={{display:'flex',alignItems:'center'}} >
             <div style={{width:400,justifyContent:'space-between',marginRight:80}} className={styles.navbar}>
                 <Link style={{color:'white',fontSize:18,marginLeft:5,textDecoration:'none'}} href="/news">اخبار فیلم و سریال ها</Link>
                 <Link style={{color:'white',fontSize:18,marginLeft:5,textDecoration:'none'}} href='/movies'>فیلم ها وسریال ها</Link>
-                <Link style={{color:'white',fontSize:18,marginLeft:5,textDecoration:'none'}} href='/actor'>بازیگران</Link>
+                <Link style={{color:'white',fontSize:18,marginLeft:5,textDecoration:'none'}} href='/critisisms'> نقد ها</Link>
             </div>
             <Link style={{display:'flex',alignItems:'center'}} href={'/'}>
                 <img src='/image/logo.png'/>
