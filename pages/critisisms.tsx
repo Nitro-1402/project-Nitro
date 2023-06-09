@@ -10,6 +10,7 @@ import Footer from "@/component/Footer";
 import Header from "@/component/header";
 import styles from "../styles/Critisism.module.css";
 import axios from "axios";
+import { Select } from "@mui/material";
 
 const StyledTabs = styled((props) => (
   <Tabs
@@ -106,7 +107,7 @@ const Critisism = () => {
     })
     axios.get("http://nitroback.pythonanywhere.com/members/forMe",{headers: {Authorization: `JWT ${localStorage.getItem("accessToken")}`}})
     .then((res) => {
-      console.log(res.data.results);
+      console.log("ForMe",res.data.results);
       setPermiumPostList(res.data.results);  
 
     })
@@ -123,6 +124,7 @@ const Critisism = () => {
         >
           اضافه کردن پست
         </button>
+        
       </div>
       <Box
         sx={{
