@@ -34,10 +34,10 @@ const Comments = ({ commentsUrl, currentUserId}:{commentsUrl?:any,currentUserId?
     axios.post(`${URL_API}comments/comments/`,{
       message: text,
       parent_comment: parentId,
-      profile: 1,
+      profile: 7,
       is_okay: true,
       content_type: 11,
-      object_id: 1
+      object_id: 7
     },{headers:{
       'Authorization':"2222222"
     }}).then((comment) => {
@@ -60,12 +60,12 @@ const Comments = ({ commentsUrl, currentUserId}:{commentsUrl?:any,currentUserId?
     axios.put(`${URL_API}comments/comments/${comment.id}/`,{
         message: text,
         parent_comment: comment.parent_comment,
-        profile: 1,
+        profile:7,
         is_okay: true,
         content_type: 0,
-        object_id: 1
+        object_id: 7
     },{headers:{
-      'Authorization':"2222222"
+      'Authorization':"222"
     }}).then((comment) => {
       setBackendComments(updatedBackendComments);
       setActiveComment(null);
@@ -90,7 +90,7 @@ const Comments = ({ commentsUrl, currentUserId}:{commentsUrl?:any,currentUserId?
   }, []);
 
   useEffect(()=>{
-    axios.get(`${URL_API}comments/comments/${1}/`).then((data)=> setComment([data?.data]))
+    axios.get(`${URL_API}comments/comments/${7}/`).then((data)=> setComment([data?.data]))
   },[])
 
   return (

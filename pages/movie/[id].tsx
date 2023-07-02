@@ -17,13 +17,30 @@ import { useRouter } from 'next/router'
 import CustomBtn from '@/ui/CustomBtn'
 import Series from '@/component/seriesSection/Series'
 import { SeriesApi } from '@/API/Series'
+import { ActorsApi } from '@/API/ActorApi'
+import Link from 'next/link'
 
 
 
 function Info(){
   const[data,setdata]=useState<any>()
   const[season,setseason]=useState<any>()
+  const[episode,setepisode]=useState<any>()
   const router=useRouter()
+  const[actor,setActors]=useState<any[]>([])
+
+  const api3=async()=>{
+    let res=await Promise.all([ActorsApi.getActors()])
+    console.log(res)
+    if(res?.[0]?.status=='success'){
+      console.log(res?.[0].content)
+      setActors(res?.[0].content.results)
+    }
+  }
+  useEffect(()=>{
+    api3()
+  },[ ])
+
   const api2=async()=>{
     let res=await SeriesApi.getSeries(data?.id)
     console.log(res)
@@ -32,10 +49,12 @@ function Info(){
       setseason(res?.content)
     }
   }
+
   useEffect(()=>{
     if(data?.id){
       api2()
 }  },[data])
+
   const api=async()=>{
     let res=await MoviesApi.getMovie(router.query?.id)
     console.log(res)
@@ -50,6 +69,10 @@ function Info(){
   },[router.query.id])
   if(!data)
   return<></>
+
+  
+
+
     return (
       <div>
         <Header/>
@@ -57,7 +80,7 @@ function Info(){
         <div style={{display:'flex',flexDirection:'column',justifyContent:'center'}}>
           <div className= {styles.middleView}>
             <div className= {styles.leftPart}>
-              <Card image={data?.poster} id={data?.id}/>
+              <Card rating={data?.rating} image={data?.poster} id={data?.id} isLiked={data?.is_favourites} isBooked={data?.is_bookmarks} isSeen={data?.is_watchedList}/>
             </div>
             <div className= {styles.rightPart}>
               <Middle text={data.description} name={data.title} date={data.publish_date} bbRate={data.meta_rating} imdbRate={data.imdb_rating} metaRate={data.meta_rating} country={data.country} category_set={data.category_set}/>
@@ -65,10 +88,10 @@ function Info(){
             </div>
           </div>
           <div style={{display:"flex", justifyContent:'center'}}>
-            <Series 
-            seasonNum={season.title} id={season?.id}
+            {/* <Series 
+            // seasonNum={season.title} id={season?.id}
             // title={season.title} episode_number={season.episode_number} photo={season.photo}
-            />
+            /> */}
           </div>
           {/* <div>
             <div className='ganreItem'style={{backgroundColor:'#3d3d3d', paddingTop:'20px', paddingRight:30}}>
@@ -86,7 +109,9 @@ function Info(){
             </div>
           </div> */}
           <div style={{backgroundColor:'black', color:'aliceblue',paddingTop:'30px' , paddingBottom:'30px'}}>
+            
             <Actors actors={data.actors} director={data.director}/>
+            
           </div>
           
           <div style={{ color:'aliceblue',display:'flex',flexWrap:'wrap',justifyContent:'center',alignItems:'center'}}>

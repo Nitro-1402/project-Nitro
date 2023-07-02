@@ -13,6 +13,7 @@ function Actor ({image='/info-page-image/natasha.webp',name='ناتاشا لیو
 }
 
 const Actors = ({actors , director}:{actors:any , director:string}) => {
+    console.log(actors)
   return (
     <div style={{display:'flex' , flexDirection:'column' , direction:'rtl' , textAlign:'right'}}>
         <div>    
@@ -20,7 +21,7 @@ const Actors = ({actors , director}:{actors:any , director:string}) => {
             <div style={{display:'flex', flexDirection:'row',textAlign:'right', marginRight:'60px', direction: 'rtl',marginBottom:'10px'}}>
             {
                 actors?.map((i:any)=>(
-                    <Actor name={i} link='/actor'/>
+                    <Actor name={i.name} link={`/actors/${i.id}`}/>
 
                 ))
             }            
@@ -29,11 +30,12 @@ const Actors = ({actors , director}:{actors:any , director:string}) => {
         <div>
             <h2 style={{textAlign:'right', paddingRight:'60px', direction: 'rtl',paddingBottom:'20px'}}>کارگردان</h2>
             <div style={{display:'flex', flexDirection:'row',textAlign:'right', marginRight:'60px', direction: 'rtl',marginBottom:'10px'}}>
-                <Actor name={director} link='/actor'/>
+                {/* <Actor name={director} link={`/actors/${director.id}`}/> */}
             </div>
         </div>
     </div>
   )
 }
+/////////////////////////{}
 
 export default Actors

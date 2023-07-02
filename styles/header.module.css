@@ -9,6 +9,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    border-bottom: gray solid 1px;
 }
 
 .container img{

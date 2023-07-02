@@ -3,16 +3,16 @@ import {FaHeart} from 'react-icons/fa'
 import styles from '@/styles/info.module.css'
 import { InfoApi } from '@/API/InfoApi';
 import AuthStore from '@/pages/store/Auth';
-
-const HeartFavorite = ({id}:{id:number}) => {
+//
+const HeartFavorite = ({id,status}:{id:number,status:boolean}) => {
   const user=AuthStore((state:any)=>state.user)
-    const [favorite , setFavorite] = useState(false);
+    const [favorite , setFavorite] = useState(status);
     const addFavorite=async()=>{
-        let res=await InfoApi.favorite({movie:id,profile:user.id})
+        let res=await InfoApi.favorite({movie:id,profile:user.profile_id})
         console.log(res)
       }
       const deleteFavorite=async()=>{
-        let res=await InfoApi.unfavourite()
+        let res=await InfoApi.unfavourite({movie:id,profile:user.profile_id})
         console.log(res)
       }
     return (

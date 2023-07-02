@@ -4,15 +4,15 @@ import styles from '@/styles/info.module.css'
 import { InfoApi } from '@/API/InfoApi';
 import AuthStore from '@/pages/store/Auth';
 
-const Bookmark = (id:any) => {
+const Bookmark = ({id,status}:{id:number,status:boolean}) => {
   const user=AuthStore((state:any)=>state.user)
-  const [bookmark , setBookmark] = useState(false);
+  const [bookmark , setBookmark] = useState(status);
   const addBookmark=async()=>{
-    let res=await InfoApi.bookmark({movie:id, profile:user.id})
+    let res=await InfoApi.bookmark({movie:id, profile:user.profile_id})
     console.log(res)
   }
   const deleteBookmark=async()=>{
-    let res=await InfoApi.unbookmark()
+    let res=await InfoApi.unbookmark({movie:id, profile:user.profile_id})
     console.log(res)
   }
   return (
