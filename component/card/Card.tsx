@@ -7,20 +7,20 @@ import Tick from '../seenAll/Tick'
 import Bookmark from '../bookmark/Bookmark'
 
 
-function Card({image,id}:{image:string,id:number}){
+function Card({image,id,isLiked,isSeen,isBooked,rating}:{image:string,rating:number,id:number,isLiked:boolean,isSeen:boolean,isBooked:boolean}){
     return (
       <div className= {styles.right}>
         <CustomImage className= {styles.poster} src={image} style={{}} alt='poster'/>
-        <StarRating/>
+        <StarRating id={id} rating={rating}/>
         <div className= {styles.bullet}>
           <span className= {styles.seen}>
-            <Tick id={id}/>
+            <Tick id={id} status={isSeen}/>
           </span>
           <span className= {styles.bookmark}>
-            <Bookmark id={id}/>
+            <Bookmark id={id} status={isBooked}/>
           </span>
           <span className= {styles.favorite}>
-            <HeartFavorite id={id}/>
+            <HeartFavorite id={id} status={isLiked}/>
           </span>
         </div>
       </div>
