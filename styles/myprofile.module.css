@@ -10,8 +10,15 @@
   padding-left: 5px;
 width: 250px;
 }
+.buttons{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: space-around;
+  margin-left: 100px;
+}
 .deleteicon{
-  color: #0C1210;
+  color: white;
   margin-top: 8px;
   cursor: pointer;
 }
@@ -184,6 +191,9 @@ width: 250px;
     .container{
         margin-top: 200px;
     }
+  .buttons{
+    margin-left: 50px;
+  }
   .menu {
     flex-direction: row-reverse;
     justify-content: flex-start;
@@ -209,12 +219,24 @@ width: 250px;
     font-size: 20px;
   }
 }
-@media only screen and (max-width: 500) {
+@media only screen and (max-width: 500px) {
   .container {
+    display: flex;
     flex-direction: column;
+    padding: 1px;
+  }
+  .buttons{
+    margin-left: 0px;
   }
   .menu{
     overflow: auto;
+    padding: 0px 0px;
+    margin-top: 10px;
+  }
+  .menuItem{
+    margin: 0px 0px;
+    font-size: 10px;
+    width: fit-content;
   }
   
 }

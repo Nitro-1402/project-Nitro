@@ -1,3 +1,4 @@
+import MulticlassName from "@/helper/MultiClassName";
 import { CSSProperties, memo, useCallback } from "react";
 import { useState } from "react";
 import ReactLoading from "react-loading";
@@ -6,8 +7,9 @@ interface BtnType {
   style: CSSProperties;
   textStyle: CSSProperties;
   press:()=>Promise<any>|void;
+  className?:string
 }
-function CustomBtn({ text, style,textStyle,press }: BtnType) {
+function CustomBtn({ text, style,textStyle,press ,className=''}: BtnType) {
   const [loading, setloading] = useState<boolean>(false);
   const onPress=async()=>{
     setloading(true)
@@ -16,7 +18,7 @@ function CustomBtn({ text, style,textStyle,press }: BtnType) {
 }
   return (
     <div
-    className='hoverBtn'
+    className={MulticlassName(['hoverBtn',className])}
       style={{
         display: "flex",
         justifyContent: "center",

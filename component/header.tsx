@@ -14,7 +14,7 @@ function Header(){
             }}>
                 <h4>ورود/ثبت نام</h4>
             </div>: <HiUserCircle color={'orange'} size={50} style={{cursor:'pointer'}} onClick={()=>{
-                router.push('/myprofile')
+                router.push('/profile/myprofile')
             }}/>}
             <div style={{display:'flex',alignItems:'center'}} >
             <div style={{width:400,justifyContent:'space-between',marginRight:80}} className={styles.navbar}>
