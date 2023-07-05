@@ -11,7 +11,7 @@ function Card({image,id,isLiked,isSeen,isBooked,rating}:{image:string,rating:num
     return (
       <div className= {styles.right}>
         <CustomImage className= {styles.poster} src={image} style={{}} alt='poster'/>
-        <StarRating id={id} rating={rating}/>
+        {/* <StarRating id={id} rating={rating}/> */}
         <div className= {styles.bullet}>
           <span className= {styles.seen}>
             <Tick id={id} status={isSeen}/>

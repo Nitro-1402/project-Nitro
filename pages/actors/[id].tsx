@@ -25,15 +25,16 @@ function actor(){
     api()
   },[router.query.id])
   if(!data)
+
   return<></>
     return (
         <div>
           <Header/>
-        <ActorInfo name={data.name} image={data.photo} bio={data.bio} birthday={data.birth_date}/>
+          <ActorInfo name={data.name} image={data.photo} bio={data.bio} birthday={data.birth_date}/>
         
-        <div className='ganreItem'style={{backgroundColor:'#3d3d3d', paddingTop:'20px', paddingRight:30}}>
+        {/* <div className='ganreItem'style={{backgroundColor:'#3d3d3d', paddingTop:'20px', paddingRight:30}}>
           <h2 className={style.title} style={{direction:'rtl',marginRight:30,fontSize:30}}>فیلموگرافی</h2>
-          {/* <div className={style.container}>
+          <div className={style.container}>
             <h4 style={{position:'absolute',left:50,top:120,color:'#FFA500',cursor:'pointer',backgroundColor:'black',padding:10,borderRadius:10}}>see all</h4>
             <ActorMovie image={'/image/manifest.jpg'} name={'لیست پرواز'}/>
             <ActorMovie image={'/image/good-doctor.jpeg'} name={'دکتر خوب'}/>
@@ -42,9 +43,9 @@ function actor(){
             <ActorMovie image={'/image/moon-knight.jpeg'} name={'شوالیه ماه'}/>
             <ActorMovie image={'/image/money-heist.jpg'} name={'خانه کاغذی'}/>
             <ActorMovie image={'/image/legacies.jpg'} name={'میراث ها'}/>
-          </div> */}
-        </div>
-        <Footer/>
+          </div>
+        </div> */}
+          <Footer/>
       </div>
     )
   }

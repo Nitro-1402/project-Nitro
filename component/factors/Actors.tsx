@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import styles from '/styles/factors.module.css'
-import CustomImage from '@/ui/CustomImage'
 import Link from 'next/link'
 
 function Actor ({image='/info-page-image/natasha.webp',name='ناتاشا لیون',link='/'}:{image?:string,name?:string,link?:string}){
@@ -12,8 +11,8 @@ function Actor ({image='/info-page-image/natasha.webp',name='ناتاشا لیو
     )
 }
 
-const Actors = ({actors , director}:{actors:any , director:string}) => {
-    console.log(actors)
+const Actors = ({actors , director}:{actors:any , director:any}) => {
+    // console.log(actors)
   return (
     <div style={{display:'flex' , flexDirection:'column' , direction:'rtl' , textAlign:'right'}}>
         <div>    
@@ -30,12 +29,11 @@ const Actors = ({actors , director}:{actors:any , director:string}) => {
         <div>
             <h2 style={{textAlign:'right', paddingRight:'60px', direction: 'rtl',paddingBottom:'20px'}}>کارگردان</h2>
             <div style={{display:'flex', flexDirection:'row',textAlign:'right', marginRight:'60px', direction: 'rtl',marginBottom:'10px'}}>
-                {/* <Actor name={director} link={`/actors/${director.id}`}/> */}
+                <Actor name={director.name} link={`/directors/${director.id}`}/>   
             </div>
         </div>
     </div>
   )
 }
-/////////////////////////{}
 
 export default Actors

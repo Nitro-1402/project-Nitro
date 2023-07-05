@@ -110,8 +110,7 @@ function Info(){
           </div> */}
           <div style={{backgroundColor:'black', color:'aliceblue',paddingTop:'30px' , paddingBottom:'30px'}}>
             
-            <Actors actors={data.actors} director={data.director}/>
-            
+            <Actors actors={data.actors} director={data.director}/>            
           </div>
           
           <div style={{ color:'aliceblue',display:'flex',flexWrap:'wrap',justifyContent:'center',alignItems:'center'}}>
