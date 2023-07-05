@@ -1,11 +1,15 @@
 import React, { Component } from 'react'
 import styles from '/styles/info.module.css'
 import CustomImage from '@/ui/CustomImage'
+import StarRating from '../rating/StarRating'
 
-function Information({name , date , bbRate , imdbRate ,metaRate , votes}:{name:string,date:string,bbRate:number,imdbRate:number,metaRate:number,votes?:number}){
+function Information({id,name,date,bbRate,imdbRate ,metaRate,rating}:{id:number,name:string,date:string,bbRate:number,imdbRate:number,metaRate:number,rating:number}){
     return (
         <div className={styles.movieInfo}>
-            <h3 className={styles.movieName}>{name}</h3>
+            <div style={{display:'flex', flexDirection:"row"}}>
+                <h3 className={styles.movieName}>{name}</h3>
+                <StarRating id={id} rating={rating}/>
+            </div>
             <div className={styles.rankBox}>
                 <CustomImage className={styles.BB} src="/info-page-image/bb_logo.png" style={{}} alt='bb'/>  
                 <span className={styles.rank}>{bbRate}/100</span>

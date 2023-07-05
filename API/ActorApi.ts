@@ -16,3 +16,19 @@ export class ActorsApi{
          return AsyncCatch(callback)
      }
 }
+
+export class DirectorsApi{
+    static getDirectors(params={}){
+       const callback=(config:object)=>{
+            // return axios.get(`${URL_API}movies/actors/`,{params:{...params},...config})
+            return axios.get(`${URL_API}movies/directors/`)
+        }
+        return AsyncCatch(callback)
+    }
+    static getDirector(id:any,params={}){
+        const callback=(config:object)=>{
+             return axios.get(`${URL_API}movies/directors/${id}`,{params:{...params},...config})
+         }
+         return AsyncCatch(callback)
+     }
+}
