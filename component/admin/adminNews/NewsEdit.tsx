@@ -5,7 +5,7 @@ import Input from "@/ui/Input"
 function NewsEdit(){
     return(<>
         <div style={{display:'flex',flexDirection:"column",alignItems:'center',paddingTop:'30px'}}>
-            <h1 style={{color:'orange',fontSize:'50px',paddingBottom:'30px'}}>اخبار</h1>
+            <h1 style={{color:'orange',fontSize:'50px',paddingBottom:'40px'}}>اخبار</h1>
             <div style={{display:"flex", flexDirection:"row"}}>
                 <div  style={{display:"flex", flexDirection:"column"}}>
                     <div style={{}}>
