@@ -119,6 +119,7 @@ function Head() {
     };
     const deleteFunc = () => {
       setPreview("../image/user.png");
+      
     };
     return (
       // <div>
@@ -157,7 +158,7 @@ function Head() {
             />
             <PhotoCamera style={{ color: "#faa500" }} />
           </IconButton>
-          <DeleteIcon className={styles.deleteicon} onClick={deleteFunc} />
+          <DeleteIcon style={{color:"#121212"}} className={styles.deleteicon} onClick={deleteFunc} />
         </div>
       </div>
     );
@@ -170,14 +171,15 @@ function Head() {
       formData.append("photo", selectedFile);
       formData.append("first_name", value.current.firstname);
       formData.append("last_name", value.current.lastname);
-      if(value.current.email!=user.email && value.current.email)
-      formData.append("email", value.current.email);
+      if(value.current.email!=user.email){
+      formData.append("email", value.current.email);}
       console.log("my id  ",id)
       const config = {
         headers: {
           "Content-Type": "multipart/form-data",Authorization: `JWT ${localStorage.getItem("accessToken")}`
         },
       };
+      console.log("myFormdata",formData)
       axios
         .patch(
           "http://nitroback.pythonanywhere.com/members/profiles/"+ localStorage.getItem("id")+"/",
@@ -213,7 +215,7 @@ function Head() {
         )
         .then((res) => {
           setFollowers(res.data.followers);
-          console.log("followers", res.data.followers);
+          // console.log("followers", res.data.followers);
         });
       axios
         .get(
@@ -221,7 +223,7 @@ function Head() {
         )
         .then((res) => {
           setFollowing(res.data.followings);
-          console.log("followings", res.data.followings);
+          // console.log("followings", res.data.followings);
         });
       const getUserInfo = async () => {
         try {
@@ -237,7 +239,7 @@ function Head() {
               }
             )
             .then((res) => {
-              console.log("User data is: ", res.data);
+              console.log("User data is after edit: ", res.data);
               setIs_followed(res.data.is_followed);
               setIssubscribed(res.data.is_subscribed);
               // console.log("User Is followed ", res.data.is_followed);
@@ -261,7 +263,7 @@ function Head() {
       follower_id: localStorage.getItem("id"),
       following_id: router.query.id
     }
-    console.log("body",body)
+    // console.log("body",body)
     // axios.post("http://nitroback.pythonanywhere.com/members/follow/",body).then((res)=>{})
     axios
       .delete("http://nitroback.pythonanywhere.com/members/follow/unfollow/"+"?follower_id="+localStorage.getItem("id")?.toString()+"&following_id="+router.query.id.toString(), 
@@ -277,7 +279,7 @@ function Head() {
       follower_id: localStorage.getItem("id"),
       following_id: router.query.id
     }
-    console.log("body",body)
+    // console.log("body",body)
     // axios.post("http://nitroback.pythonanywhere.com/members/follow/",body).then((res)=>{})
     axios
       .post("http://nitroback.pythonanywhere.com/members/follow/", body, {
@@ -327,7 +329,7 @@ function Head() {
             </DialogContentText>
           </div>
           {followers.map((list1: any) => (
-            <Follower name={list1.username} image={list1.photo} Firstname={list1.first_name} Lastname={list1.last_name} />
+            <Follower name={list1.username} image={list1.photo} Firstname={list1.first_name} Lastname={list1.last_name} profile_id={list1.profile_id} />
           ))}
         </Dialog>
         <Dialog
@@ -357,7 +359,7 @@ function Head() {
             </DialogContentText>
           </div>
           {following.map((list2: any) => (
-            <Follower image={list2.photo} name={list2.username} Firstname={list2.first_name} Lastname={list2.last_name} />
+            <Follower  profile_id={list2.profile_id} image={list2.photo} name={list2.username} Firstname={list2.first_name} Lastname={list2.last_name} />
           ))}
         </Dialog>
       </div>
@@ -391,7 +393,7 @@ function Head() {
           <div className={styles.data}>
             {!editProfilestatus && (
               <h1 className={styles.name}>
-                {user.first_name} {user.last_name}
+                 {user.last_name} {user.first_name}
               </h1>
             )}
 
@@ -408,12 +410,12 @@ function Head() {
                 {/* <AutoExpandingInput/>*/}
                 <AutoExpandingInput
                   style={{ marginRight: "15px" }}
-                  input={user.last_name}
+                  input={user.first_name}
                   onChange={e=>{
                     value.current.firstname=e
                     }}
                 />
-                <AutoExpandingInput style={{}} input={user.first_name}  onChange={e=>{
+                <AutoExpandingInput style={{}} input={user.last_name}  onChange={e=>{
                     value.current.lastname=e
                     }} />
               </div>
@@ -422,14 +424,15 @@ function Head() {
             {editProfilestatus && (
               // <h3 className={styles.email}>{user.Email}</h3>
               <div className={styles.submitdiv}>
-                <input
+                {/* <input
                   defaultValue={useremail.email}
                   onChange={e=>{
                   value.current.email=e.target.value
                   }}
                   className={styles.email_input}
                   type="text"
-                />
+                /> */}
+                <h3 className={styles.email}>{useremail.email}</h3>
                 <BsPersonFillCheck
                   onClick={submitedit}
                   className={styles.submitform}
@@ -597,8 +600,8 @@ function Menu({ menu }: { menu?: string[] }) {
           "http://nitroback.pythonanywhere.com/comments/comments/?profile=" + id
         )
         .then((res) => {
-          console.log("the comms  data is: ", res.data.results);
-          setCommnet(res.data.results);
+          console.log("the comms  data is: ", res.data);
+          setCommnet(res.data);
         });
     }
   }, [router.query.id]);
@@ -760,6 +763,7 @@ function Menu({ menu }: { menu?: string[] }) {
         <div style={{ color: "white" }}>
           {comment?.map((comm: any) => (
             <Comment
+              movie_id={comm.object_id}
               image={comm.photo}
               name={id}
               text={comm.message}

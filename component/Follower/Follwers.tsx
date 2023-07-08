@@ -1,6 +1,6 @@
 import styles from '/styles/follower.module.css'
 
-export default function Follower ({image='/image/test.jpeg',Firstname='وندزدی',Lastname='آدامز',name='username', number=12346788,description='این متن تست است برای توضیحات',edit=false}:{edit?:boolean,image?:string,Firstname?:string,Lastname?:string,name?:string,number?:number,description?:string}){
+export default function Follower ({image='/image/test.jpeg',Firstname='وندزدی',Lastname='آدامز',name='username',profile_id='132', number=12346788,description='این متن تست است برای توضیحات',edit=false}:{edit?:boolean,image?:string,Firstname?:string,Lastname?:string,name?:string,profile_id?:number,number?:number,description?:string}){
     // if Firstname | Lastname
     return(
         <div className={styles.item}>
@@ -16,7 +16,7 @@ export default function Follower ({image='/image/test.jpeg',Firstname='وندز�
             <IoCloseSharp size={22} color="red" title='حذف'/>
             </div>} */}
             <img  src={image?image:''} alt="" className={styles.img} />
-            <h4 className={styles.name}>  {Firstname}  {Lastname}</h4>
+            <h4 style={{cursor:"pointer"}} onClick={()=>location.href="/profile/"+profile_id} className={styles.name}>  {Firstname}  {Lastname}</h4>
         </div>
     )
 }

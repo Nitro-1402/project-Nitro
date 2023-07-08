@@ -18,5 +18,11 @@
     left: 5px;
     background-color: black;
     color: rgb(233, 224, 224);
+    margin-right: 20px;
     
+}
+.container{
+    display: flex;
+    flex-direction: row-reverse;
+    /* margin-right: 1vw; */
 }

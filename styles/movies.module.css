@@ -2,6 +2,13 @@
     width: 100%;
     overflow-x:scroll;
 }
+.header{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 30px 50px;
+    flex-wrap: wrap;
+}
 .ganreItem{
     background-color: #0c1210;
     padding-top: 20px;
@@ -126,14 +133,24 @@
 .searchbox{
     float: right;
     text-align: right;
-    position: relative;
-    left: 630px;
+    /* position: relative;
+    left: 630px; */
     
 
 }
 @media only  screen and (max-width:1000px) {
     .container{
         overflow-x:auto;
+    }
+    .header{
+        display: flex;
+        flex-direction: column-reverse;
+        align-items: center;
+        padding: 10px 10px;
+    }
+    .searchbox{
+        margin-bottom: 20px;
+
     }
     .title{
         margin-top:0px;
