@@ -15,10 +15,10 @@ interface ItemData {
   name: string;
 }
 
-const options:any = [
-  {  value: "publish_date", label: "جدید ترین" },
+const options: any = [
+  { value: "publish_date", label: "جدید ترین" },
   { value: "-publish_date", label: "قدیمی ترین" },
-  {  value: "rating", label: "پرامتیازترین" },
+  { value: "rating", label: "پرامتیازترین" },
   { value: "-rating", label: "کمترین امتیاز" },
 ];
 
@@ -98,7 +98,7 @@ export default function Explore(): JSX.Element {
         .then((res) => {
           setNext(res.data.next);
           setMovie(res.data.results);
-          console.log("res",res.data.results)
+          console.log("res", res.data.results);
 
           // res.data.results.map((item) => {
           //   imgs.push(item.thumbnail)
@@ -116,23 +116,21 @@ export default function Explore(): JSX.Element {
   const handlePageChange = (pageNumber: number) => {
     setCurrentPage(pageNumber);
   };
-  const handleGenreChange = (e:any) => {
+  const handleGenreChange = (e: any) => {
     setGen(e);
-    handleSearchClick(searchTerm,e)
+    handleSearchClick(searchTerm, e);
   };
-  const handleActorChange = (e:any) => {
+  const handleActorChange = (e: any) => {
     setAct(e);
   };
-  const handlesort = (e:any) => {
-    setSort(e);    
-    handleSearchClick(searchTerm,gen,e)
+  const handlesort = (e: any) => {
+    setSort(e);
+    handleSearchClick(searchTerm, gen, e);
   };
 
   const renderItems = (): JSX.Element[] => {
-    return movie.map((item:any, index) => (
-
+    return movie.map((item: any, index) => (
       <Item
-
         id={item.id}
         key={index}
         image={item.thumbnail}
@@ -141,23 +139,28 @@ export default function Explore(): JSX.Element {
       />
     ));
   };
-  const [searchTerm, setSearchTerm] = useState('');
+  const [searchTerm, setSearchTerm] = useState("");
 
-
-
-  const handleSearchClick = (text:string=searchTerm,_gen:any = gen,_sort :any = sort) => {
-    fetch(`https://nitroback.pythonanywhere.com/movies/movies/?search=${text}${_sort?`&ordering=${_sort.value}`:""}${_gen?`&category_set=${_gen.value}`:""}`)
-      .then(response => response.json())
-      .then(data => {
-        setMovie(data.results)
+  const handleSearchClick = (
+    text: string = searchTerm,
+    _gen: any = gen,
+    _sort: any = sort
+  ) => {
+    fetch(
+      `https://nitroback.pythonanywhere.com/movies/movies/?search=${text}${
+        _sort ? `&ordering=${_sort.value}` : ""
+      }${_gen ? `&category_set=${_gen.value}` : ""}`
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        setMovie(data.results);
       })
-      .catch(error => console.error(error));
+      .catch((error) => console.error(error));
   };
-  const onSearch = (text:string)=>{
-    setSearchTerm(text)
-    handleSearchClick(text,gen)
-  }
-
+  const onSearch = (text: string) => {
+    setSearchTerm(text);
+    handleSearchClick(text, gen);
+  };
 
   return (
     <div className={style.mainSection}>
@@ -174,71 +177,73 @@ export default function Explore(): JSX.Element {
       </div>
       <div className={style.ganreItem}>
         <h2 className={style.title}>فیلم</h2>
-        <div className={style.filter}>
-          <Select
-            className={style.select}
-            styles={{
-              container: (baseStyles) => ({
-                backgroundColor: "black",
-                ...baseStyles,
-              }),
-              control: (baseStyles, state) => ({
-                ...baseStyles,
-                borderColor: state.isFocused ? "#0c1210" : "#faa500",
-                backgroundColor: "black",
-                color: "white",
-              }),
-              menuList: (baseStyles) => ({
-                ...baseStyles,
-                backgroundColor: "black",
-                color: "#faa500",
-              }),
-              option: (baseStyles, state) => ({
-                ":hover": { backgroundColor: "#faa500", color: "black" },
-                ...baseStyles,
-                backgroundColor: "black",
-                color: "#faa500",
-              }),
-            }}
-            placeholder="ژانر"
-            value={gen}
-            onChange={(e) => handleGenreChange(e)}
-            options={allGenre}
-          />
-          <Select
-            styles={{
-              container: (baseStyles) => ({
-                backgroundColor: "black",
-                ...baseStyles,
-              }),
-              control: (baseStyles, state) => ({
-                ...baseStyles,
-                borderColor: state.isFocused ? "#0c1210" : "#faa500",
-                backgroundColor: "black",
-                color: "white",
-                ":hover": { color: "#faa500", borderColor: "white" },
-              }),
-              menuList: (baseStyles) => ({
-                ...baseStyles,
-                backgroundColor: "black",
-                color: "#faa500",
-              }),
-              option: (baseStyles, state) => ({
-                ":hover": { backgroundColor: "#faa500", color: "black" },
-                ...baseStyles,
-                backgroundColor: "black",
-                color: "#faa500",
-              }),
-            }}
-            className={style.select2}
-            placeholder="مرتب سازی براساس"
-            value={sort}
-            onChange={(e) => handlesort(e)}
-            options={options}
-          />
-          <div className={style.searchbox}>
-            <SearchBox onSearch={onSearch} />
+        <div className={style.header}>
+          <div className={style.filter}>
+            <Select
+              className={style.select}
+              styles={{
+                container: (baseStyles) => ({
+                  backgroundColor: "black",
+                  ...baseStyles,
+                }),
+                control: (baseStyles, state) => ({
+                  ...baseStyles,
+                  borderColor: state.isFocused ? "#0c1210" : "#faa500",
+                  backgroundColor: "black",
+                  color: "white",
+                }),
+                menuList: (baseStyles) => ({
+                  ...baseStyles,
+                  backgroundColor: "black",
+                  color: "#faa500",
+                }),
+                option: (baseStyles, state) => ({
+                  ":hover": { backgroundColor: "#faa500", color: "black" },
+                  ...baseStyles,
+                  backgroundColor: "black",
+                  color: "#faa500",
+                }),
+              }}
+              placeholder="ژانر"
+              value={gen}
+              onChange={(e) => handleGenreChange(e)}
+              options={allGenre}
+            />
+            <Select
+              styles={{
+                container: (baseStyles) => ({
+                  backgroundColor: "black",
+                  ...baseStyles,
+                }),
+                control: (baseStyles, state) => ({
+                  ...baseStyles,
+                  borderColor: state.isFocused ? "#0c1210" : "#faa500",
+                  backgroundColor: "black",
+                  color: "white",
+                  ":hover": { color: "#faa500", borderColor: "white" },
+                }),
+                menuList: (baseStyles) => ({
+                  ...baseStyles,
+                  backgroundColor: "black",
+                  color: "#faa500",
+                }),
+                option: (baseStyles, state) => ({
+                  ":hover": { backgroundColor: "#faa500", color: "black" },
+                  ...baseStyles,
+                  backgroundColor: "black",
+                  color: "#faa500",
+                }),
+              }}
+              className={style.select2}
+              placeholder="مرتب سازی براساس"
+              value={sort}
+              onChange={(e) => handlesort(e)}
+              options={options}
+            />
           </div>
+            <div className={style.searchbox}>
+              <SearchBox onSearch={onSearch} />
+            </div>
         </div>
         <div className={style.container}>{renderItems()}</div>
         <div style={{ display: "flex", justifyContent: "center" }}>
