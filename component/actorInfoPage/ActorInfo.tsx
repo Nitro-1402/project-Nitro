@@ -18,7 +18,7 @@ export default function ActorInfo ({imdb_link='https://www.imdb.com/name/nm18691
             <div className={styles.info} >تاریخ تولد: {birthday}</div>
             <div className={styles.info} >زندگی نامه: {bio}</div>
             <Link className={styles.btn}  href={imdb_link}>
-              <div className={styles.imdb}>پرفایل در IMDB</div>
+              <div className={styles.imdb}>پروفایل در IMDB</div>
             </Link>
           </div>
         </div>

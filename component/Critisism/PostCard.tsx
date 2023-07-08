@@ -3,6 +3,7 @@ import styles from "@/styles/PostCard.module.css";
 import { MdOutlineFavoriteBorder } from "react-icons/md";
 import { Link } from "@mui/material";
 import { useRouter } from "next/router";
+import { BsStar } from "react-icons/bs";
 
 interface User {
   first_name: string;
@@ -42,6 +43,7 @@ const PostCard: React.FC<ItemProps> = ({
 
   return (
     <div className={styles.postContainer}>
+      { isPremium && <BsStar size={20} color="yellow" style={{left:10,top:10,position:'absolute'}}/>}
       <div className={styles.postHeader}>
         <img
           className={styles.posterUserImg}

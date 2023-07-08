@@ -102,7 +102,8 @@
 }
 @media only screen and (max-width:600px) {
   .suggestion>div{
-    justify-content: flex-end;
+    overflow: scroll;
+    justify-content: flex-start;
   }
   .header>h2{
     margin-top: 40px;

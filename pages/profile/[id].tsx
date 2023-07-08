@@ -496,7 +496,7 @@ function Head() {
                 color: "#000000",
               }}
             />
-            {/* <CustomBtn
+            <CustomBtn
             className={styles.Subcribed}
             text={is_subscribed?"عضو شده":"عضو شدن"}
             press={() => {
@@ -504,6 +504,7 @@ function Head() {
                 // unsubscribe()
               }else{
                 subscribe()
+                setIssubscribed(true)
               }
               // location.href = "/editprofile";
             }}
@@ -518,7 +519,7 @@ function Head() {
             textStyle={{
               color: "#000000",
             }}
-          /> */}
+          />
           </div>) : !editProfilestatus ? (
             <CustomBtn
             className={styles.editProfileButtom}

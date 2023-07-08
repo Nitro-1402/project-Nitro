@@ -43,7 +43,7 @@ const AddPostModal = ({ open, setOpen }: { open: any; setOpen: any }) => {
   const [selectedOption, setSelectedOption] = React.useState("freepost");
 
   const options = [
-    // { value: "premiumpost", label: "پست پرداختی" },
+    { value: "premiumpost", label: "پست پرداختی" },
     { value: "freepost", label: "پست رایگان" },
   ];
 

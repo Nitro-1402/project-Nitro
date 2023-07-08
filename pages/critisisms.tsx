@@ -164,7 +164,7 @@ const Critisism = () => {
               return (
                 <PostCard 
                 user={item.profile}
-                isPremium={item.isPremium}
+                isPremium={item.is_premium}
                 postContent={item.body}
                 />
               )

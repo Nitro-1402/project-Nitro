@@ -1,4 +1,5 @@
 .postContainer {
+    position: relative;
     border: 1px solid #faa500;
     border-radius: 10px;
     background-color: #24282A;

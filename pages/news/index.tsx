@@ -78,7 +78,7 @@ export default function News(){
     return(
         <>
         <Header/>
-        <h1 style={{direction:'rtl',color:'white',marginTop:80,marginRight:670}}>اخبار سینمای جهان</h1>
+        <h1 style={{direction:'rtl',color:'white',marginTop:80,width:'100%',textAlign:'center'}}>اخبار سینمای جهان</h1>
         <div className={styles.container}>
         {
           news.map((e:any)=>{
