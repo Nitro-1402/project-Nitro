@@ -17,6 +17,7 @@ import { useRouter } from 'next/router'
 import CustomBtn from '@/ui/CustomBtn'
 import Series from '@/component/seriesSection/Series'
 import { SeriesApi } from '@/API/Series'
+// import CommentSection from '@/component/comment/comments'
 
 
 
@@ -65,10 +66,10 @@ function Info(){
             </div>
           </div>
           <div style={{display:"flex", justifyContent:'center'}}>
-            <Series 
-            seasonNum={season.title} id={season?.id}
+            {/* <Series 
+            // seasonNum={season.title} id={season?.id}
             // title={season.title} episode_number={season.episode_number} photo={season.photo}
-            />
+            /> */}
           </div>
           {/* <div>
             <div className='ganreItem'style={{backgroundColor:'#3d3d3d', paddingTop:'20px', paddingRight:30}}>
@@ -90,11 +91,12 @@ function Info(){
           </div>
           
           <div style={{ color:'aliceblue',display:'flex',flexWrap:'wrap',justifyContent:'center',alignItems:'center'}}>
-            <CommentBox/>
+            {/* <CommentBox/> */}
             {/* <div style={{width:'100%',display:'flex',justifyContent:'space-between',padding:"0 10%"}}>
               <CustomBtn text='ثبت نظر' style={{width:120,margin:"0 20px",height:40,borderRadius:10,backgroundColor:'orange'}} textStyle={{color:'white'}} press={()=>{}}/>
               <h3 style={{color:'white',direction:'rtl',fontSize:35}}>نظرات</h3>
             </div> */}
+          {/* this is the section of this project for aproch about our self ` */}
             
             {/* <Comment/>
             <Comment/>

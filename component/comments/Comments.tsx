@@ -31,6 +31,8 @@ const Comments = ({ commentsUrl, currentUserId}:{commentsUrl?:any,currentUserId?
       setBackendComments([comment, ...backendComments]);
       setActiveComment(null);
     });
+    let access=localStorage.getItem('accessToken')
+
     axios.post(`${URL_API}comments/comments/`,{
       message: text,
       parent_comment: parentId,
@@ -38,8 +40,9 @@ const Comments = ({ commentsUrl, currentUserId}:{commentsUrl?:any,currentUserId?
       is_okay: true,
       content_type: 11,
       object_id: 1
+      
     },{headers:{
-      'Authorization':"2222222"
+      "Authorization" :"JWT " + access
     }}).then((comment) => {
       setBackendComments([text, ...backendComments]);
       setActiveComment(null);

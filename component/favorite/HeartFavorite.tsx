@@ -8,6 +8,7 @@ const HeartFavorite = ({id}:{id:number}) => {
   const user=AuthStore((state:any)=>state.user)
     const [favorite , setFavorite] = useState(false);
     const addFavorite=async()=>{
+      console.log("user",user.id)
         let res=await InfoApi.favorite({movie:id,profile:user.id})
         console.log(res)
       }

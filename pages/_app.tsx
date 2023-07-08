@@ -17,7 +17,7 @@ export default function App({ Component, pageProps }: AppProps) {
     let me=await RegisterApi.GetMe()
     console.log(me)
 
-  }
+  } 
   useEffect(()=>{
     getme()
   },[ ])
@@ -29,6 +29,7 @@ export default function App({ Component, pageProps }: AppProps) {
       return;
     }
     const data=await RegisterApi.GetMe()
+    console.log(data)
     if(data?.status=='success'){
       setUser(data.content)
       ref?.current?.hide()

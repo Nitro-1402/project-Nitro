@@ -35,13 +35,16 @@ const SearchBox: React.FC<SearchBoxProps> = ({ placeholder, onSearch }) => {
 
   return (
     <div>
-      <input className={style.inpsrch}
+      <input  className={style.inpsrch}
         type="text"
+        
         dir='rtl'
-        placeholder="نام فیلم و بازیگر"
+        placeholder= "نام فیلم،کارگردان،بازیگر"
         value={searchTerm}
         onChange={handleInputChange}
-        onKeyPress={handleKeyPress} />
+        onKeyPress={handleKeyPress} 
+        style={{textAlign:"center"}}
+        />
       <button className={style.searchbtn} onClick={()=>onSearch(searchTerm)}  dir='rtl'>جست و جو</button>
       {/* <ul>
         {searchResults.map((result: any) => (

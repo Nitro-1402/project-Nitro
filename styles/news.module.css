@@ -11,7 +11,7 @@
     position: relative;
     height: auto;
     border-style: solid;
-    border-color: #faa500;
+    border-color: #faa500
 }
 .container{
     display: flex;

@@ -32,7 +32,7 @@ export default function NewsCard({image,description,title,id,publish_date}:{imag
             <CustomImage style={{height:200,width:280,borderRadius:10,marginLeft:30}} src={image}/>
             <div>
                 <h2 style={{color:'white',fontSize:25,margin:"15px 0"}}>{title}</h2>
-                <h6 style={{color:'#787878',fontSize:10}}>{description}</h6>
+                <h6 style={{color:'#787878',fontSize:13}}>{description}</h6>
                 
                
                 <h4  style={{position:'absolute',left:10,bottom:10,fontSize:15,color:"#FFA500" ,direction:"rtl"}}>{persianDate}</h4>
