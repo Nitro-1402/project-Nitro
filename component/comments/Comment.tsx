@@ -57,12 +57,12 @@ const Comment = ({
           </div>
         </div>
         {!isEditing && <div className={styles.commentText} style={{direction:'rtl' , textAlign:'right'}}>{comment.message}</div>}
-        {isEditing && (
+        {/* {isEditing && (
           <CommentForm
             submitLabel="بروزرسانی"
             hasCancelButton
             initialText={comment.message}
-            handleSubmit={(text:any) => updateComment(text, comment)}
+            handleSubmit={(text:any) => addComment(text, parentId)}
             handleCancel={() => {
               setActiveComment(null);
             }}
@@ -97,7 +97,7 @@ const Comment = ({
               پاک کردن
             </div>
           )}
-        </div>
+        </div> */}
         {isReplying && (
           <CommentForm
             submitLabel="پاسخ"

@@ -8,7 +8,7 @@ function Information({id,name,date,bbRate,imdbRate ,metaRate,rating}:{id:number,
         <div className={styles.movieInfo}>
             <div className={styles.ratName} style={{display:'flex', flexDirection:"row"}}>
                 <h3 className={styles.movieName}>{name}</h3>
-                <StarRating  id={id} rating={rating}/>
+                {/* <StarRating  id={id} rating={rating}/> */}
             </div>
             <div className={styles.rankBox}>
                 <CustomImage className={styles.BB} src="/info-page-image/bb_logo.png" style={{}} alt='bb'/>  

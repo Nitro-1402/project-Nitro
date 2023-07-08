@@ -3,10 +3,12 @@ import {FaCheck, FaStar, FaTicketAlt} from 'react-icons/fa'
 import styles from '@/styles/info.module.css'
 import { InfoApi } from '@/API/InfoApi';
 import AuthStore from '@/pages/store/Auth';
+import { useRouter } from 'next/router';
 
 const Tick = ({id,status}:{id:number,status:boolean}) => {
   const user=AuthStore((state:any)=>state.user)
   const [seen , setSeen] = useState(status);
+  const router=useRouter()
   const addSeen=async()=>{
     let res=await InfoApi.seen({movie:id,profile:user.profile_id?user.profile_id:user.id})
     console.log(res)
@@ -23,6 +25,7 @@ const Tick = ({id,status}:{id:number,status:boolean}) => {
           type="radio"
           name="seen"
           onClick={() => {
+            if(user?.id){
             if(seen){
               deleteSeen()
               setSeen(false)
@@ -30,6 +33,10 @@ const Tick = ({id,status}:{id:number,status:boolean}) => {
               addSeen()
               setSeen(true)
             }
+          }
+          else{
+            router.push(`/register?backUrl=${router.asPath}`)
+          }
           }}
         />
         <FaCheck

@@ -40,10 +40,10 @@ const customStyles = {
 
 const AddPostModal = ({ open, setOpen }: { open: any; setOpen: any }) => {
   const [postContent, setPostContent] = React.useState("");
-  const [selectedOption, setSelectedOption] = React.useState("");
+  const [selectedOption, setSelectedOption] = React.useState("freepost");
 
   const options = [
-    { value: "premiumpost", label: "پست پرداختی" },
+    // { value: "premiumpost", label: "پست پرداختی" },
     { value: "freepost", label: "پست رایگان" },
   ];
 
@@ -84,7 +84,7 @@ const AddPostModal = ({ open, setOpen }: { open: any; setOpen: any }) => {
       })
       .then((res) => {
         console.log(res.data);
-      });
+      }).catch(e=>{})
     setOpen(false);
     // axios
     //   .post("asdf;lkj", body, {

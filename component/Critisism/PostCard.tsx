@@ -2,6 +2,7 @@ import React from "react";
 import styles from "@/styles/PostCard.module.css";
 import { MdOutlineFavoriteBorder } from "react-icons/md";
 import { Link } from "@mui/material";
+import { useRouter } from "next/router";
 
 interface User {
   first_name: string;
@@ -32,6 +33,7 @@ const PostCard: React.FC<ItemProps> = ({
   postContent = "",
   postLikes = 0,
 }) => {
+  const router=useRouter()
   // const navigate = useNavigate();
 
   // const postContentHandler = () => {
@@ -52,7 +54,7 @@ const PostCard: React.FC<ItemProps> = ({
           </span>
         </div>
         <div className={styles.postedUserUsername}>
-          <p style={{marginTop:"15px",cursor:"pointer",color:"#Faa500"}} onClick={()=>location.href='/profile/'+user.id}>@{user.username}</p>
+          <p style={{marginTop:"15px",cursor:"pointer",color:"#Faa500"}} onClick={()=>router.push('/profile/'+user.id)}>@{user.username}</p>
         </div>
       </div>
       <div

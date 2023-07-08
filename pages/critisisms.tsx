@@ -102,22 +102,22 @@ const Critisism = () => {
     axios.get("http://nitroback.pythonanywhere.com/members/posts")
     .then((res) => {
       console.log(res.data.results);
-      setPostList(res.data.results);  
+      setPostList(res.data);  
 
-    })
+    }).catch(e=>{})
     axios.get("http://nitroback.pythonanywhere.com/members/forMe",{headers: {Authorization: `JWT ${localStorage.getItem("accessToken")}`}})
     .then((res) => {
       console.log("ForMe",res.data.results);
-      setPermiumPostList(res.data.results);  
+      setPermiumPostList(res.data);  
 
-    })
+    }).catch(e=>{})
   }, []);
   return (
     
     <div className={styles.critisismWrapper}>
       <Header />
       
-      <div className={styles.addPostSection}>
+      {permuimpostList?.length>0 && <div className={styles.addPostSection}>
         <button
           onClick={AddPostModalHandler}
           className={styles.addPostSectionBtn}
@@ -125,7 +125,7 @@ const Critisism = () => {
           اضافه کردن پست
         </button>
         
-      </div>
+      </div>}
       <Box
         sx={{
           bgcolor: "#0c1012",
@@ -140,7 +140,7 @@ const Critisism = () => {
           aria-label="styled tabs example"
         >
           <StyledTab label="همه پست‌ها" />
-          <StyledTab label="برای شما" />
+          {permuimpostList?.length>0 && <StyledTab label="برای شما" />}
         </StyledTabs>
         <TabPanel value={value} index={0}>
           {/* <PostCard />

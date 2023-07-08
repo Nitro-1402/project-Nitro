@@ -13,10 +13,12 @@ import { HiUserCircle } from 'react-icons/hi'
 import { MoviesApi } from '@/API/Movies'
 import {useEffect,useState} from 'react'
 import { NewsApi } from '@/API/news'
+import { useRouter } from 'next/router'
 export default function Home() {
   const[movies,setmovies]=useState<any[]>([])
   const[news,setnews]=useState<any[]>([])
   const user=AuthStore((state:any)=>state.user)
+  const router=useRouter()
   const api=async()=>{
     let res=await Promise.all([MoviesApi.getMovies(),NewsApi.getList()])
     console.log(res)
@@ -34,7 +36,7 @@ export default function Home() {
   },[ ])
   return (
     <>
-   {(news.length>0 && movies.length>0) && <>
+   {( movies.length>0) && <>
     <Header/>
     <div className={styles.header}>
       <h2> به دنیای فیلم خوش آمدید</h2>
@@ -47,7 +49,13 @@ export default function Home() {
         if(!user)
         axios.get(`${URL_API}movies/movies`)
       }}>
-        <div>
+        <div onClick={()=>{
+          if(user)
+          router.push('/profile/myprofile')
+          else{
+            router.push('/register')
+          }
+        }}>
 
         <h3>{user?'پروفایل':'ورود'}</h3>
         </div>
@@ -57,7 +65,7 @@ export default function Home() {
       <h3>پیشنهادی ها</h3>
       <div>
         {
-          movies.map((e:any)=>{
+          movies.slice(0,7).map((e:any)=>{
             return(
               <Item id={e.id} image={e.thumbnail} name={e.title} description={`${e.description.slice(0,70)} ...`}/>
             )

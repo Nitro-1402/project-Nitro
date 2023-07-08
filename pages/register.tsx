@@ -219,6 +219,10 @@ const Login=({set}:{set:React.Dispatch<React.SetStateAction<boolean>>})=>{
       localStorage.setItem("refreshToken",a.content.refresh)
       localStorage.setItem("id",a.content.id)
       init(a.content)
+      let url:any=router.query.backUrl
+      if(router.query.backUrl)
+      router.push(url)
+      else
       router.push('/')
       console.log("id",localStorage.getItem("id"))
       // toast.success("به ببینیم خوش امدید")

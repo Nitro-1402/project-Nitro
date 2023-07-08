@@ -466,6 +466,7 @@ function Head() {
               className={styles.Follow}
               text={is_followed?'دنبال شده':"دنبال کردن "}
               press={() => {
+                if(localStorage.getItem("id")){
                 if(is_followed){
                   Unfollow()
                   setIs_followed(false)
@@ -474,6 +475,9 @@ function Head() {
                   follow()
                   setIs_followed(true)
                 }
+              }else{
+                router.push(`/register?backUrl=${router.asPath}`)
+              }
                 //   setEditProfileStatus(true);
                 // console.log("userr id is : ", userId);
               }}
@@ -489,7 +493,7 @@ function Head() {
                 color: "#000000",
               }}
             />
-            <CustomBtn
+            {/* <CustomBtn
             className={styles.Subcribed}
             text={is_subscribed?"عضو شده":"عضو شدن"}
             press={() => {
@@ -511,7 +515,7 @@ function Head() {
             textStyle={{
               color: "#000000",
             }}
-          />
+          /> */}
           </div>) : !editProfilestatus ? (
             <CustomBtn
             className={styles.editProfileButtom}

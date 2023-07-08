@@ -10,8 +10,10 @@ export class MoviesApi{
         return AsyncCatch(callback)
     }
     static getMovie(id:any,params={}){
+        let access=localStorage.getItem('accessToken')
         const callback=(config:object)=>{
-             return axios.get(`${URL_API}movies/movies/${id}`,{params:{...params},...config})
+             return axios.get(`${URL_API}movies/movies/${id}`,access?{params:{...params},headers:{
+                "Authorization" :"JWT " + access}}:{params:{...params}})
          }
          return AsyncCatch(callback)
      }
