@@ -6,7 +6,7 @@ import MiniInfo from '../miniInfo/MiniInfo'
 const Top = (props:any) =>  {
 
   return (
-    <div className={styles.pageTop} style={{backgroundImage:` url(${props.tumbnail})`}}>
+    <div className={styles.pageTop} style={{backgroundImage:` url(${props.poster})`}}>
       <div className={styles.topContent}>
         <h1 className={styles.name}>{props.title}</h1>
         <div className={styles.miniInfoF}>

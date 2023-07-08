@@ -1,0 +1,14 @@
+@media only screen and (max-width:600px) {
+    .link{
+        width: 100px;
+        /* flex-direction: column; */
+    }
+    .actor{
+        font-size: 12px;
+    }
+    .act{
+		flex-direction: column;
+        
+	}
+    
+}

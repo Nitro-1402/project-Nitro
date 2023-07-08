@@ -12,11 +12,11 @@ const StarRating = ({id,rating}:{id:number,rating:number}) => {
   const [hover , setHover] = useState<number | null>(null);
   const arr=useRef([1,1,1,1,1])
   const addStar=async(id:any)=>{
-    let res=await InfoApi.star({movie:id , profile:user.profile_id})
+    let res=await InfoApi.star({movie:id , profile:user.profile_id?user.profile_id:user.id})
     console.log(res)
   }
   const changeStar=async(id:any)=>{
-    let res=await InfoApi.restar({movie:id , profile:user.profile_id})
+    let res=await InfoApi.restar({movie:id , profile:user.profile_id?user.profile_id:user.id})
     console.log(res)
   }
   

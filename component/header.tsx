@@ -17,10 +17,10 @@ function Header(){
                 router.push('/profile/myprofile')
             }}/>}
             <div style={{display:'flex',alignItems:'center'}} >
-            <div style={{width:400,justifyContent:'space-between',marginRight:80}} className={styles.navbar}>
-                <Link style={{color:'white',fontSize:18,marginLeft:5,textDecoration:'none'}} href="/news">اخبار فیلم و سریال ها</Link>
-                <Link style={{color:'white',fontSize:18,marginLeft:5,textDecoration:'none'}} href='/movies'>فیلم ها وسریال ها</Link>
-                <Link style={{color:'white',fontSize:18,marginLeft:5,textDecoration:'none'}} href='/critisisms'> نقد ها</Link>
+            <div style={{width:400,justifyContent:'space-between',marginRight:50}} className={styles.navbar}>
+                <Link style={{color:'white',fontSize:18,marginLeft:2,textDecoration:'none'}} href="/news">اخبار فیلم</Link>
+                <Link style={{color:'white',fontSize:18,marginLeft:2,textDecoration:'none'}} href='/movies'>فیلم ها</Link>
+                <Link style={{color:'white',fontSize:18,marginLeft:2,textDecoration:'none'}} href='/critisisms'> نقد ها</Link>
             </div>
             <Link style={{display:'flex',alignItems:'center'}} href={'/'}>
                 <img src='/image/logo.png'/>

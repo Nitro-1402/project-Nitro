@@ -10,6 +10,7 @@
 	font-size: 15px;
 }
 .pageTop {
+	background-repeat: no-repeat;
 	direction: rtl;
 	width: 100%;
 	margin-top: 80px;
@@ -152,10 +153,17 @@
 	width: 25px;
 }
 .summery {
+	/* margin-left: auto;
+	margin-right: auto; */
+
 	direction: rtl;
 	text-align: right;
 	font-size: 15px;
 	padding: 30px 0;
+}
+.info{
+	font-size: 20px;
+	border: #141312 1px solid;
 }
 .streamPlace{
 	background-color: rgb(88, 87, 87);
@@ -266,14 +274,22 @@
 		right: 0;
 		align-items: center;
 	}
+	.name{
+		font-size: 30px;
+	}
 	.middleView {
 		flex-direction: column;
+		justify-content: center;
+		align-items: center;
 	}
 	.movieName {
 		display: none;
 	}
 	.miniInfoF{
 		display: none;
+	}
+	.info{
+		font-size: 10px;
 	}
 	.left{
 		width: 500px;
@@ -285,6 +301,14 @@
 	.right {
 		margin-right: 0;
 		padding-bottom: 50px;
+		margin-left: 0;
+	}
+	.ratName{
+		display: flex;
+		justify-content: center;
+	}
+	.rateBox{
+		margin-right: 0;
 	}
 	.track{
 		margin-top: 10px;
@@ -302,6 +326,10 @@
 	}
 	.streamLogo{
 		height: 35px;
+	}
+	.summery{
+
+		font-size: 10px;
 	}
 }
 

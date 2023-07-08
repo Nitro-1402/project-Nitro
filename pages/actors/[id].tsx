@@ -30,7 +30,7 @@ function actor(){
     return (
         <div>
           <Header/>
-          <ActorInfo name={data.name} image={data.photo} bio={data.bio} birthday={data.birth_date}/>
+          <ActorInfo name={data.name} image={data.photo} bio={data.bio} birthday={data.birth_date} imdb_link={data.imdb_link}/>
         
         {/* <div className='ganreItem'style={{backgroundColor:'#3d3d3d', paddingTop:'20px', paddingRight:30}}>
           <h2 className={style.title} style={{direction:'rtl',marginRight:30,fontSize:30}}>فیلموگرافی</h2>
