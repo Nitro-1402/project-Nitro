@@ -42,8 +42,9 @@ const Comments = ({ commentsUrl, currentUserId}:{commentsUrl?:any,currentUserId?
       object_id: router.query.id
     },{headers:{
       "Authorization" :"JWT " + localStorage.getItem('accessToken')
-    }}).then((comment) => {
+    }}).then((commentt) => {
       setBackendComments([text, ...backendComments]);
+      setComment([commentt?.data,...comment])
       setActiveComment(null);
     });
   };

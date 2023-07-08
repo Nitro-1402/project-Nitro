@@ -63,7 +63,7 @@ export default function Home() {
     </div>
     <div className={styles.suggestion}>
       <h3>پیشنهادی ها</h3>
-      <div>
+      <div style={{overflow:'auto',width:'100%'}}>
         {
           movies.slice(0,7).map((e:any)=>{
             return(
