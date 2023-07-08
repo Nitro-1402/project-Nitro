@@ -8,6 +8,7 @@ interface User {
   last_name: string;
   username: string;
   photo: string;
+  id: number;
 }
 
 interface ItemProps {
@@ -24,6 +25,7 @@ const PostCard: React.FC<ItemProps> = ({
     last_name: "علیجان نژاد",
     username: "aref_alj",
     photo: "/image/user.png",
+    id : 1,
   },
   postImg = "/image/test.jpeg",
   isPremium = false,
@@ -50,14 +52,14 @@ const PostCard: React.FC<ItemProps> = ({
           </span>
         </div>
         <div className={styles.postedUserUsername}>
-          <Link href="/myprofile">@{user.username}</Link>
+          <p style={{marginTop:"15px",cursor:"pointer",color:"#Faa500"}} onClick={()=>location.href='/profile/'+user.id}>@{user.username}</p>
         </div>
       </div>
       <div
         className={styles.postContents}
-        onClick={() => {
-          location.href = "/postcontent";
-        }}
+        // onClick={() => {
+        //   location.href = "/postcontent";
+        // }}
       >
         <p>{postContent}</p>
         {/* <p>
@@ -71,14 +73,14 @@ const PostCard: React.FC<ItemProps> = ({
          <p>{postImg}</p> 
         <img src={postImg} alt="" />
       </div> */}
-      <div className={styles.postDetails}>
+      {/* <div className={styles.postDetails}>
         <button>
           <MdOutlineFavoriteBorder
           //  style={{color:"#faa500",marginLeft:"20px",marginTop:"2px"}}
           />
           {postLikes}
         </button>
-      </div>
+      </div> */}
     </div>
   );
 };

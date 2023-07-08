@@ -16,7 +16,6 @@ export default function Follower ({image='/image/test.jpeg',name='وندزدی',
             </div>} */}
             <img  src={image?image:''} alt="" className={styles.img} />
             <h4 className={styles.name}> {name}</h4>
-            <button className={styles.buttom}> دنبال کردن</button>
         </div>
     )
 }
