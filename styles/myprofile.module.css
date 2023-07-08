@@ -134,6 +134,21 @@ width: 250px;
 
 
 }
+.Follow{
+  width: 200px;
+  height: 34px;
+
+}
+.Subcribed{
+  width: 100px;
+  height: 34px;
+}
+.editProfileButtom{
+  width: 200px;
+  height: 34px;
+  margin-left: 150px;
+}
+
 .dial {
   display: flex;
   flex-direction: row-reverse;
@@ -172,6 +187,8 @@ width: 250px;
 
 .menuItem {
   font-size: 20px;
+  padding: 5px;
+  margin: 0px 30px;
 }
 .menu {
   justify-content: center;
@@ -194,6 +211,25 @@ width: 250px;
   .buttons{
     margin-left: 50px;
   }
+  .Follow{
+    width: 120px;
+    height: 34px;
+    font-size: 14px;
+  
+  }
+  .Subcribed{
+    width: 70px;
+    height: 34px;
+    font-size: 13px;
+
+  }
+  .editProfileButtom{
+    width: 120px;
+    height: 34px;
+    font-size: 13px;
+    margin-left: "150px",
+  }
+  
   .menu {
     flex-direction: row-reverse;
     justify-content: flex-start;
@@ -227,16 +263,60 @@ width: 250px;
   }
   .buttons{
     margin-left: 0px;
+    margin-bottom: 20px;
+    /* display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-start; */
   }
   .menu{
     overflow: auto;
     padding: 0px 0px;
     margin-top: 10px;
   }
-  .menuItem{
+  /* .menuItem{
     margin: 0px 0px;
     font-size: 10px;
     width: fit-content;
+  } */
+  .menuItem {
+    font-size: 20px;
+    font-size: 8px;
+    padding: 0px;
+    margin: 0px 0px;
+  }
+  .editProfileButtom{
+    width: 120px;
+    height: 34px;
+    font-size: 13px;
+    margin-left: 120px;
+    margin-bottom: 30px;
+    margin-top: 20px;
+    
+  }
+  .submitdiv{
+    display: flex;
+    flex-direction: column;
+  }
+  .submitform{
+    margin-right: 0px;
+    margin-left: 0px;
+    margin-top: 20px;
+    width: 12px;
+    height: 12px;
+  }
+  .email_input{
+    width: fit-content;
+  }
+  .Follow{
+    width: 80px;
+    height: 34px;
+    font-size: 11px;
+  
+  }
+  .Subcribed{
+    width: 50px;
+    height: 34px;
+    font-size: 11px;
   }
   
 }

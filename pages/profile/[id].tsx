@@ -213,7 +213,7 @@ function Head() {
         )
         .then((res) => {
           setFollowers(res.data.followers);
-          // console.log("followers", res.data.followers);
+          console.log("followers", res.data.followers);
         });
       axios
         .get(
@@ -382,7 +382,7 @@ function Head() {
                 minWidth: "110px",
                 borderRadius: "50%",
                 marginRight: "2vw",
-                border: "2px solid pink",
+                border: "2px solid #faa500",
               }}
               src={user.photo}
               alt="test"
@@ -435,7 +435,9 @@ function Head() {
                   className={styles.submitform}
                 />
                 <MdCancel
-                onClick={e=>setEditProfileStatus(false)} style={{}}/>
+                className={styles.submitform}
+                style={{marginRight:"30px",color:"white"}}
+                onClick={e=>setEditProfileStatus(false)} />
               </div>
             )}
 
@@ -461,7 +463,7 @@ function Head() {
           ) ? (
             <div className={styles.buttons}>
             <CustomBtn
-
+              className={styles.Follow}
               text={is_followed?'دنبال شده':"دنبال کردن "}
               press={() => {
                 if(is_followed){
@@ -476,11 +478,10 @@ function Head() {
                 // console.log("userr id is : ", userId);
               }}
               style={{
-                backgroundColor:is_followed?"red": "orange",
+                backgroundColor:is_followed?"orange": "white",
                 border: "2px solid #FFA500",
                 borderRadius: "5px",
-                width: 200,
-                height: 34,
+                
                 cursor: "pointer",
                 // marginLeft: "100px",
               }}
@@ -489,6 +490,7 @@ function Head() {
               }}
             />
             <CustomBtn
+            className={styles.Subcribed}
             text={is_subscribed?"عضو شده":"عضو شدن"}
             press={() => {
               if(is_subscribed){
@@ -499,11 +501,10 @@ function Head() {
               // location.href = "/editprofile";
             }}
             style={{
-              backgroundColor: "white",
+              backgroundColor:is_subscribed?"white": "#737373",
               border: "2px solid #FFA500",
               borderRadius: "5px",
-              width: 100,
-              height: 34,
+              
               cursor: "pointer",
               marginLeft: "20px",
             }}
@@ -513,6 +514,7 @@ function Head() {
           />
           </div>) : !editProfilestatus ? (
             <CustomBtn
+            className={styles.editProfileButtom}
               text="ویرایش پروفایل"
               press={() => {
                 // location.href = "/editprofile";
@@ -522,10 +524,9 @@ function Head() {
                 backgroundColor: "orange",
                 border: "2px solid #FFA500",
                 borderRadius: "5px",
-                width: 200,
-                height: 34,
+                
                 cursor: "pointer",
-                marginLeft: "150px",
+                
               }}
               textStyle={{
                 color: "#000000",
@@ -566,14 +567,14 @@ function Menu({ menu }: { menu?: string[] }) {
           setMovies(res.data.results);
         });
       axios
-        .get("https://nitroback.pythonanywhere.com/lists/bookmarks/1/")
+        .get("https://nitroback.pythonanywhere.com/lists/bookmarks/" + id + "/")
         .then((res) => {
           setUserWatchList(res.data.bookmarks);
           // console.log("bookmark", res.data.bookmarks);
           
         });
       axios
-        .get("https://nitroback.pythonanywhere.com/lists/watchedList/1/")
+        .get("https://nitroback.pythonanywhere.com/lists/watchedList/" + id + "/")
         .then((res) => {
           // console.log("watched", res.data.watched_list);
           setUserWatchedList(res.data.watched_list);
@@ -614,21 +615,23 @@ function Menu({ menu }: { menu?: string[] }) {
   return (
     <>
       <div
-        style={{ display: "flex", width: "100%", padding: "0 40px" }}
+        style={{ display: "flex", width: "100%" }}
         className={styles.menu}
       >
         {menu?.map((e: string, index: number) => {
           return (
             <h2
+              className={styles.menuItem}
+
               key={index}
               style={{
-                padding: 5,
+                
                 // display:"flex",
                 // flexDirection:"row-reverse",
 
                 borderBottom: index == select ? "2px solid #FFA500" : "",
                 cursor: "pointer",
-                margin: "0 20px",
+                
                 color: "white",
               }}
               onClick={() => {
@@ -658,7 +661,6 @@ function Menu({ menu }: { menu?: string[] }) {
                   setWatchlist(false);
                 }
               }}
-              className={styles.menuItem}
             >
               {e}
             </h2>

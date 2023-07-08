@@ -6,34 +6,33 @@ import Select from "react-select";
 // import AiTwotoneStar from "react-icons/ai"
 
 const customStyles = {
-  
-  container: (baseStyles:any) => ({
+  container: (baseStyles: any) => ({
     backgroundColor: "black",
     ...baseStyles,
   }),
-  
-  control: (baseStyles:any, state:any) => ({
+
+  control: (baseStyles: any, state: any) => ({
     ...baseStyles,
     borderColor: state.isFocused ? "#0c1210" : "#faa500",
     backgroundColor: "black",
     color: "white",
   }),
-  menuList: (baseStyles:any) => ({
+  menuList: (baseStyles: any) => ({
     ...baseStyles,
     backgroundColor: "black",
     color: "#faa500",
   }),
-  option: (baseStyles:any, state:any) => ({
+  option: (baseStyles: any, state: any) => ({
     ":hover": { backgroundColor: "#faa500", color: "black" },
     ...baseStyles,
     backgroundColor: "black",
     color: "#faa500",
   }),
-  singleValue: (provided:any) => ({
+  singleValue: (provided: any) => ({
     ...provided,
     color: "white",
   }),
-  placeholder: (provided:any) => ({
+  placeholder: (provided: any) => ({
     ...provided,
     color: "#faa500",
   }),
@@ -68,12 +67,15 @@ const AddPostModal = ({ open, setOpen }: { open: any; setOpen: any }) => {
         profile: id,
       };
     }
-  
+
     console.log("sending", sendingData);
     console.log("token", localStorage.getItem("accessToken"));
-    const url = selectedOption === "premiumpost"
-      ? "http://nitroback.pythonanywhere.com/members/profiles/"+id+"/premiumPosts/"
-      : "http://nitroback.pythonanywhere.com/members/posts/";
+    const url =
+      selectedOption === "premiumpost"
+        ? "http://nitroback.pythonanywhere.com/members/profiles/" +
+          id +
+          "/premiumPosts/"
+        : "http://nitroback.pythonanywhere.com/members/posts/";
     axios
       .post(url, sendingData, {
         headers: {
@@ -83,7 +85,7 @@ const AddPostModal = ({ open, setOpen }: { open: any; setOpen: any }) => {
       .then((res) => {
         console.log(res.data);
       });
-      setOpen(false)
+    setOpen(false);
     // axios
     //   .post("asdf;lkj", body, {
     //     headers: {
@@ -96,7 +98,6 @@ const AddPostModal = ({ open, setOpen }: { open: any; setOpen: any }) => {
     //   .catch((err) => {
     //     console.log(err);
     //   });
-    
   };
 
   return (
@@ -109,16 +110,17 @@ const AddPostModal = ({ open, setOpen }: { open: any; setOpen: any }) => {
       <div className={styles.bg}>
         <div className={styles.modalContainer}>
           <div className={styles.modalHeader}>
-            <h3>اضافه کردن پست</h3>
+            <h3 className={styles.h3}>اضافه کردن پست</h3>
             <div className={styles.select}>
-            <Select
-              options={options}
-              defaultValue={options[1]}
-              value={options.find((option) => option.value === selectedOption)}
-              onChange={handleOptionChange}
-              styles={customStyles}
-
-            />
+              <Select
+                options={options}
+                defaultValue={options[1]}
+                value={options.find(
+                  (option) => option.value === selectedOption
+                )}
+                onChange={handleOptionChange}
+                styles={customStyles}
+              />
             </div>
           </div>
           <div className={styles.modalBody}>
@@ -133,7 +135,6 @@ const AddPostModal = ({ open, setOpen }: { open: any; setOpen: any }) => {
           </div> */}
             <form onSubmit={addPostFormHandler}>
               <div>
-                
                 <textarea
                   value={postContent}
                   onChange={(e) => setPostContent(e.target.value)}
@@ -147,7 +148,17 @@ const AddPostModal = ({ open, setOpen }: { open: any; setOpen: any }) => {
                 <button>افزودن ویدیو</button>
               </div> */}
                 <div className={styles.modalBodyFooterRight}>
-                  <button  type="submit">انتشار</button>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setOpen(false);
+                      setPostContent("");
+                    }}
+                    style={{marginRight: "10px"}}
+                  >
+                    لغو
+                  </button>
+                  <button type="submit">انتشار</button>
                 </div>
               </div>
             </form>
