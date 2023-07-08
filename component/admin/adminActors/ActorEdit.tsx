@@ -4,6 +4,7 @@ import Input from "@/ui/Input"
 
 
 function Actor(){
+    
     return(<>
     
     <div style={{display:'flex',flexDirection:"column"}}>

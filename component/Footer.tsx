@@ -10,7 +10,7 @@ function Footer(){
         <div className={MulticlassName([styles.container])}>
             <div className={styles.text}>
                 <h2 className={MulticlassName([styles.h2])}> درباره ببینیم</h2>
-                <p className={MulticlassName([styles.h3])}>ببینیم یک پلتفرم آنلاین ایت که افراد میتوانند در ان سریال هایی که دوست را بیابند نظرات آن را به خوانند واز اخبار روز دنیای سینما آگاه شوند
+                <p className={MulticlassName([styles.h3])}>ببینیم یک پلتفرم آنلاین ایت که افراد میتوانند در ان فیلم هایی که دوست را بیابند نظرات آن را به خوانند واز اخبار روز دنیای سینما آگاه شوند
                 در ببینیم میتوانید دربارهی فیلم ها کامنت بگإترید اطلاعات و افراد با سلیقهی یکسان را پیدا کنید</p>
             </div>
             {/* <div className={styles.namads}>

@@ -37,10 +37,10 @@ export default function Home() {
    {(news.length>0 && movies.length>0) && <>
     <Header/>
     <div className={styles.header}>
-      <h2>۴۰۰ هزار فیلم و قسمت سریال</h2>
+      <h2> به دنیای فیلم خوش آمدید</h2>
       <ul>
-        <li>پشتیبانی ۲۴ ساعته </li>
-        <li>بدون سانسور و حذفیات</li>
+        <li>هزاران فیلم</li>
+        <li>نقد و بررسی تخصصی</li>
         <li>اپلیکیشن اختصاصی</li>
       </ul>
       <div onClick={()=>{
@@ -59,7 +59,7 @@ export default function Home() {
         {
           movies.map((e:any)=>{
             return(
-              <Item id={e.id} image={e.poster} name={e.title} description={`${e.description.slice(0,70)} ...`}/>
+              <Item id={e.id} image={e.thumbnail} name={e.title} description={`${e.description.slice(0,70)} ...`}/>
             )
           })
         }
@@ -75,7 +75,7 @@ export default function Home() {
       </div>
     </div>
     <div className={styles.news}>
-      <h3>اخبار دنیای فیلم و سریال</h3>
+      <h3>اخبار دنیای فیلم </h3>
       <div>
       {
           news.map((e:any)=>{

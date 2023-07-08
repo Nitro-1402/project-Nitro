@@ -30,7 +30,7 @@ function director(){
     return (
         <div>
           <Header/>
-        <ActorInfo name={data.name} image={data.photo} bio={data.bio} birthday={data.birth_date}/>
+        <ActorInfo name={data.name} image={data.photo} bio={data.bio} birthday={data.birth_date} imdb_link={data.imdb_link}/>
         <Footer/>
       </div>
     )

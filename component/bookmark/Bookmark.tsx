@@ -8,11 +8,11 @@ const Bookmark = ({id,status}:{id:number,status:boolean}) => {
   const user=AuthStore((state:any)=>state.user)
   const [bookmark , setBookmark] = useState(status);
   const addBookmark=async()=>{
-    let res=await InfoApi.bookmark({movie:id, profile:user.profile_id})
+    let res=await InfoApi.bookmark({movie:id, profile:user.profile_id?user.profile_id:user.id})
     console.log(res)
   }
   const deleteBookmark=async()=>{
-    let res=await InfoApi.unbookmark({movie:id, profile:user.profile_id})
+    let res=await InfoApi.unbookmark({movie:id, profile:user.profile_id?user.profile_id:user.id})
     console.log(res)
   }
   return (

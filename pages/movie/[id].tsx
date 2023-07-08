@@ -76,11 +76,11 @@ function Info(){
     return (
       <div>
         <Header/>
-        <Top title={data.title} tumbnail={data.thumbnail} country={data.country} date={data.publish_date} category_set={data.category_set}/>
+        <Top title={data.title} poster={data.poster} country={data.country} date={data.publish_date} category_set={data.category_set}/>
         <div style={{display:'flex',flexDirection:'column',justifyContent:'center'}}>
           <div className= {styles.middleView}>
             <div className= {styles.leftPart}>
-              <Card rating={data?.rating} image={data?.poster} id={data?.id} isLiked={data?.is_favourites} isBooked={data?.is_bookmarks} isSeen={data?.is_watchedList}/>
+              <Card rating={data?.rating} image={data?.thumbnail} id={data?.id} isLiked={data?.is_favourites} isBooked={data?.is_bookmarks} isSeen={data?.is_watchedList}/>
             </div>
             <div className= {styles.rightPart}>
               <Middle text={data.description} name={data.title} date={data.publish_date} bbRate={data.meta_rating} imdbRate={data.imdb_rating} metaRate={data.meta_rating} country={data.country} category_set={data.category_set}/>

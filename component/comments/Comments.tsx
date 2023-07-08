@@ -27,19 +27,19 @@ const Comments = ({ commentsUrl, currentUserId}:{commentsUrl?:any,currentUserId?
           new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime()
       );
   const addComment = (text:any, parentId:any) => {
-    createCommentApi(text, parentId).then((comment) => {
-      setBackendComments([comment, ...backendComments]);
-      setActiveComment(null);
-    });
+    // createCommentApi(text, parentId).then((comment) => {
+    //   setBackendComments([comment, ...backendComments]);
+    //   setActiveComment(null);
+    // });
     axios.post(`${URL_API}comments/comments/`,{
       message: text,
-      parent_comment: parentId,
-      profile: 7,
+      parent_comment: null,
+      profile: 1,
       is_okay: true,
       content_type: 11,
       object_id: 7
     },{headers:{
-      'Authorization':"2222222"
+      "Authorization" :"JWT " + localStorage.getItem('accessToken')
     }}).then((comment) => {
       setBackendComments([text, ...backendComments]);
       setActiveComment(null);
@@ -90,7 +90,7 @@ const Comments = ({ commentsUrl, currentUserId}:{commentsUrl?:any,currentUserId?
   }, []);
 
   useEffect(()=>{
-    axios.get(`${URL_API}comments/comments/${7}/`).then((data)=> setComment([data?.data]))
+    axios.get(`${URL_API}comments/comments/`).then((data)=> setComment([data?.data]))
   },[])
 
   return (

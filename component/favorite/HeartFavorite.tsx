@@ -8,11 +8,12 @@ const HeartFavorite = ({id,status}:{id:number,status:boolean}) => {
   const user=AuthStore((state:any)=>state.user)
     const [favorite , setFavorite] = useState(status);
     const addFavorite=async()=>{
-        let res=await InfoApi.favorite({movie:id,profile:user.profile_id})
+      console.log(user)
+        let res=await InfoApi.favorite({movie:id,profile:user.profile_id?user.profile_id:user.id})
         console.log(res)
       }
       const deleteFavorite=async()=>{
-        let res=await InfoApi.unfavourite({movie:id,profile:user.profile_id})
+        let res=await InfoApi.unfavourite({movie:id,profile:user.profile_id?user.profile_id:user.id})
         console.log(res)
       }
     return (
