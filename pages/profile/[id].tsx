@@ -92,7 +92,7 @@ function Head() {
   
 
   const user2 = AuthStore((state: any) => state.user);
-  console.log("user", user2);
+  console.log("userقققق", user2);
  
   const ImageUpload = ({ image = "../image/user.png" }: { image?: string }) => {
     const [preview, setPreview] = useState<any>();
@@ -221,14 +221,14 @@ function Head() {
         )
         .then((res) => {
           setFollowing(res.data.followings);
-          // console.log("followings", res.data.followings);
+          console.log("followings", res.data.followings);
         });
       const getUserInfo = async () => {
         try {
           await axios
             .get(
               "https://nitroback.pythonanywhere.com/members/profiles/" +
-                id +
+                id+
                 "/",
               {
                 headers: {
@@ -327,7 +327,7 @@ function Head() {
             </DialogContentText>
           </div>
           {followers.map((list1: any) => (
-            <Follower image={list1.photo} name={list1.username} />
+            <Follower name={list1.username} image={list1.photo} Firstname={list1.first_name} Lastname={list1.last_name} />
           ))}
         </Dialog>
         <Dialog
@@ -357,7 +357,7 @@ function Head() {
             </DialogContentText>
           </div>
           {following.map((list2: any) => (
-            <Follower image={list2.photo} name={list2.username} />
+            <Follower image={list2.photo} name={list2.username} Firstname={list2.first_name} Lastname={list2.last_name} />
           ))}
         </Dialog>
       </div>
@@ -682,7 +682,7 @@ function Menu({ menu }: { menu?: string[] }) {
             backgroundColor: "#0c1012",
           }}
         >
-          {userWatchedList.map((movie: any) => {
+          {userWatchedList?.map((movie: any) => {
             return (
               <Item
                 id={movie.id}
@@ -708,7 +708,7 @@ function Menu({ menu }: { menu?: string[] }) {
           <Item image={"/image/meydanSorkh.jpg"} name={"میدان سرخ"} />
           <Item image={"/image/lastOfUs.webp"} name={"آخرین نفر از ما"} />
           <Item image={"/image/iron-man.jpg"} name={"مرد آهنی"} /> */}
-          {userLikedList.map((movie: any) => {
+          {userLikedList?.map((movie: any) => {
             return (
               <Item
                 id={movie.id}
@@ -730,7 +730,7 @@ function Menu({ menu }: { menu?: string[] }) {
             backgroundColor: "#0c1012",
           }}
         >
-          {userWatchList.map((movie: any) => {
+          {userWatchList?.map((movie: any) => {
             // if (idWatch.includes(movie.id)) {
             //   // console.log("mmd",movie);
             //   return <Item image={movie.thumbnail} name={movie.title} description={movie.description} />
@@ -758,7 +758,7 @@ function Menu({ menu }: { menu?: string[] }) {
       )}
       {ShowCommentdiv && (
         <div style={{ color: "white" }}>
-          {comment.map((comm: any) => (
+          {comment?.map((comm: any) => (
             <Comment
               image={comm.photo}
               name={id}
