@@ -132,6 +132,12 @@
 
 }
 @media only  screen and (max-width:1000px) {
+    .slidercontainer{
+        display: none;
+    }
+    .mainSection{
+        margin-top: 100px;
+    }
     .container{
         overflow-x:auto;
     }

@@ -49,7 +49,7 @@
 }
 .poster {
 	width: 200px;
-	height: auto;
+	height: 270px;
 	border-radius: 10px;
 }
 .poster:hover {
@@ -76,7 +76,7 @@
 }
 .bookmark{
 	position: absolute;
-    top: 250px;
+    top: 255px;
     left: 88px;
 }
 .bullet {
@@ -153,8 +153,6 @@
 	width: 25px;
 }
 .summery {
-	/* margin-left: auto;
-	margin-right: auto; */
 
 	direction: rtl;
 	text-align: right;
@@ -262,11 +260,12 @@
 	padding: 10px 30px;
 	border-radius: 10px;
 }
-@media only screen and (max-width:600px) {
+@media only screen and (max-width:900px) {
 	.pageTop{
 		background-repeat: no-repeat;
+		background-size: cover;
 		height: 500px;
-		background-position: top right;
+		background-position: top center;
 		justify-content: flex-end;
     	align-items: center;
 	}
@@ -292,7 +291,7 @@
 		font-size: 10px;
 	}
 	.left{
-		width: 500px;
+		width: 100%;
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
@@ -328,8 +327,8 @@
 		height: 35px;
 	}
 	.summery{
-
-		font-size: 10px;
+		padding: 15px 30px;
+		font-size: 15px;
 	}
 }
 
@@ -339,7 +338,6 @@
 	justify-content: center;
 	margin-top: 23px;
     margin-right: 10px;
-	
 }
 .input{
 	display: none;

@@ -162,9 +162,9 @@ export default function Explore(): JSX.Element {
   return (
     <div className={style.mainSection}>
       <Header />
-      <div>
+      <div className={style.slidercontainer}>
         <SimpleImageSlider
-          style={{ marginTop: "75px" }}
+          style={{ marginTop: "75px"}}
           width={"100%"}
           height={678}
           images={images}

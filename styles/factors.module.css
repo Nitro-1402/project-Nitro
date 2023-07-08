@@ -1,6 +1,34 @@
-@media only screen and (max-width:600px) {
+.link{
+    display: flex ;
+    flex-direction: row ;
+    align-items: center ;
+    justify-content: center ;
+    width: 140px  ;
+    background-color: gray ;
+    border-radius: 20px ;
+    text-decoration: none ;
+    color: aliceblue ;
+    margin-left:7px;
+    margin-bottom: 10px;
+}
+.actors{
+    display:flex ;
+    flex-direction:column;
+     direction:rtl ;
+     text-align:right;
+}
+.act{
+    display:flex;
+    flex-direction:row;
+    text-align:right;
+    margin-right: 60px;
+    direction: rtl;
+    margin-bottom: 10px;
+}
+
+@media only screen and (max-width:700px) {
     .link{
-        width: 100px;
+        width: 120px;
         /* flex-direction: column; */
     }
     .actor{

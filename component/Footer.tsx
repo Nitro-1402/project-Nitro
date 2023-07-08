@@ -41,10 +41,10 @@ function Footer(){
         <h3 className={MulticlassName([styles.h3])}>پیگیری سفارش: 011-33566788</h3>
         <h3 className={MulticlassName([styles.h3])}>ایمیل: info@bebinim.com</h3>
         <div style={{width:120,marginTop:10,display:"flex",justifyContent:'space-between'}}>
-            <BsInstagram className="hoverBtn" size={20} color={"#7569FF"}/>
-            <BsTelegram  className="hoverBtn" size={20} color={"#7569FF"}/>
-            <BsWhatsapp  className="hoverBtn" size={20} color={"#7569FF"}/>
-            <GoLocation  className="hoverBtn" size={20} color={"#7569FF"}/>
+            <BsInstagram className="hoverBtn" size={20} color={"orange"}/>
+            <BsTelegram  className="hoverBtn" size={20} color={"orange"}/>
+            <BsWhatsapp  className="hoverBtn" size={20} color={"orange"}/>
+            <GoLocation  className="hoverBtn" size={20} color={"orange"}/>
 
         </div>
         </div>
